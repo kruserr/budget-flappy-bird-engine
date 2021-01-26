@@ -1,0 +1,25 @@
+.root
+{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+@media only screen and (min-width: 600px)
+{
+  .root
+  {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media only screen and (min-width: 1200px)
+{
+  .root
+  {
+    margin-left: 22%;
+    margin-right: 22%;
+  }
+}
