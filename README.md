@@ -1,12 +1,5 @@
 # Engine
 
-<style>
-.white
-{
-    filter: brightness(0) saturate(100%) invert(100%) sepia(84%) saturate(4023%) hue-rotate(177deg) brightness(121%) contrast(120%);
-}
-</style>
-
 ## Use Case Diagram
 <img class="" src="doc/use_case.drawio.svg" />
 <br/>
@@ -23,6 +16,10 @@
 
 ## Render Loop Sequence Diagram
 <img class="" src="doc/render_loop_sequence_diagram.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Activity Diagram
 <img class="" src="doc/activity_diagram.drawio.svg" />
