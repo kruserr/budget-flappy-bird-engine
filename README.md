@@ -1,8 +1,35 @@
 # Engine
+
+<style>
+.white
+{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(84%) saturate(4023%) hue-rotate(177deg) brightness(121%) contrast(120%);
+}
+</style>
+
 ## Use Case Diagram
-![](doc/use_case.drawio.svg)
+<img class="" src="doc/use_case.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
 
+## Game Loop Sequence Diagram
+<img class="" src="doc/game_loop_sequence_diagram.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
 
+## Render Loop Sequence Diagram
+<img class="" src="doc/render_loop_sequence_diagram.drawio.svg" />
+
+## Activity Diagram
+<img class="" src="doc/activity_diagram.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
 
 # Getting Started with Create React App
 
