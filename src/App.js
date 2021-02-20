@@ -1,10 +1,26 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import React from 'react';
-import { jsx } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 
 import GameObject from './components/GameObject/GameObject';
 
+
+class Hero extends GameObject
+{
+  renderHook()
+  {
+    const styleRoot = css({
+      color: `green`,
+    });
+
+    return (
+      <div css={styleRoot}>
+        Hero
+      </div>
+    );
+  }
+}
 
 export default class App extends React.Component
 {
@@ -29,7 +45,7 @@ export default class App extends React.Component
 
     return (
       <div css={styleRoot}>
-        <GameObject />
+        <Hero />
       </div>
     );
   }

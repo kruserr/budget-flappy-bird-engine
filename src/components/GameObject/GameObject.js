@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import React from 'react';
-import { jsx } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 
 import BoxCollider from '../../classes/BoxCollider/BoxCollider';
 
@@ -42,19 +42,10 @@ export default class GameObject extends React.Component
 
   renderHook()
   {
-    const styleRoot = {
-      background: `#333333`,
-      color: `#FFFFFF`,
-      textAlign: `center`,
-      borderRadius: `10px`,
-      paddingTop: `10px`,
-      paddingBottom: `10px`,
-    };
-
     return (
-      <div css={styleRoot}>
-        GameObject
-      </div>
+      <>
+        {this.props.children}
+      </>
     );
   }
 
@@ -63,7 +54,7 @@ export default class GameObject extends React.Component
     this.run();
     
     return (
-      <div css={this.props.css}>
+      <div css={this.props.style}>
         {this.renderHook()}
       </div>
     );
