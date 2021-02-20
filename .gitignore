@@ -47,3 +47,4 @@ yarn-error.log*
 .eslintcache
 src/index.tsx
 package-lock.json
+yarn.lock
