@@ -41,7 +41,7 @@ class Enemy extends GameObject
 }
 
 test('renders Engine', () => {
-  let engine = new Engine();
+  const engine = new Engine();
   
   engine.addObject(<Hero />);
 
