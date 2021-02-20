@@ -16,6 +16,11 @@ export default class GameObject extends React.Component
   {
     super(props);
 
+    if (this.props == null)
+    {
+      return;
+    }
+
     if (this.props.health)
     {
       this.health = this.props.health;
