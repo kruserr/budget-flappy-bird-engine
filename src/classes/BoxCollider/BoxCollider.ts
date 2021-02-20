@@ -17,9 +17,9 @@ export default class BoxCollider
   constructor(obj: IBoxCollider);
   constructor(obj?: any)
   {
-    this.x = obj && obj.x || 0
-    this.y = obj && obj.y || 0
-    this.width = obj && obj.width || 0
+    this.x = obj && obj.x || 0;
+    this.y = obj && obj.y || 0;
+    this.width = obj && obj.width || 0;
     this.height = obj && obj.height || 0;
   }
 
