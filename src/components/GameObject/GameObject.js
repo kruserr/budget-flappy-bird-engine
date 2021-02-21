@@ -1,7 +1,4 @@
-/** @jsx jsx */
-/** @jsxRuntime classic */
 import React from 'react';
-import { jsx, css } from '@emotion/react';
 
 import BoxCollider from '../../classes/BoxCollider/BoxCollider';
 
@@ -59,7 +56,7 @@ export default class GameObject extends React.Component
     this.run();
     
     return (
-      <div css={this.props.style}>
+      <div>
         {this.renderHook()}
       </div>
     );
