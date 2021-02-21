@@ -3,10 +3,12 @@ import Event from '../Event/Event';
 
 export default class EventList
 {
-  private static events: Event[];
+  private static events: Array<Event>;
 
   constructor()
   {
+    EventList.events = new Array<Event>();
+
     EventList.events.push(
       new Event({
         name: 'true',

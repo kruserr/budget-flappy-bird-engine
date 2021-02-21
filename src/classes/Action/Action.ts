@@ -4,8 +4,8 @@ import GameObject from '../../components/GameObject/GameObject';
 
 export interface IAction
 {
-  event : Event;
-  lambda : (obj: GameObject) => void;
+  event: Event;
+  lambda: (obj: GameObject) => void;
 }
 
 export default class Action

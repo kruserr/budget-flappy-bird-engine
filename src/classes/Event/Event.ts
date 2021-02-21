@@ -1,13 +1,13 @@
 export interface IEvent
 {
-  name : string;
-  lambda : () => boolean;
+  name: string;
+  lambda: () => boolean;
 }
 
 export default class Event
 {
-  private name : string;
-  private lambda : () => boolean;
+  private name: string;
+  private lambda: () => boolean;
 
   constructor();
   constructor(obj: IEvent);
