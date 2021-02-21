@@ -29,10 +29,15 @@ export default class Engine
   {
     ReactDOM.render(
       <React.StrictMode>
-        {this.renderObjects()}
+        {this.objects}
       </React.StrictMode>,
       document.getElementById('root')
     );
+
+    for (const item of this.objects)
+    {
+      item.run();
+    }
   }
 
   private renderObjects()
@@ -41,11 +46,11 @@ export default class Engine
 
     for (const item of this.objects)
     {
-      item.run();
+      // item.run();
 
       items.push(
         <span key={items.length}>
-          {item.render()}
+          {item}
         </span>
       );
     }

@@ -56,12 +56,12 @@ export default class GameObject extends React.Component
 
   render()
   {
-    this.run();
+    // this.run();
     
     return (
-      <div>
+      <>
         {this.renderHook()}
-      </div>
+      </>
     );
   }
 }

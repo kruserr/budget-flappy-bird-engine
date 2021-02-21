@@ -14,32 +14,65 @@ import Action from './classes/Action/Action';
 const engine = new Engine();
 const eventList = new EventList();
 
-const hero = new GameObject({
-  actions: [
-    new Action({
-      event: eventList.getEvent('true'),
-      lambda: (self) => {
-        console.log('Hero - Event true');
+// const hero = new GameObject({
+//   actions: [
+//     new Action({
+//       event: eventList.getEvent('true'),
+//       lambda: (self) => {
+//         console.log('Hero - Event true');
 
-        let data = self.state;
-        data['text'] = 'text';
-      }
-    })
-  ],
-  lambda: (self) => {
-    console.log(self);
+//         let data = self.state;
+//         data['text'] = 'text';
+//         self.setState(data);
+//       }
+//     })
+//   ],
+//   lambda: (self) => {
+//     console.log(self);
 
-    const styleRoot = {
-      color: `green`,
-    };
+//     const styleRoot = {
+//       color: `green`,
+//     };
 
-    return (
-      <div style={styleRoot}>
-        {self.state.text}
-      </div>
-    );
-  }
-});
+//     return (
+//       <div style={styleRoot}>
+//         text
+//       </div>
+//     );
+//   }
+// });
+
+const hero = (
+  <GameObject
+    actions = {[
+      new Action({
+        event: eventList.getEvent('true'),
+        lambda: (self) => {
+          console.log('Hero - Event true');
+
+          console.log(self);
+  
+          // let data = self.state;
+          // data['text'] = 'text';
+          // self.setState(data);
+        }
+      })
+    ]}
+    lambda = {(self) => {
+      console.log(self);
+
+      const styleRoot = {
+        color: `green`,
+      };
+  
+      return (
+        <div style={styleRoot}>
+          text
+        </div>
+      );
+    }}
+  />
+);
 engine.addObject(hero);
 
 engine.start();
