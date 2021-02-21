@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import GameObject from '../GameObject/GameObject';
+import GameObject from '../../components/GameObject/GameObject';
 
 
 export interface IGameObjects

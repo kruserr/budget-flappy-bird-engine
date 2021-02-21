@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import Engine from './components/Engine/Engine';
+import Engine from './classes/Engine/Engine';
 import GameObject from './components/GameObject/GameObject';
 
 

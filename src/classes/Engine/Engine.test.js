@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import Engine from './Engine';
-import GameObject from '../GameObject/GameObject';
+import GameObject from '../../components/GameObject/GameObject';
 
 
 class Hero extends GameObject
