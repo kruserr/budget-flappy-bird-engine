@@ -1,0 +1,63 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "editor.minimap.enabled": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "extensions.ignoreRecommendations": true,
+    "workbench.activityBar.visible": true,
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false
+    },
+    "debug.onTaskErrors": "debugAnyway",
+    "editor.autoClosingOvertype": "never",
+    "git.autofetchPeriod": 30,
+    "git.inputValidationLength": 150,
+    "git.inputValidationSubjectLength": null,
+    "git.postCommitCommand": "sync",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "breadcrumbs.enabled": false,
+    "window.zoomLevel": 0,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[css]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "explorer.compactFolders": false,
+    "editor.renderControlCharacters": false,
+    "editor.folding": false,
+    "editor.accessibilitySupport": "off",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.rightClickBehavior": "default",
+    "git.terminalAuthentication": false,
+    "github.gitAuthentication": false,
+    "git.timeline.date": "authored",
+    "json.schemaDownload.enable": false,
+    "npm.fetchOnlinePackageInfo": false,
+}
