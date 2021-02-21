@@ -1,7 +1,4 @@
-/** @jsx jsx */
-/** @jsxRuntime classic */
 import React from 'react';
-import { jsx, css } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 
 import Engine from './Engine';
@@ -12,9 +9,9 @@ class Hero extends GameObject
 {
   renderHook()
   {
-    const styleRoot = css({
+    const styleRoot = {
       color: `green`,
-    });
+    };
 
     return (
       <div css={styleRoot}>
@@ -28,9 +25,9 @@ class Enemy extends GameObject
 {
   renderHook()
   {
-    const styleRoot = css({
+    const styleRoot = {
       color: `red`,
-    });
+    };
 
     return (
       <div css={styleRoot}>
@@ -41,16 +38,21 @@ class Enemy extends GameObject
 }
 
 test('renders Engine', () => {
+  render(<div id="root"/>);
+
   const engine = new Engine();
+
+  const hero = new Hero();
+  const enemy = new Enemy();
   
-  engine.addObject(<Hero />);
+  engine.addObject(hero);
 
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
+  engine.addObject(enemy);
+  engine.addObject(enemy);
+  engine.addObject(enemy);
+  engine.addObject(enemy);
+  engine.addObject(enemy);
+  engine.addObject(enemy);
 
-  render(engine.render());
+  engine.start();
 });
