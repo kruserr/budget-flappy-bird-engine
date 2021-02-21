@@ -17,12 +17,12 @@ export default class Event
     this.lambda = obj && obj.lambda || null;
   }
 
-  getName() : string
+  getName()
   {
     return this.name;
   }
 
-  check() : boolean
+  check()
   {
     return this.lambda();
   }

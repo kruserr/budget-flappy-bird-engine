@@ -23,7 +23,7 @@ export default class BoxCollider
     this.height = obj && obj.height || 0;
   }
 
-  collideCheck(other: BoxCollider) : boolean
+  collideCheck(other: BoxCollider)
   {
     return false;
   }

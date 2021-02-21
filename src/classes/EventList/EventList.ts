@@ -22,7 +22,7 @@ export default class EventList
     );
   }
 
-  getEvent(name: string) : Event | undefined
+  getEvent(name: string)
   {
     return EventList.events.find(event => event.getName() === name);
   }

@@ -21,7 +21,7 @@ export default class Action
     this.lambda = obj && obj.lambda || 0;
   }
 
-  run(obj: GameObject) : void
+  run(obj: GameObject)
   {
     if (this.event.check())
     {
