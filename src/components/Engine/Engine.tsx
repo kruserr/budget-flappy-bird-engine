@@ -1,41 +1,55 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import GameObject from '../GameObject/GameObject';
 
 
-export interface IEvent
+export interface IGameObjects
 {
-  objects: Array<JSX.Element>;
+  objects: Array<GameObject>;
 }
 
-export default class Engine extends React.Component
+export default class Engine
 {
-  private objects: Array<JSX.Element>;
+  private objects: Array<GameObject>;
 
   constructor();
-  constructor(props: IEvent)
+  constructor(props: IGameObjects)
   constructor(props?: any)
   {
-    super(props);
-
-    this.objects = props && props.objects || new Array<JSX.Element>();
+    this.objects = props && props.objects || new Array<GameObject>();
   }
 
   addObject(item: GameObject)
   {
-    this.objects.push((
-      <span key={this.objects.length}>
-        {item}
-      </span>
-    ));
+    this.objects.push(item);
   }
 
-  render()
+  start()
   {
-    return (
-      <>
-        {this.objects}
-      </>
+    ReactDOM.render(
+      <React.StrictMode>
+        {this.renderObjects()}
+      </React.StrictMode>,
+      document.getElementById('root')
     );
+  }
+
+  private renderObjects()
+  {
+    let items = new Array<JSX.Element>();
+
+    for (const item of this.objects)
+    {
+      item.run();
+
+      items.push(
+        <span key={items.length}>
+          {item.render()}
+        </span>
+      );
+    }
+
+    return items;
   }
 }
