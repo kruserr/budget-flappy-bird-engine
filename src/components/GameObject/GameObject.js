@@ -5,9 +5,11 @@ import BoxCollider from '../../classes/BoxCollider/BoxCollider';
 
 export default class GameObject extends React.Component
 {
+  state = {};
   health = 0;
   actions = [];
   boxCollider = new BoxCollider();
+  lambda = (self) => <>{this.props.children}</>;
 
   constructor(props)
   {
@@ -32,6 +34,11 @@ export default class GameObject extends React.Component
     {
       this.boxCollider = this.props.boxCollider;
     }
+
+    if (this.props.lambda)
+    {
+      this.lambda = this.props.lambda;
+    }
   }
 
   run()
@@ -44,11 +51,7 @@ export default class GameObject extends React.Component
 
   renderHook()
   {
-    return (
-      <>
-        {this.props.children}
-      </>
-    );
+    return this.lambda(this);
   }
 
   render()
