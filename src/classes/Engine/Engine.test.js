@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 
 import Engine from './Engine';
 import GameObject from '../../components/GameObject/GameObject';
+import EventList from '../EventList/EventList';
+import Action from '../Action/Action';
 
 
 class Hero extends GameObject
@@ -37,7 +39,7 @@ class Enemy extends GameObject
   }
 }
 
-test('renders Engine', () => {
+test('Engine - Inherit GameObject', () => {
   render(<div id="root"/>);
 
   const engine = new Engine();
@@ -53,6 +55,39 @@ test('renders Engine', () => {
   engine.addObject(enemy);
   engine.addObject(enemy);
   engine.addObject(enemy);
+
+  engine.start();
+});
+
+test('Engine - GameObject lambda injection', () => {
+  render(<div id="root"/>);
+
+  const engine = new Engine();
+  const eventList = new EventList();
+
+  const hero = new GameObject({
+    actions: [
+      new Action({
+        event: eventList.getEvent('true'),
+        lambda: (self) => {
+          let data = self.state;
+          data['text'] = 'text';
+        }
+      })
+    ],
+    lambda: (self) => {
+      const styleRoot = {
+        color: `green`,
+      };
+
+      return (
+        <div style={styleRoot}>
+          {self.state.text}
+        </div>
+      );
+    }
+  });
+  engine.addObject(hero);
 
   engine.start();
 });
