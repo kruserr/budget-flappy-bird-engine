@@ -1,3 +1,6 @@
+import GameObject from '../../components/GameObject/GameObject';
+
+
 export interface IEvent
 {
   name: string;
@@ -7,7 +10,7 @@ export interface IEvent
 export default class Event
 {
   private name: string;
-  private lambda: () => boolean;
+  private lambda: (obj: GameObject) => boolean;
 
   constructor();
   constructor(obj: IEvent);
@@ -22,8 +25,8 @@ export default class Event
     return this.name;
   }
 
-  check()
+  check(obj: GameObject)
   {
-    return this.lambda();
+    return this.lambda(obj);
   }
 }
