@@ -23,7 +23,7 @@ export default class Action
 
   run(obj: GameObject)
   {
-    if (this.event.check())
+    if (this.event.check(obj))
     {
       this.lambda(obj);
     }
