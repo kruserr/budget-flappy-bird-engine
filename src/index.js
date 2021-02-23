@@ -41,7 +41,7 @@ const heroJump = new Action({
     }
   }),
   lambda: (self) => {
-    if (self.boxCollider.getY() > 0)
+    if (self.boxCollider.getY() > -12)
     {
       self.boxCollider.setY(-0.6);
     }
@@ -56,7 +56,7 @@ const heroGravity = new Action({
     }
   }),
   lambda: (self) => {
-    if (self.boxCollider.getY() < 87.8)
+    if (self.boxCollider.getY() < 100)
     {
       self.boxCollider.setY(0.2);
     }
