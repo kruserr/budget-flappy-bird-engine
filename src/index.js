@@ -1,91 +1,94 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 import Engine from './classes/Engine/Engine';
 import GameObject from './components/GameObject/GameObject';
+import Event from './classes/Event/Event';
 import EventList from './classes/EventList/EventList';
 import Action from './classes/Action/Action';
+import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 
 const engine = new Engine();
 const eventList = new EventList();
 
-// const hero = new GameObject({
-//   actions: [
-//     new Action({
-//       event: eventList.getEvent('true'),
-//       lambda: (self) => {
-//         console.log('Hero - Event true');
+let space = false;
 
-//         let data = self.state;
-//         data['text'] = 'text';
-//         self.setState(data);
-//       }
-//     })
-//   ],
-//   lambda: (self) => {
-//     console.log(self);
+document.addEventListener(
+  'keydown',
+  (event) => {
+    if(event.key === ' ')
+    {
+      space = true;
+    }
+  }
+);
 
-//     const styleRoot = {
-//       color: `green`,
-//     };
+document.addEventListener(
+  'keyup',
+  (event) => {
+    if(event.key === ' ')
+    {
+      space = false;
+    }
+  }
+);
 
-//     return (
-//       <div style={styleRoot}>
-//         text
-//       </div>
-//     );
-//   }
-// });
+const heroJump = new Action({
+  event: new Event({
+    name: '',
+    lambda: (self) => {
+      return space;
+    }
+  }),
+  lambda: (self) => {
+    if (self.boxCollider.getY() > 0)
+    {
+      self.boxCollider.setY(-3);
+    }
+  }
+});
+
+const heroGravity = new Action({
+  event: new Event({
+    name: '',
+    lambda: (self) => {
+      return true;
+    }
+  }),
+  lambda: (self) => {
+    if (self.boxCollider.getY() < 400)
+    {
+      self.boxCollider.setY(1);
+    }
+  }
+});
+
+const heroRender = (self) => {
+  const styleRoot = {
+    position: `absolute`,
+    color: `green`,
+    transition: `16ms linear`,
+    left: `${self.boxCollider.getX()}px`,
+    top: `${self.boxCollider.getY()}px`,
+  };
+  
+  return (
+    <div style={styleRoot}>
+      []
+    </div>
+  );
+};
 
 const hero = (
   <GameObject
     actions = {[
-      new Action({
-        event: eventList.getEvent('true'),
-        lambda: (self) => {
-          console.log('Hero - Event true');
-
-          console.log(self);
-  
-          // let data = self.state;
-          // data['text'] = 'text';
-          // self.setState(data);
-        }
-      })
+      heroGravity,
+      heroJump,
     ]}
-    lambda = {(self) => {
-      console.log(self);
-
-      const styleRoot = {
-        color: `green`,
-      };
-  
-      return (
-        <div style={styleRoot}>
-          text
-        </div>
-      );
-    }}
+    lambda = {heroRender}
+    boxCollider = {new BoxCollider({x: 50, y: 200, width: 25, height: 25})}
   />
 );
 engine.addObject(hero);
 
 engine.start();
-
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals(console.log);
