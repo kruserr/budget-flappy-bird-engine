@@ -10,15 +10,11 @@ class EngineComponent extends React.Component
 
   componentDidMount()
   {
-    setInterval(() => this.forceUpdate(), 16);
-    // requestAnimationFrame(() => this.forceUpdate());
-    
-    // const update = () => {
-    //   let data = this.state;
-    //   data.text = 'text2';
-    //   this.setState(data);
-    // };
-    // setInterval(() => update(), 1000);
+    const render = () => {
+      this.forceUpdate();
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
   }
 
   render()
