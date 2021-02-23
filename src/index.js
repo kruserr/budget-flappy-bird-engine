@@ -56,7 +56,7 @@ const heroGravity = new Action({
     }
   }),
   lambda: (self) => {
-    if (self.boxCollider.getY() < 87.9)
+    if (self.boxCollider.getY() < 87.8)
     {
       self.boxCollider.setY(0.15);
     }
