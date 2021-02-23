@@ -1,12 +1,17 @@
-import { request } from 'http';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { parseConfigFileTextToJson } from 'typescript';
 
 
 class EngineComponent extends React.Component
 {
   state = {};
+
+  constructor(props)
+  {
+    super(props);
+
+    this.state.setState = this.setState.bind(this);
+  }
 
   componentDidMount()
   {
