@@ -10,13 +10,14 @@ class EngineComponent extends React.Component
   {
     super(props);
 
-    this.state.setState = this.setState.bind(this);
+    this.state.children = [];
   }
 
   componentDidMount()
   {
     const render = () => {
       this.forceUpdate();
+      // this.state.children[0]({});
       requestAnimationFrame(render);
     }
     requestAnimationFrame(render);

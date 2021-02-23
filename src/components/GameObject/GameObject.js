@@ -49,6 +49,11 @@ export default class GameObject extends React.Component
     }
   }
 
+  componentDidMount()
+  {
+    this.props.data.children.push(this.setState.bind(this));
+  }
+
   renderHook()
   {
     return this.lambda(this);
