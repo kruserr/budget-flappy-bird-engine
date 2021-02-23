@@ -1,21 +1,49 @@
+import { request } from 'http';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { parseConfigFileTextToJson } from 'typescript';
 
-import GameObject from '../../components/GameObject/GameObject';
 
+class EngineComponent extends React.Component
+{
+  state = {};
+
+  componentDidMount()
+  {
+    setInterval(() => this.forceUpdate(), 16);
+    // requestAnimationFrame(() => this.forceUpdate());
+    
+    // const update = () => {
+    //   let data = this.state;
+    //   data.text = 'text2';
+    //   this.setState(data);
+    // };
+    // setInterval(() => update(), 1000);
+  }
+
+  render()
+  {
+    const childrenWithProps = React.Children.map(
+      this.props.children, child => {
+        if (React.isValidElement(child))
+        {
+          return React.cloneElement(child, { data: this.state });
+        }
+
+        return child;
+      }
+    );
+
+    return childrenWithProps;
+  }
+}
 
 export default class Engine
 {
   objects = [];
 
-  constructor(props)
-  {
-    // this.objects = props && props.objects;
-  }
-
   addObject(item)
   {
-    // this.objects.push(item.render(item));
     this.objects.push(item);
   }
 
@@ -23,24 +51,11 @@ export default class Engine
   {
     ReactDOM.render(
       <React.StrictMode>
-        {this.objects}
+        <EngineComponent>
+          {this.objects}
+        </EngineComponent>
       </React.StrictMode>,
       document.getElementById('root')
     );
-
-    for (const item of this.objects)
-    {
-      console.log(item);
-
-      // for (const action of item.props.actions)
-      // {
-      //   action.run(item);
-      // }
-
-      // console.log(item.type.run());
-      // item.run();
-      // item.props.actions.run();
-      // item._self.run();
-    }
   }
 }
