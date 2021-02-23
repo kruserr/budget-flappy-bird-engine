@@ -43,7 +43,7 @@ const heroJump = new Action({
   lambda: (self) => {
     if (self.boxCollider.getY() > 0)
     {
-      self.boxCollider.setY(-3);
+      self.boxCollider.setY(-0.45);
     }
   }
 });
@@ -56,9 +56,9 @@ const heroGravity = new Action({
     }
   }),
   lambda: (self) => {
-    if (self.boxCollider.getY() < 400)
+    if (self.boxCollider.getY() < 87.9)
     {
-      self.boxCollider.setY(1);
+      self.boxCollider.setY(0.15);
     }
   }
 });
@@ -66,15 +66,16 @@ const heroGravity = new Action({
 const heroRender = (self) => {
   const styleRoot = {
     position: `absolute`,
-    color: `green`,
+    color: `yellow`,
     transition: `16ms linear`,
-    left: `${self.boxCollider.getX()}px`,
-    top: `${self.boxCollider.getY()}px`,
+    fontSize: `10vh`,
+    left: `${self.boxCollider.getX()}vw`,
+    top: `${self.boxCollider.getY()}vh`,
   };
   
   return (
     <div style={styleRoot}>
-      []
+      {`(^)>`}
     </div>
   );
 };
@@ -86,7 +87,7 @@ const hero = (
       heroJump,
     ]}
     lambda = {heroRender}
-    boxCollider = {new BoxCollider({x: 50, y: 200, width: 25, height: 25})}
+    boxCollider = {new BoxCollider({x: 2.5, y: 37.9, width: 25, height: 25})}
   />
 );
 engine.addObject(hero);
