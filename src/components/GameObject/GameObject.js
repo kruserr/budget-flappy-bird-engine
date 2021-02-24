@@ -7,7 +7,6 @@ export default class GameObject extends React.Component
 {
   state = {};
   health = 0;
-  actions = [];
   boxCollider = new BoxCollider();
   lambda = (self) => <>{this.props.children}</>;
 
@@ -25,11 +24,6 @@ export default class GameObject extends React.Component
       this.health = this.props.health;
     }
 
-    if (this.props.actions)
-    {
-      this.actions = this.props.actions;
-    }
-
     if (this.props.boxCollider)
     {
       this.boxCollider = this.props.boxCollider;
@@ -38,14 +32,6 @@ export default class GameObject extends React.Component
     if (this.props.lambda)
     {
       this.lambda = this.props.lambda;
-    }
-  }
-
-  run()
-  {
-    for (const item of this.actions)
-    {
-      item.run(this);
     }
   }
 
@@ -61,8 +47,6 @@ export default class GameObject extends React.Component
 
   render()
   {
-    this.run();
-
     return (
       <>
         {this.renderHook()}

@@ -34,10 +34,10 @@ export default class Engine
       document.getElementById('root')
     );
 
-    for (const item of this.objects)
-    {
-      item.run();
-    }
+    // for (const item of this.objects)
+    // {
+    //   item.run();
+    // }
   }
 
   private renderObjects()

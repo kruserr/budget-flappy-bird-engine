@@ -2,14 +2,10 @@ import './index.css';
 
 import Engine from './classes/Engine/Engine';
 import GameObject from './components/GameObject/GameObject';
-import Event from './classes/Event/Event';
-import EventList from './classes/EventList/EventList';
-import Action from './classes/Action/Action';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 
 const engine = new Engine();
-const eventList = new EventList();
 
 let space = false;
 
@@ -33,37 +29,22 @@ document.addEventListener(
   }
 );
 
-const heroJump = new Action({
-  event: new Event({
-    name: '',
-    lambda: (self) => {
-      return space;
-    }
-  }),
-  lambda: (self) => {
+const heroRender = (self) => {
+  if (space)
+  {
     if (self.boxCollider.getY() > -12)
     {
       self.boxCollider.setY(-0.6);
     }
   }
-});
-
-const heroGravity = new Action({
-  event: new Event({
-    name: '',
-    lambda: (self) => {
-      return true;
-    }
-  }),
-  lambda: (self) => {
+  else
+  {
     if (self.boxCollider.getY() < 100)
     {
-      self.boxCollider.setY(0.2);
+      self.boxCollider.setY(0.3);
     }
   }
-});
 
-const heroRender = (self) => {
   const styleRoot = {
     position: `fixed`,
     color: `yellow`,
@@ -81,10 +62,6 @@ const heroRender = (self) => {
 
 const hero = (
   <GameObject
-    actions = {[
-      heroGravity,
-      heroJump,
-    ]}
     lambda = {heroRender}
     boxCollider = {new BoxCollider({x: 2.5, y: 37.9, width: 25, height: 25})}
   />
