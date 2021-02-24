@@ -12,7 +12,7 @@ let timerID;
 let counter = 0;
 let jump = false;
 let unlock = true;
-let pressHoldDuration = 15;
+let pressHoldDuration = 20;
 let pressHoldEvent = new CustomEvent("pressHold");
 
 const timer = () =>
@@ -52,7 +52,10 @@ document.addEventListener("touchend", () => notPressingDown());
 
 document.addEventListener(
   "keydown",
-  () => {
+  (event) => {
+    if (event.key !== ' ')
+      return;
+    
     if (unlock)
     {
       unlock = false;
@@ -62,7 +65,10 @@ document.addEventListener(
 );
 document.addEventListener(
   "keyup",
-  () => {
+  (event) => {
+    if (event.key !== ' ')
+      return;
+    
     notPressingDown();
     unlock = true;
   }
@@ -87,7 +93,7 @@ const heroRender = (self) => {
   {
     if (self.boxCollider.getY() < 100)
     {
-      self.boxCollider.setY(0.3);
+      self.boxCollider.setY(0.4);
     }
   }
 
