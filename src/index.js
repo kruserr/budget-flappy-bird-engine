@@ -7,30 +7,76 @@ import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 const engine = new Engine();
 
-let space = false;
+// https://www.kirupa.com/html5/press_and_hold.htm
+let timerID;
+let counter = 0;
+let jump = false;
+let unlock = true;
+let pressHoldDuration = 15;
+let pressHoldEvent = new CustomEvent("pressHold");
+
+const timer = () =>
+{
+  jump = true;
+
+  if (counter < pressHoldDuration)
+  {
+    timerID = requestAnimationFrame(() => timer());
+    counter++;
+  }
+  else
+  {
+    document.dispatchEvent(pressHoldEvent);
+  }
+}
+
+const pressingDown = () =>
+{
+  requestAnimationFrame(() => timer());
+  jump = true;
+}
+
+const notPressingDown = () =>
+{
+  cancelAnimationFrame(timerID);
+  counter = 0;
+
+  jump = false;
+}
+
+document.addEventListener("mousedown", () => pressingDown());
+document.addEventListener("mouseup", () => notPressingDown());
+
+document.addEventListener("touchstart", () => pressingDown());
+document.addEventListener("touchend", () => notPressingDown());
 
 document.addEventListener(
-  'keydown',
-  (event) => {
-    if(event.key === ' ')
+  "keydown",
+  () => {
+    if (unlock)
     {
-      space = true;
+      unlock = false;
+      pressingDown();
     }
+  }
+);
+document.addEventListener(
+  "keyup",
+  () => {
+    notPressingDown();
+    unlock = true;
   }
 );
 
 document.addEventListener(
-  'keyup',
-  (event) => {
-    if(event.key === ' ')
-    {
-      space = false;
-    }
+  "pressHold",
+  () => {
+    jump = false;
   }
 );
 
 const heroRender = (self) => {
-  if (space)
+  if (jump)
   {
     if (self.boxCollider.getY() > -12)
     {
