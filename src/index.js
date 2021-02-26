@@ -87,13 +87,14 @@ function Hero()
     new BoxCollider({
       x: 2.5,
       y: 37.9,
-      width: 25,
-      height: 25
+      width: 5,
+      height: 5
     })
   );
 
   React.useEffect(() => {
-    function move() {
+    function move()
+    {
       if (jump)
       {
         if (collider.getY() > -12)
@@ -119,7 +120,7 @@ function Hero()
     position: `fixed`,
     color: `yellow`,
     willChange: `transform`,
-    fontSize: `10vh`,
+    fontSize: `${Math.max(collider.width, collider.height)}vh`,
     transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0)`,
   };
   
@@ -130,5 +131,58 @@ function Hero()
   );
 }
 engine.addObject(<Hero />);
+
+function Pipe(props)
+{
+  const [collider, setCollider] = React.useState(
+    new BoxCollider({
+      x: props?.data?.x,
+      y: props?.data?.y,
+      width: 5,
+      height: 40
+    })
+  );
+
+  React.useEffect(() => {
+    function move()
+    {
+      if (collider.getX() > -30)
+      {
+        collider.setX(-0.6);
+      }
+
+      setCollider(new BoxCollider({...collider}));
+    };
+
+    requestAnimationFrame(move);
+  });
+
+  const styleRoot = {
+    position: `fixed`,
+    color: `green`,
+    willChange: `transform`,
+    fontSize: `10vh`,
+    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0)`,
+    whiteSpace: 'pre-wrap',
+  };
+
+  let text = `  --\n`;
+
+  for (let i = 0; i < 4; i++)
+  {
+    text += `  | |\n`;
+  }
+
+  return (
+    <span style={styleRoot}>
+      {text}
+    </span>
+  );
+}
+
+for (let i = 0; i < 10; i++)
+{
+  engine.addObject(<Pipe data={{x: (60 * i) + 75, y: 41}}/>);
+}
 
 engine.start();
