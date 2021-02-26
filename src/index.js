@@ -167,11 +167,8 @@ function Pipe(props)
 
   const styleRoot = {
     position: `fixed`,
-    color: `green`,
     willChange: `transform`,
-    fontSize: `10vh`,
     transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0) rotate(${rotation}deg)`,
-    whiteSpace: 'pre-wrap',
   };
 
   let text = `  --\n`;
@@ -199,17 +196,38 @@ function PipeSet(props)
 
   const randomInt = getRandomInt(15, 80);
 
+  const styleRoot = {
+  };
+
   return (
-    <>
+    <span style={styleRoot}>
       <Pipe data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
       <Pipe data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>
-    </>
+    </span>
   );
 }
 
-for (let i = 0; i < 6; i++)
+function PipeGroup()
 {
-  engine.addObject(<PipeSet data={{i: i}}/>);
+  let items = [];
+  for (let i = 0; i < 6; i++)
+  {
+    items.push(<PipeSet data={{i: i}} />);
+  }
+
+  const styleRoot = {
+    color: `green`,
+    fontSize: `10vh`,
+    whiteSpace: 'pre-wrap',
+  };
+
+  return (
+    <span style={styleRoot}>
+      {items}
+    </span>
+  );
 }
+
+engine.addObject(<PipeGroup />);
 
 engine.start();
