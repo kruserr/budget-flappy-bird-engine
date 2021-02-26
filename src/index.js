@@ -182,7 +182,14 @@ function Pipe(props)
 
 for (let i = 0; i < 10; i++)
 {
-  engine.addObject(<Pipe data={{x: (60 * i) + 75, y: 41}}/>);
+  if (i % 2 == 0)
+  {
+    engine.addObject(<Pipe data={{x: (65 * i) + 75, y: 41}}/>);
+  }
+  else
+  {
+    engine.addObject(<Pipe data={{x: (65 * i) + 75, y: -7}}/>);
+  }
 }
 
 engine.start();
