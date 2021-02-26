@@ -1,7 +1,7 @@
+import React from 'react';
 import './index.css';
 
 import Engine from './classes/Engine/Engine';
-import GameObject from './components/GameObject/GameObject';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 
@@ -15,7 +15,7 @@ let unlock = true;
 let pressHoldDuration = 20;
 let pressHoldEvent = new CustomEvent("pressHold");
 
-const timer = () =>
+function timer()
 {
   jump = true;
 
@@ -30,13 +30,13 @@ const timer = () =>
   }
 }
 
-const pressingDown = () =>
+function pressingDown()
 {
   requestAnimationFrame(() => timer());
   jump = true;
 }
 
-const notPressingDown = () =>
+function notPressingDown()
 {
   cancelAnimationFrame(timerID);
   counter = 0;
@@ -81,28 +81,46 @@ document.addEventListener(
   }
 );
 
-const heroRender = (self) => {
-  if (jump)
-  {
-    if (self.boxCollider.getY() > -12)
-    {
-      self.boxCollider.setY(-0.6);
-    }
-  }
-  else
-  {
-    if (self.boxCollider.getY() < 100)
-    {
-      self.boxCollider.setY(0.4);
-    }
-  }
+function Hero()
+{
+  const [collider, setCollider] = React.useState(
+    new BoxCollider({
+      x: 2.5,
+      y: 37.9,
+      width: 25,
+      height: 25
+    })
+  );
 
+  React.useEffect(() => {
+    function move() {
+      if (jump)
+      {
+        if (collider.getY() > -12)
+        {
+          collider.setY(-0.6);
+        }
+      }
+      else
+      {
+        if (collider.getY() < 100)
+        {
+          collider.setY(0.4);
+        }
+      }
+
+      setCollider(new BoxCollider({...collider}));
+    };
+
+    requestAnimationFrame(move);
+  });
+  
   const styleRoot = {
     position: `fixed`,
     color: `yellow`,
     willChange: `transform`,
     fontSize: `10vh`,
-    transform: `translate3d(${self.boxCollider.getX()}vw, ${self.boxCollider.getY()}vh, 0)`,
+    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0)`,
   };
   
   return (
@@ -110,14 +128,7 @@ const heroRender = (self) => {
       {`(^)>`}
     </span>
   );
-};
-
-const hero = (
-  <GameObject
-    lambda = {heroRender}
-    boxCollider = {new BoxCollider({x: 2.5, y: 37.9, width: 25, height: 25})}
-  />
-);
-engine.addObject(hero);
+}
+engine.addObject(<Hero />);
 
 engine.start();

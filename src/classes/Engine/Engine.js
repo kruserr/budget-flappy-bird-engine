@@ -2,44 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-class EngineComponent extends React.Component
-{
-  state = {};
-
-  constructor(props)
-  {
-    super(props);
-
-    this.state.children = [];
-  }
-
-  componentDidMount()
-  {
-    const render = () => {
-      this.forceUpdate();
-      // this.state.children[0]({});
-      requestAnimationFrame(render);
-    }
-    requestAnimationFrame(render);
-  }
-
-  render()
-  {
-    const childrenWithProps = React.Children.map(
-      this.props.children, child => {
-        if (React.isValidElement(child))
-        {
-          return React.cloneElement(child, { data: this.state });
-        }
-
-        return child;
-      }
-    );
-
-    return childrenWithProps;
-  }
-}
-
 export default class Engine
 {
   objects = [];
@@ -53,9 +15,7 @@ export default class Engine
   {
     ReactDOM.render(
       <React.StrictMode>
-        <EngineComponent>
-          {this.objects}
-        </EngineComponent>
+        {this.objects}
       </React.StrictMode>,
       document.getElementById('root')
     );
