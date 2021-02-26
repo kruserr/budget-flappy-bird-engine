@@ -157,18 +157,22 @@ function Pipe(props)
     requestAnimationFrame(move);
   });
 
+  let rotation = 0;
+  if (props.data.rotation != null)
+    rotation = props.data.rotation;
+
   const styleRoot = {
     position: `fixed`,
     color: `green`,
     willChange: `transform`,
     fontSize: `10vh`,
-    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0)`,
+    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0) rotate(${rotation}deg)`,
     whiteSpace: 'pre-wrap',
   };
 
   let text = `  --\n`;
 
-  for (let i = 0; i < 4; i++)
+  for (let i = 0; i < 7; i++)
   {
     text += `  | |\n`;
   }
@@ -180,16 +184,18 @@ function Pipe(props)
   );
 }
 
-for (let i = 0; i < 10; i++)
+function getRandomInt(min, max)
 {
-  if (i % 2 == 0)
-  {
-    engine.addObject(<Pipe data={{x: (65 * i) + 75, y: 41}}/>);
-  }
-  else
-  {
-    engine.addObject(<Pipe data={{x: (65 * i) + 75, y: -7}}/>);
-  }
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+for (let i = 0; i < 6; i++)
+{
+  const randomInt = getRandomInt(15, 80);
+  engine.addObject(<Pipe data={{x: (65 * i) + 75, y: randomInt}}/>);
+  engine.addObject(<Pipe data={{x: ((65 * i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>);
 }
 
 engine.start();
