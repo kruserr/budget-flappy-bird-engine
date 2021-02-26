@@ -150,6 +150,10 @@ function Pipe(props)
       {
         collider.setX(-0.6);
       }
+      else
+      {
+        collider.setX(400);
+      }
 
       setCollider(new BoxCollider({...collider}));
     };
@@ -158,8 +162,8 @@ function Pipe(props)
   });
 
   let rotation = 0;
-  if (props.data.rotation != null)
-    rotation = props.data.rotation;
+  if (props?.data?.rotation != null)
+    rotation = props?.data?.rotation;
 
   const styleRoot = {
     position: `fixed`,
