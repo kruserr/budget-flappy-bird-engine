@@ -188,18 +188,28 @@ function Pipe(props)
   );
 }
 
-function getRandomInt(min, max)
+function PipeSet(props)
 {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
+  function getRandomInt(min, max)
+  {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  const randomInt = getRandomInt(15, 80);
+
+  return (
+    <>
+      <Pipe data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
+      <Pipe data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>
+    </>
+  );
 }
 
 for (let i = 0; i < 6; i++)
 {
-  const randomInt = getRandomInt(15, 80);
-  engine.addObject(<Pipe data={{x: (65 * i) + 75, y: randomInt}}/>);
-  engine.addObject(<Pipe data={{x: ((65 * i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>);
+  engine.addObject(<PipeSet data={{i: i}}/>);
 }
 
 engine.start();
