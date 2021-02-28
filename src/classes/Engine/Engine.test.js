@@ -2,92 +2,50 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import Engine from './Engine';
-import GameObject from '../../components/GameObject/GameObject';
-import EventList from '../EventList/EventList';
-import Action from '../Action/Action';
+import { act } from 'react-dom/test-utils';
 
 
-class Hero extends GameObject
+function Hero()
 {
-  renderHook()
-  {
-    const styleRoot = {
-      color: `green`,
-    };
+  const styleRoot = {
+    color: `green`,
+  };
 
-    return (
-      <div css={styleRoot}>
-        Hero
-      </div>
-    );
-  }
+  return (
+    <div css={styleRoot}>
+      Hero
+    </div>
+  );
 }
 
-class Enemy extends GameObject
+function Enemy()
 {
-  renderHook()
-  {
-    const styleRoot = {
-      color: `red`,
-    };
+  const styleRoot = {
+    color: `red`,
+  };
 
-    return (
-      <div css={styleRoot}>
-        Enemy
-      </div>
-    );
-  }
+  return (
+    <div css={styleRoot}>
+      Enemy
+    </div>
+  );
 }
 
 test('Engine - Inherit GameObject', () => {
   render(<div id="root"/>);
 
   const engine = new Engine();
-
-  const hero = new Hero();
-  const enemy = new Enemy();
   
-  engine.addObject(hero);
+  engine.addObject(<Hero />);
 
-  engine.addObject(enemy);
-  engine.addObject(enemy);
-  engine.addObject(enemy);
-  engine.addObject(enemy);
-  engine.addObject(enemy);
-  engine.addObject(enemy);
+  engine.addObject(<Enemy />);
+  engine.addObject(<Enemy />);
+  engine.addObject(<Enemy />);
+  engine.addObject(<Enemy />);
+  engine.addObject(<Enemy />);
+  engine.addObject(<Enemy />);
 
-  engine.start();
-});
-
-test('Engine - GameObject lambda injection', () => {
-  render(<div id="root"/>);
-
-  const engine = new Engine();
-  const eventList = new EventList();
-
-  const hero = new GameObject({
-    actions: [
-      new Action({
-        event: eventList.getEvent('true'),
-        lambda: (self) => {
-          let data = self.state;
-          data['text'] = 'text';
-        }
-      })
-    ],
-    lambda: (self) => {
-      const styleRoot = {
-        color: `green`,
-      };
-
-      return (
-        <div style={styleRoot}>
-          {self.state.text}
-        </div>
-      );
-    }
+  act(() => {
+    engine.start();
   });
-  engine.addObject(hero);
-
-  engine.start();
 });
