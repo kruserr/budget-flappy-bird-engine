@@ -82,6 +82,8 @@ document.addEventListener(
   }
 );
 
+let shouldRender = true;
+
 function Hero(props)
 {
   const element = React.useRef(null);
@@ -100,7 +102,7 @@ function Hero(props)
     document.addEventListener('isColliding', (event) => {
       if (event?.detail?.items?.includes(props?.id))
       {
-        console.log('Game Over!');
+        shouldRender = false;
       }
     });
   }, []);
@@ -128,7 +130,10 @@ function Hero(props)
       setContext({...context});
     };
 
-    requestAnimationFrame(move);
+    if (shouldRender)
+    {
+      requestAnimationFrame(move);
+    }
   }, [collider]);
   
   const styleRoot = {
@@ -178,7 +183,10 @@ function Pipe(props)
       setContext({...context});
     };
 
-    requestAnimationFrame(move);
+    if (shouldRender)
+    {
+      requestAnimationFrame(move);
+    }
   }, [collider]);
 
   let rotation = 0;
@@ -213,7 +221,14 @@ function PipeSet(props)
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-  const randomInt = getRandomInt(15, 80);
+
+  // Normal pipe spacing
+  // const offset = 100;
+  // const randomInt = getRandomInt(15, 80);
+
+  // Wide pipe spacing
+  const offset = 120;
+  const randomInt = getRandomInt(30, 65);
 
   const styleRoot = {
 
@@ -222,7 +237,7 @@ function PipeSet(props)
   return (
     <span style={styleRoot}>
       <Pipe id={`${props?.id}_up`} data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
-      <Pipe id={`${props?.id}_down`} data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>
+      <Pipe id={`${props?.id}_down`} data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - offset, rotation: 180}}/>
     </span>
   );
 }
