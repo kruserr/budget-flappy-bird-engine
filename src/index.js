@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 
+import ctx from './classes/Data/Data';
 import Engine from './classes/Engine/Engine';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
 
@@ -13,7 +14,7 @@ let counter = 0;
 let jump = false;
 let unlock = true;
 let pressHoldDuration = 20;
-let pressHoldEvent = new CustomEvent("pressHold");
+let pressHoldEvent = new CustomEvent('pressHold');
 
 function timer()
 {
@@ -81,8 +82,11 @@ document.addEventListener(
   }
 );
 
-function Hero()
+function Hero(props)
 {
+  const element = React.useRef(null);
+  const [context, setContext] = React.useContext(ctx);
+
   const [collider, setCollider] = React.useState(
     new BoxCollider({
       x: 2.5,
@@ -91,6 +95,15 @@ function Hero()
       height: 5
     })
   );
+
+  React.useEffect(() => {
+    document.addEventListener('isColliding', (event) => {
+      if (event?.detail?.items?.includes(props?.id))
+      {
+        console.log('Game Over!');
+      }
+    });
+  }, []);
 
   React.useEffect(() => {
     function move()
@@ -111,10 +124,12 @@ function Hero()
       }
 
       setCollider(new BoxCollider({...collider}));
+      context[props?.id] = element?.current?.getBoundingClientRect();
+      setContext({...context});
     };
 
     requestAnimationFrame(move);
-  });
+  }, [collider]);
   
   const styleRoot = {
     position: `fixed`,
@@ -125,15 +140,18 @@ function Hero()
   };
   
   return (
-    <span style={styleRoot}>
+    <span ref={element} id={props?.id} style={styleRoot}>
       {`(^)>`}
     </span>
   );
 }
-engine.addObject(<Hero />);
+engine.addObject(<Hero id={'Hero'} />);
 
 function Pipe(props)
 {
+  const element = React.useRef(null);
+  const [context, setContext] = React.useContext(ctx);
+
   const [collider, setCollider] = React.useState(
     new BoxCollider({
       x: props?.data?.x,
@@ -156,10 +174,12 @@ function Pipe(props)
       }
 
       setCollider(new BoxCollider({...collider}));
+      context[props?.id] = element?.current?.getBoundingClientRect();
+      setContext({...context});
     };
 
     requestAnimationFrame(move);
-  });
+  }, [collider]);
 
   let rotation = 0;
   if (props?.data?.rotation != null)
@@ -179,7 +199,7 @@ function Pipe(props)
   }
 
   return (
-    <span style={styleRoot}>
+    <span ref={element} id={props?.id} style={styleRoot}>
       {text}
     </span>
   );
@@ -193,16 +213,16 @@ function PipeSet(props)
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-
   const randomInt = getRandomInt(15, 80);
 
   const styleRoot = {
+
   };
 
   return (
     <span style={styleRoot}>
-      <Pipe data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
-      <Pipe data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>
+      <Pipe id={`${props?.id}_up`} data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
+      <Pipe id={`${props?.id}_down`} data={{x: ((65 * props?.data?.i) + 75) + 8.5, y: randomInt - 100, rotation: 180}}/>
     </span>
   );
 }
@@ -212,7 +232,7 @@ function PipeGroup()
   let items = [];
   for (let i = 0; i < 6; i++)
   {
-    items.push(<PipeSet data={{i: i}} />);
+    items.push(<PipeSet id={i} data={{i: i}} />);
   }
 
   const styleRoot = {
