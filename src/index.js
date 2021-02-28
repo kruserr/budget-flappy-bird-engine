@@ -82,8 +82,6 @@ document.addEventListener(
   }
 );
 
-let shouldRender = true;
-
 function Hero(props)
 {
   const element = React.useRef(null);
@@ -102,7 +100,7 @@ function Hero(props)
     document.addEventListener('isColliding', (event) => {
       if (event?.detail?.items?.includes(props?.id))
       {
-        shouldRender = false;
+        engine.stop();
       }
     });
   }, []);
@@ -130,10 +128,7 @@ function Hero(props)
       setContext({...context});
     };
 
-    if (shouldRender)
-    {
-      requestAnimationFrame(move);
-    }
+    engine.requestAnimationFrame(move);
   }, [collider]);
   
   const styleRoot = {
@@ -183,10 +178,7 @@ function Pipe(props)
       setContext({...context});
     };
 
-    if (shouldRender)
-    {
-      requestAnimationFrame(move);
-    }
+    engine.requestAnimationFrame(move);
   }, [collider]);
 
   let rotation = 0;

@@ -9,6 +9,7 @@ export default class Engine
   objects = new Array<JSX.Element>();
   background: JSX.Element;
   hud: JSX.Element;
+  shouldRender: boolean;
 
   addObject(object: JSX.Element)
   {
@@ -25,8 +26,23 @@ export default class Engine
     this.hud = hud;
   }
 
+  requestAnimationFrame(lambda: () => void)
+  {
+    if (this.shouldRender)
+    {
+      requestAnimationFrame(lambda);
+    }
+  }
+
+  stop()
+  {
+    this.shouldRender = false;
+  }
+  
   start()
   {
+    this.shouldRender = true;
+
     ReactDOM.render(
       <React.StrictMode>
         <span style={{zIndex: 0, position: 'fixed'}}>
