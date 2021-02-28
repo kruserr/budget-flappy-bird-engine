@@ -25,12 +25,12 @@ export function Data(props)
               items: [i, j],
             }
           });
+
           document.dispatchEvent(isColliding);
         }
       }
     }
   }, [context]);
-
 
   return (
     <ctx.Provider value={[context, setContext]}>
