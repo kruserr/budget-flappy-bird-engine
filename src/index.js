@@ -89,10 +89,10 @@ function Hero(props)
 
   const [collider, setCollider] = React.useState(
     new BoxCollider({
-      x: 2.5,
-      y: 37.9,
-      width: 5,
-      height: 5
+      x: 100,
+      y: window.innerHeight / 2,
+      width: 66.66,
+      height: 50
     })
   );
 
@@ -110,16 +110,16 @@ function Hero(props)
     {
       if (jump)
       {
-        if (collider.getY() > -12)
+        if (collider.getY() > -50)
         {
-          collider.setY(-0.6);
+          collider.setY(-10);
         }
       }
       else
       {
-        if (collider.getY() < 100)
+        if (collider.getY() < window.innerHeight)
         {
-          collider.setY(0.4);
+          collider.setY(10);
         }
       }
 
@@ -131,12 +131,17 @@ function Hero(props)
     engine.requestAnimationFrame(move);
   }, [collider]);
   
+  // const styleRoot = {
+  //   position: `absolute`,
+  //   left: collider.getX(),
+  //   top: collider.getY(),
+  // };
+
   const styleRoot = {
     position: `fixed`,
     color: `yellow`,
     willChange: `transform`,
-    fontSize: `${Math.max(collider.width, collider.height)}vh`,
-    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0)`,
+    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0)`,
   };
   
   return (
@@ -168,21 +173,21 @@ function Pipe(props)
     new BoxCollider({
       x: props?.data?.x,
       y: props?.data?.y,
-      width: 5,
-      height: 40
+      width: 108.91,
+      height: 800
     })
   );
 
   React.useEffect(() => {
     function move()
     {
-      if (collider.getX() > -65)
+      if (collider.getX() > -108.91)
       {
-        collider.setX(-0.6);
+        collider.setX(-6);
       }
       else
       {
-        collider.setX(400);
+        collider.setX(6*600);
       }
 
       setCollider(new BoxCollider({...collider}));
@@ -197,10 +202,17 @@ function Pipe(props)
   if (props?.data?.rotation != null)
     rotation = props?.data?.rotation;
 
+  // const styleRoot = {
+  //   position: `absolute`,
+  //   left: collider.getX(),
+  //   top: collider.getY(),
+  //   transform: `rotate(${rotation}deg)`,
+  // };
+
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,
-    transform: `translate3d(${collider.getX()}vw, ${collider.getY()}vh, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0) rotate(${rotation}deg)`,
   };
 
   let text = `  --\n`;
@@ -233,8 +245,8 @@ function PipeSet(props)
   // const offset = 100;
   // const randomInt = getRandomInt(15, 80);
   // Normal pipe spacing
-  const offset = 100;
-  const randomInt = getRandomInt(30, 70);
+  const offset = 1000;
+  const randomInt = getRandomInt(200, 800);
 
   // Wide pipe spacing
   // const offset = 130;
@@ -246,8 +258,8 @@ function PipeSet(props)
 
   return (
     <span style={styleRoot}>
-      <Pipe id={`${props?.id}_up`} data={{x: (65 * props?.data?.i) + 75, y: randomInt}}/>
-      <Pipe id={`${props?.id}_down`} data={{x: ((65 * props?.data?.i) + 75), y: randomInt - offset, rotation: 180}}/>
+      <Pipe id={`${props?.id}_up`} data={{x: (600 * props?.data?.i) + 600, y: randomInt}}/>
+      <Pipe id={`${props?.id}_down`} data={{x: ((600 * props?.data?.i) + 600), y: randomInt - offset, rotation: 180}}/>
     </span>
   );
 }
@@ -257,13 +269,11 @@ function PipeGroup()
   let items = [];
   for (let i = 0; i < 6; i++)
   {
-    items.push(<PipeSet id={i} data={{i: i}} />);
+    items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }
 
   const styleRoot = {
-    color: `green`,
-    fontSize: `10vh`,
-    whiteSpace: 'pre-wrap',
+
   };
 
   return (
