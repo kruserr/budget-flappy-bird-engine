@@ -5,32 +5,22 @@ export default class AudioSystem
   
   constructor (filename: string) 
   {
-    this.filename = filename;
-    this.sound = new Audio(this.filename);
+    this.setFilename(filename);
   }
 
   setFilename(filename: string) 
   { 
-    this.filename = filename; 
-  }
-
-  getFilename() 
-  { 
-    return this.filename; 
-  }
-
-  getSound()
-  {
-    return this.sound;
+    this.filename = filename;
+    this.sound = new Audio(this.filename);
   }
 
   play() 
   {
-    this.getSound().play();
+    this.sound.play();
   }
 
   stop() 
   {
-    this.getSound().pause();
+    this.sound.pause();
   }
 }
