@@ -7,12 +7,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="72.694641mm"
+   height="54.52029mm"
+   viewBox="0 0 72.694641 54.52029"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    sodipodi:docname="slappy-duck.svg">
   <defs
      id="defs2" />
@@ -23,18 +23,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="363.50743"
-     inkscape:cy="486.48374"
+     inkscape:zoom="0.35947534"
+     inkscape:cx="1567.6684"
+     inkscape:cy="702.35181"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -50,7 +54,8 @@
   <g
      inkscape:label="Body"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-63.611481,-84.324877)">
     <ellipse
        style="fill:#ffcc00;fill-rule:evenodd;stroke:#28220b;stroke-width:0.24745"
        id="path18"
@@ -66,14 +71,14 @@
        cy="134.03566"
        cx="95.882942" />
     <ellipse
-       style="fill:#ffcc00;stroke-width:0.264583;stroke:#28220b"
+       style="fill:#ffcc00;stroke:#28220b;stroke-width:0.264583"
        id="path22"
        cx="117.06405"
        cy="97.553375"
        rx="16.570711"
        ry="13.096207" />
     <ellipse
-       style="fill:#ff6600;stroke-width:0.264583;stroke:#28220b"
+       style="fill:#ff6600;stroke:#28220b;stroke-width:0.264583"
        id="path24"
        cx="131.36298"
        cy="100.82743"
@@ -103,7 +108,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Wing">
+     inkscape:label="Wing"
+     transform="translate(-63.611481,-84.324877)">
     <path
        sodipodi:type="star"
        style="fill:#ffcc00;stroke:#28220b;stroke-width:0.264583"
