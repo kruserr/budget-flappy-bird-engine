@@ -8,19 +8,15 @@ import PhysicsEngine from './classes/PhysicsEngine/PhysicsEngine';
 import Audio from './classes/AudioSystem/AudioSystem';
 
 
-// module.exports = {
-//   ctx,
-//   Engine,
-//   BoxCollider,
-// };
-
 const engine = new Engine();
 const audio = new Audio('/assets/audio/jump.wav');
 
 let jump = false;
 
-function clicked(){
-  jump = true
+function clicked()
+{
+  jump = true;
+  audio.play();
 }
 
 document.addEventListener("mouseup", () => clicked());
