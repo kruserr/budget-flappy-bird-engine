@@ -10,15 +10,18 @@ export function Data(props)
   React.useEffect(() => {
     for (const i in context)
     {
+      if (context[i].tag != 'player') {
+        continue;
+      }
       for (const j in context)
       {
-        if (context[i] === context[j])
+        if (context[i].collider === context[j].collider || context[j].tag != 'obstacle')
           continue;
 
-        if (context[i].x < context[j].x + context[j].width &&
-          context[i].x + context[i].width > context[j].x &&
-          context[i].y < context[j].y + context[j].height &&
-          context[i].y + context[i].height > context[j].y)
+        if (context[i].collider.x < context[j].collider.x + context[j].collider.width &&
+          context[i].collider.x + context[i].collider.width > context[j].collider.x &&
+          context[i].collider.y < context[j].collider.y + context[j].collider.height &&
+          context[i].collider.y + context[i].collider.height > context[j].collider.y)
         {
           let isColliding = new CustomEvent('isColliding', {
             detail: {
