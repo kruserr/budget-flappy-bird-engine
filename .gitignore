@@ -48,3 +48,7 @@ yarn-error.log*
 src/index.tsx
 package-lock.json
 yarn.lock
+.~lock*
+
+# !KEEP LAST!
+!*.gitkeep

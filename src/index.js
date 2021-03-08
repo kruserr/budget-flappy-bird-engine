@@ -6,6 +6,12 @@ import Engine from './classes/Engine/Engine';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 
+// module.exports = {
+//   ctx,
+//   Engine,
+//   BoxCollider,
+// };
+
 const engine = new Engine();
 
 // https://www.kirupa.com/html5/press_and_hold.htm
