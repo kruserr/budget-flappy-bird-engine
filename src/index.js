@@ -4,6 +4,7 @@ import './index.css';
 import ctx from './classes/Data/Data';
 import Engine from './classes/Engine/Engine';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
+import PhysicsEngine from './classes/PhysicsEngine/PhysicsEngine';
 
 
 // module.exports = {
@@ -14,48 +15,15 @@ import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 const engine = new Engine();
 
-// https://www.kirupa.com/html5/press_and_hold.htm
-let timerID;
-let counter = 0;
 let jump = false;
-let unlock = true;
-let pressHoldDuration = 20;
-let pressHoldEvent = new CustomEvent('pressHold');
 
-function timer()
-{
-  jump = true;
-
-  if (counter < pressHoldDuration)
-  {
-    timerID = requestAnimationFrame(() => timer());
-    counter++;
-  }
-  else
-  {
-    document.dispatchEvent(pressHoldEvent);
-  }
+function clicked(){
+  jump = true
 }
 
-function pressingDown()
-{
-  requestAnimationFrame(() => timer());
-  jump = true;
-}
+document.addEventListener("mouseup", () => clicked());
 
-function notPressingDown()
-{
-  cancelAnimationFrame(timerID);
-  counter = 0;
-
-  jump = false;
-}
-
-document.addEventListener("mousedown", () => pressingDown());
-document.addEventListener("mouseup", () => notPressingDown());
-
-document.addEventListener("touchstart", () => pressingDown());
-document.addEventListener("touchend", () => notPressingDown());
+document.addEventListener("touchend", () => clicked());
 
 document.addEventListener(
   "keydown",
@@ -63,28 +31,7 @@ document.addEventListener(
     if (event.key !== ' ')
       return;
     
-    if (unlock)
-    {
-      unlock = false;
-      pressingDown();
-    }
-  }
-);
-document.addEventListener(
-  "keyup",
-  (event) => {
-    if (event.key !== ' ')
-      return;
-    
-    notPressingDown();
-    unlock = true;
-  }
-);
-
-document.addEventListener(
-  "pressHold",
-  () => {
-    jump = false;
+    clicked();
   }
 );
 
@@ -102,6 +49,10 @@ function Hero(props)
     })
   );
 
+  const [physics, setPhysicsEngine] = React.useState(
+    new PhysicsEngine(-10, 1)
+    );
+
   React.useEffect(() => {
     document.addEventListener('isColliding', (event) => {
       if (event?.detail?.items?.includes(props?.id))
@@ -116,21 +67,19 @@ function Hero(props)
     {
       if (jump)
       {
-        if (collider.getY() > -50)
-        {
-          collider.setY(-10);
-        }
+        physics.applyJump(collider);
+        jump = false;
       }
       else
       {
-        if (collider.getY() < window.innerHeight)
-        {
-          collider.setY(10);
-        }
+        physics.applyGravity(collider);
       }
 
       setCollider(new BoxCollider({...collider}));
-      context[props?.id] = element?.current?.getBoundingClientRect();
+      context[props?.id] = {
+        'collider': element?.current?.getBoundingClientRect(),
+        'tag': 'player'
+      };
       setContext({...context});
     };
 
@@ -143,11 +92,20 @@ function Hero(props)
   //   top: collider.getY(),
   // };
 
+  let rotation = Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI;
+
+  if (rotation < -40) {
+    rotation = -40;
+  }
+  if (rotation > 40) {
+    rotation = 40;
+  }
+
   const styleRoot = {
     position: `fixed`,
     color: `yellow`,
     willChange: `transform`,
-    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0)`,
+    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0) rotate(${rotation}deg)`,
   };
   
   return (
@@ -197,7 +155,10 @@ function Pipe(props)
       }
 
       setCollider(new BoxCollider({...collider}));
-      context[props?.id] = element?.current?.getBoundingClientRect();
+      context[props?.id] = {
+        'collider': element?.current?.getBoundingClientRect(),
+        'tag': 'obstacle'
+      };
       setContext({...context});
     };
 
