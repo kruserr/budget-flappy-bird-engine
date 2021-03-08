@@ -45,15 +45,15 @@ export default class Engine
 
     ReactDOM.render(
       <React.StrictMode>
-        <span style={{zIndex: 0, position: 'fixed'}}>
+        <div style={{zIndex: 0, position: 'fixed', width: '100%', height: '100%'}}>
           {this.background}
-        </span>
+        </div>
         <Data>
           {this.objects.map((item, i) => <span key={i}>{item}</span>)}
         </Data>
-        <span style={{zIndex: -1 >>>0, position: 'fixed'}}>
+        <div style={{zIndex: -1 >>>0, position: 'fixed', width: '100%', height: '100%'}}>
           {this.hud}
-        </span>
+        </div>
       </React.StrictMode>,
       document.getElementById('root')
     );
