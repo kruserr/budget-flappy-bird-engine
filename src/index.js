@@ -6,11 +6,11 @@ import Engine from './classes/Engine/Engine';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
 
 
-module.exports = {
-  ctx,
-  Engine,
-  BoxCollider,
-};
+// module.exports = {
+//   ctx,
+//   Engine,
+//   BoxCollider,
+// };
 
 const engine = new Engine();
 
