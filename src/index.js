@@ -236,8 +236,8 @@ function PipeSet(props)
 function PipeGroup()
 {
   let items = [];
-  // for (let i = 0; i < 6; i++)
-  for (let i = 0; i < 1; i++)
+  // for (let i = 0; i < 3; i++)
+  for (let i = 0; i < 0; i++)
   {
     items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }
@@ -254,15 +254,10 @@ function PipeGroup()
 }
 engine.addObject(<PipeGroup />);
 
-function Background()
+function BackgroundImage({style, className})
 {
-  let styleRoot = {
-    height: '100%',
-    width: '294vh',
-  };
-
   return (
-    <svg style={styleRoot} width="1e3" height="340" version="1.1" viewBox="0 0 264.58 89.958" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} style={style} width="1e3" height="340" version="1.1" viewBox="0 0 264.58 89.958" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(0 -33.928)">
         <g fill-rule="evenodd">
         <rect x="-2.2204e-16" y="33.928" width="264.58" height="89.958" fill="#ffb380"/>
@@ -308,6 +303,49 @@ function Background()
         <rect x="169.5" y="105.18" width="2.9057" height="2.9529" fill="#b3b3b3" fill-rule="evenodd" stroke="#28170b" stroke-linejoin="round" stroke-width=".565"/>
       </g>
     </svg>
+  );
+}
+
+function Background()
+{
+  const [x, setX] = React.useState(0);
+  let offset = 0;
+
+  React.useEffect(() => {
+    engine.requestAnimationFrame(() => {
+      let change = x - 1;
+
+      if (x < -294)
+      {
+        offset = offset - 294;
+        change = 0;
+      }
+
+      setX(change)
+    });
+  }, [x]);
+
+  return (
+    <>
+    <style jsx>{`
+      .backgroundImageContainer
+      {
+        height: 100%;
+        width: ${2*294}vh;
+      }
+
+      .backgroundImage
+      {
+        height: 100%;
+        width: 294vh;
+        will-change: transform;
+      }
+    `}</style>
+    <div className="backgroundImageContainer">
+      <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, 0px)`}} />
+      <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x-1}vh, 0, 1px)`}} />
+    </div>
+    </>
   );
 }
 engine.setBackground(<Background />);
