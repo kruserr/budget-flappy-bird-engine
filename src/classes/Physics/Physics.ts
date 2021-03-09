@@ -1,18 +1,21 @@
 import BoxCollider from "../BoxCollider/BoxCollider";
 
-export default class Physics {
 
+export default class Physics
+{
   private gravity: number;
   private jumpSpeed: number;
   private velocity: number;
   
-  constructor (jumpSpeed: number, gravity: number){
+  constructor (jumpSpeed: number, gravity: number)
+  {
     this.jumpSpeed = jumpSpeed;
     this.gravity = gravity;
     this.velocity = 0;
   }
 
-  applyGravity(collider: BoxCollider){
+  applyGravity(collider: BoxCollider)
+  {
     if (collider.getY() < window.innerHeight)
     {
       this.velocity += this.gravity;
@@ -20,7 +23,8 @@ export default class Physics {
     }
   }
 
-  applyJump(collider: BoxCollider){
+  applyJump(collider: BoxCollider)
+  {
     if (collider.getY() > -50)
     {
       this.velocity = this.jumpSpeed;
@@ -29,7 +33,8 @@ export default class Physics {
     }
   }
 
-  getVelocity(){
+  getVelocity()
+  {
     return this.velocity;
   }
 }
