@@ -324,23 +324,17 @@ function Background()
   return (
     <>
     <style jsx>{`
-      .backgroundImageContainer
-      {
-        height: 100%;
-        width: ${2*294}vh;
-      }
-
       .backgroundImage
       {
+        position: fixed;
         height: 100%;
         width: 294vh;
         will-change: transform;
       }
     `}</style>
-    <div className="backgroundImageContainer">
-      <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, 0px)`}} />
-      <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x-1}vh, 0, 1px)`}} />
-    </div>
+    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
+    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x-2 + 294}vh, 0, -2px)`}} />
+    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+2 + 294}vh, 0, -3px)`}} />
     </>
   );
 }
