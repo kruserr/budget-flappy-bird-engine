@@ -167,13 +167,6 @@ function Pipe(props)
     transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
   };
 
-  let text = `  --\n`;
-
-  for (let i = 0; i < 7; i++)
-  {
-    text += `  | |\n`;
-  }
-
   return (
     <svg ref={element} id={props?.id} style={styleRoot} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(-65 8.2278)" fill="#999" stroke="#000" strokeLinejoin="round">
@@ -212,7 +205,6 @@ function PipeGroup()
 {
   let items = [];
   for (let i = 0; i < 6; i++)
-  // for (let i = 0; i < 0; i++)
   {
     items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }
