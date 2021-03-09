@@ -1,6 +1,6 @@
 import BoxCollider from "../BoxCollider/BoxCollider";
 
-export default class PhysicsEngine {
+export default class Physics {
 
   private gravity: number;
   private jumpSpeed: number;

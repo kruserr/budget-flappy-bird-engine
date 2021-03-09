@@ -4,7 +4,7 @@ import './index.css';
 import ctx from './classes/Data/Data';
 import Engine from './classes/Engine/Engine';
 import BoxCollider from './classes/BoxCollider/BoxCollider';
-import PhysicsEngine from './classes/PhysicsEngine/PhysicsEngine';
+import Physics from './classes/Physics/Physics';
 import Audio from './classes/AudioSystem/AudioSystem';
 
 
@@ -48,7 +48,7 @@ function Hero(props)
   );
 
   const [physics, setPhysicsEngine] = React.useState(
-    new PhysicsEngine(-10, 1)
+    new Physics(-10, 1)
     );
 
   React.useEffect(() => {
