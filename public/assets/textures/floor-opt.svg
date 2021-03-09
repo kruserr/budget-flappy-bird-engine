@@ -1,6 +1,6 @@
 <svg width="1e3" height="100" version="1.1" viewBox="0 0 264.58 26.458" xmlns="http://www.w3.org/2000/svg">
  <g transform="translate(0 -33.928)">
-  <rect x="-2.2204e-16" y="34.209" width="264.58" height="26.177" fill="#f4d7d7" fill-rule="evenodd"/>
+  <rect x="-2.2204e-16" y="33.928" width="264.58" height="26.458" fill="#f4d7d7" fill-rule="evenodd"/>
   <g transform="matrix(.49078 0 0 .46555 -44.859 21.129)" fill-rule="evenodd" stroke="#000" stroke-linejoin="round" stroke-width=".347">
    <path d="m232.39 52.582c-2.7739-3.2875-2.7764-6.2115-1.1295-10.3 1.6469-4.0883 2.8142-9.2244 6.6092-10.731s6.0507 2.9549 9.3078 5.4704 5.9833 6.6824 5.3466 11.053c-0.63678 4.3707-4.357 5.442-8.5328 6.8237-4.1758 1.3817-8.8274 0.97135-11.601-2.3161z" fill="#59f"/>
    <path d="m235.71 35.42c0.71688-1.0108 2.0468-1.5649 3.2507-1.5409 1.2039 0.02402 2.6361 0.27067 3.3168 1.394 0.68071 1.1234-0.0123 2.3563-0.72132 3.3752-0.70901 1.0189-1.2883 1.2956-2.4767 1.5091s-1.9735-0.4772-2.4921-1.5698c-0.51856-1.0926-1.5943-2.1569-0.87738-3.1677z" fill="#acf"/>
@@ -39,7 +39,6 @@
    <rect x="239.54" y="43.601" width="11.99" height="29.807" ry="5.9952" fill="#d7d7f4" stroke-width=".265"/>
    <rect x="243.48" y="35.948" width="4.275" height="8.0131" fill="#fff6d5" stroke-width=".266"/>
   </g>
-  <path d="m0 34.209h264.58" fill="#d35f5f" stroke="#de8787" stroke-width=".56199"/>
   <g transform="matrix(.39514 0 0 .44113 5.8447 22.323)">
    <g transform="translate(94.77 43.261)">
     <g stroke="#000">
@@ -116,5 +115,6 @@
     <rect x="35.341" y="52.279" width="28.821" height="1.1812" style="paint-order:normal"/>
    </g>
   </g>
+  <rect x="-1.4211e-14" y="33.928" width="264.58" height=".52917" fill="#de8787" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".427"/>
  </g>
 </svg>
