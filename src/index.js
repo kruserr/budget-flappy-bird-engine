@@ -120,55 +120,58 @@ function Hero(props)
 }
 engine.addObject(<Hero id={'Hero'} />);
 
-function Pipe(props)
+function Pipe({id, pos, rotation})
 {
-  const element = React.useRef(null);
-  const [context, setContext] = React.useContext(ctx);
+  // const element = React.useRef(null);
+  // const [context, setContext] = React.useContext(ctx);
 
-  const [collider, setCollider] = React.useState(
-    new Pos({
-      x: props?.data?.x,
-      y: props?.data?.y,
-    })
-  );
+  // const [collider, setCollider] = React.useState(
+  //   new Pos({
+  //     x: props?.data?.x,
+  //     y: props?.data?.y,
+  //   })
+  // );
 
-  React.useEffect(() => {
-    function move()
-    {
-      if (collider.x > -108.91)
-      {
-        collider.x += -6;
-      }
-      else
-      {
-        collider.x += 6*600;
-      }
+  // React.useEffect(() => {
+  //   function move()
+  //   {
+  //     if (collider.x > -108.91)
+  //     {
+  //       collider.x += -6;
+  //     }
+  //     else
+  //     {
+  //       collider.x += 6*600;
+  //     }
 
-      setCollider(new Pos({...collider}));
-      context[props?.id] = {
-        'collider': element?.current?.getBoundingClientRect(),
-        'tag': 'obstacle'
-      };
-      setContext({...context});
-    };
+  //     setCollider(new Pos({...collider}));
+  //     context[props?.id] = {
+  //       'collider': element?.current?.getBoundingClientRect(),
+  //       'tag': 'obstacle'
+  //     };
+  //     setContext({...context});
+  //   };
 
-    engine.requestAnimationFrame(move);
-  }, [collider]);
+  //   engine.requestAnimationFrame(move);
+  // }, [collider]);
 
-  let rotation = 0;
-  if (props?.data?.rotation != null)
+  if (rotation != null)
   {
-    rotation = props?.data?.rotation;
+    rotation = rotation;
+  }
+  else
+  {
+    rotation = 0;
   }
 
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,
-    transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${pos?.x}px, ${pos?.y}px, 0) rotate(${rotation}deg)`,
   };
 
   return (
-    <svg ref={element} id={props?.id} style={styleRoot} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
+    <svg id={id} style={styleRoot} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(-65 8.2278)" fill="#999" stroke="#000" strokeLinejoin="round">
         <rect transform="scale(1,-1)" x="70.798" y="-505.16" width="58.404" height="478.4" rx="0" ry="0" imageRendering="auto" strokeWidth="1.5964" style={{mixBlendMode: 'normal'}}/>
         <rect transform="scale(1,-1)" x="65.694" y="-26.078" width="68.612" height="33.612" ry="5.2732" strokeWidth="1.3882" style={{mixBlendMode: 'normal'}}/>
@@ -177,46 +180,141 @@ function Pipe(props)
   );
 }
 
-function PipeSet(props)
+function PipeSet({index, pos, spacing})
 {
-  function getRandomInt(min, max)
+  // const [end, setEnd] = React.useState(false);
+
+  // const startPos = React.useMemo(() => {
+  //   function getRandomInt(min, max)
+  //   {
+  //     min = Math.ceil(min);
+  //     max = Math.floor(max);
+  //     return Math.floor(Math.random() * (max - min) + min);
+  //   }
+  
+  //   const offset = 1000;
+  //   const randomInt = getRandomInt(300, 700);
+
+  //   return {
+  //     'up': new Pos({x: (600 * index) + 600, y: randomInt}),
+  //     'down': new Pos({x: (600 * index) + 600, y: randomInt - offset}),
+  //   };
+  // }, [end]);
+
+  let posDown = {...pos};
+  if (posDown?.y != null)
   {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+    posDown.y -= spacing;
   }
 
-  const offset = 1000;
-  const randomInt = getRandomInt(300, 700);
-
-  const styleRoot = {
-
-  };
-
   return (
-    <span style={styleRoot}>
-      <Pipe id={`${props?.id}_up`} data={{x: (600 * props?.data?.i) + 600, y: randomInt}}/>
-      <Pipe id={`${props?.id}_down`} data={{x: ((600 * props?.data?.i) + 600), y: randomInt - offset, rotation: 180}}/>
+    <span>
+      <Pipe
+        id={`${index}_up`}
+        pos={pos}
+      />
+      <Pipe
+        id={`${index}_down`}
+        pos={posDown}
+        rotation={180}
+      />
     </span>
   );
 }
 
 function PipeGroup()
 {
-  let items = [];
-  for (let i = 0; i < 6; i++)
-  {
-    items.push(<PipeSet key={i} id={i} data={{i: i}} />);
-  }
+  const [items, setItems] = React.useState([]);
+  const [offset, setOffset] = React.useState(0);
 
-  const styleRoot = {
+  React.useEffect(() => {
+    function getRandomInt(min, max)
+    {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    }
 
-  };
+    const spacing = 1000;
+
+    let data = [];
+    for (let i = 0; i < 6; i++)
+    {
+      data.push(
+        <PipeSet
+          key={i}
+          index={i}
+          pos={new Pos({x: (600 * i) + 600, y: getRandomInt(300, 900)})}
+          spacing={spacing}
+        />
+      );
+    }
+
+    setItems(data);
+  }, []);
+
+  React.useEffect(() => {
+    function move()
+    {
+      // for (let item of items)
+      // {
+      //   if (item.props.pos.x > -108.91)
+      //   {
+      //     item.props.pos.x += -6;
+      //   }
+      //   else
+      //   {
+      //     item.props.pos.x += 6*600;
+      //   }
+
+      //   // setCollider(new Pos({...collider}));
+      //   // context[props?.id] = {
+      //   //   'collider': element?.current?.getBoundingClientRect(),
+      //   //   'tag': 'obstacle'
+      //   // };
+      //   // setContext({...context});
+      // }
+
+      if (offset > -6*600)
+      {
+        setOffset(offset - 6);
+      }
+      else
+      {
+        setOffset(0);
+      }
+    };
+
+    engine.requestAnimationFrame(move);
+  }, [offset]);
+
+  console.log(offset);
+
+  // items[0].props.pos.x -= 250;
+
+  // for (let item of items)
+  // {
+  //   item.props.pos.x = offset;
+  // }
+
+  // console.log(items);
 
   return (
-    <span style={styleRoot}>
-      {items}
-    </span>
+    <>
+      <style jsx>{`
+        .items
+        {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          will-change: transform;
+          transform: translate3d(${offset}px, 0, 0px);
+        }
+      `}</style>
+      <span className="items">
+        {items}
+      </span>
+    </>
   );
 }
 engine.addObject(<PipeGroup />);
