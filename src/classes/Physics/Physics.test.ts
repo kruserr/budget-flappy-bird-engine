@@ -48,7 +48,7 @@ describe('Movement', () => {
 });
 
 describe('Collision', () => {
-  class DummyDomRect implements DOMRect
+  class MockDomRect implements DOMRect
   {
     height: number;
     width: number;
@@ -64,13 +64,13 @@ describe('Collision', () => {
   };
 
   test('Physics.ts - AxisAlignedBoundingBox()', () => {
-    let objA = new DummyDomRect();
+    let objA = new MockDomRect();
     objA.x = 0;
     objA.y = 0;
     objA.width = 1;
     objA.height = 1;
 
-    let objB = new DummyDomRect();
+    let objB = new MockDomRect();
     objB.x = 0;
     objB.y = 0;
     objB.width = 1;
