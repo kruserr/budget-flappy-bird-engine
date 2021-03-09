@@ -1,4 +1,4 @@
-import BoxCollider from "../BoxCollider/BoxCollider";
+import Pos from "../Pos/Pos";
 
 
 export default class Physics
@@ -14,21 +14,21 @@ export default class Physics
     this.velocity = 0;
   }
 
-  applyGravity(collider: BoxCollider)
+  applyGravity(collider: Pos)
   {
-    if (collider.getY() < window.innerHeight)
+    if (collider.y < window.innerHeight)
     {
       this.velocity += this.gravity;
-      collider.setY(this.velocity);
+      collider.y += this.velocity;
     }
   }
 
-  applyJump(collider: BoxCollider)
+  applyJump(collider: Pos)
   {
-    if (collider.getY() > -50)
+    if (collider.y > -50)
     {
       this.velocity = this.jumpSpeed;
-      collider.setY(this.velocity);
+      collider.y += this.velocity;
     }
   }
 

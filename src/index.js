@@ -3,7 +3,7 @@ import './index.css';
 
 import ctx from './classes/Data/Data';
 import Engine from './classes/Engine/Engine';
-import BoxCollider from './classes/BoxCollider/BoxCollider';
+import Pos from './classes/Pos/Pos';
 import Physics from './classes/Physics/Physics';
 import Audio from './classes/AudioSystem/AudioSystem';
 
@@ -39,17 +39,15 @@ function Hero(props)
   const [context, setContext] = React.useContext(ctx);
 
   const [collider, setCollider] = React.useState(
-    new BoxCollider({
+    new Pos({
       x: 100,
       y: window.innerHeight / 2,
-      width: 66.66,
-      height: 50
     })
   );
-
-  const [physics, setPhysicsEngine] = React.useState(
-    new Physics(-10, 1)
-    );
+  
+  const physics = React.useMemo(() => {
+    return new Physics(-10, 1);
+  }, []);
 
   React.useEffect(() => {
     document.addEventListener('isColliding', (event) => {
@@ -73,7 +71,7 @@ function Hero(props)
         physics.applyGravity(collider);
       }
 
-      setCollider(new BoxCollider({...collider}));
+      setCollider(new Pos({...collider}));
       context[props?.id] = {
         'collider': element?.current?.getBoundingClientRect(),
         'tag': 'player'
@@ -84,26 +82,22 @@ function Hero(props)
     engine.requestAnimationFrame(move);
   }, [collider]);
   
-  // const styleRoot = {
-  //   position: `absolute`,
-  //   left: collider.getX(),
-  //   top: collider.getY(),
-  // };
-
   let rotation = Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI;
 
-  if (rotation < -40) {
+  if (rotation < -40)
+  {
     rotation = -40;
   }
-  if (rotation > 40) {
+
+  if (rotation > 40)
+  {
     rotation = 40;
   }
 
   const styleRoot = {
     position: `fixed`,
-    color: `yellow`,
     willChange: `transform`,
-    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
   };
   
   return (
@@ -132,27 +126,25 @@ function Pipe(props)
   const [context, setContext] = React.useContext(ctx);
 
   const [collider, setCollider] = React.useState(
-    new BoxCollider({
+    new Pos({
       x: props?.data?.x,
       y: props?.data?.y,
-      width: 108.91,
-      height: 800
     })
   );
 
   React.useEffect(() => {
     function move()
     {
-      if (collider.getX() > -108.91)
+      if (collider.x > -108.91)
       {
-        collider.setX(-6);
+        collider.x += -6;
       }
       else
       {
-        collider.setX(6*600);
+        collider.x += 6*600;
       }
 
-      setCollider(new BoxCollider({...collider}));
+      setCollider(new Pos({...collider}));
       context[props?.id] = {
         'collider': element?.current?.getBoundingClientRect(),
         'tag': 'obstacle'
@@ -165,19 +157,14 @@ function Pipe(props)
 
   let rotation = 0;
   if (props?.data?.rotation != null)
+  {
     rotation = props?.data?.rotation;
-
-  // const styleRoot = {
-  //   position: `absolute`,
-  //   left: collider.getX(),
-  //   top: collider.getY(),
-  //   transform: `rotate(${rotation}deg)`,
-  // };
+  }
 
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,
-    transform: `translate3d(${collider.getX()}px, ${collider.getY()}px, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
   };
 
   let text = `  --\n`;
@@ -206,16 +193,8 @@ function PipeSet(props)
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  // Normal pipe spacing
-  // const offset = 100;
-  // const randomInt = getRandomInt(15, 80);
-  // Normal pipe spacing
   const offset = 1000;
-  const randomInt = getRandomInt(200, 800);
-
-  // Wide pipe spacing
-  // const offset = 130;
-  // const randomInt = getRandomInt(30, 65);
+  const randomInt = getRandomInt(300, 700);
 
   const styleRoot = {
 
@@ -232,8 +211,8 @@ function PipeSet(props)
 function PipeGroup()
 {
   let items = [];
-  // for (let i = 0; i < 3; i++)
-  for (let i = 0; i < 0; i++)
+  for (let i = 0; i < 6; i++)
+  // for (let i = 0; i < 0; i++)
   {
     items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }
@@ -309,7 +288,7 @@ function Background()
 
   React.useEffect(() => {
     engine.requestAnimationFrame(() => {
-      let change = x - 1;
+      let change = x - 0.25;
 
       if (x < -294)
       {
