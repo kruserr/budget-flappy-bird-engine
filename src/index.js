@@ -211,8 +211,8 @@ function PipeSet(props)
 function PipeGroup()
 {
   let items = [];
-  for (let i = 0; i < 6; i++)
-  // for (let i = 0; i < 0; i++)
+  // for (let i = 0; i < 6; i++)
+  for (let i = 0; i < 0; i++)
   {
     items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }
@@ -285,10 +285,11 @@ function Background()
 {
   const [x, setX] = React.useState(0);
   let offset = 0;
+  const speed = 0.25;
 
   React.useEffect(() => {
     engine.requestAnimationFrame(() => {
-      let change = x - 0.25;
+      let change = x - speed;
 
       if (x < -294)
       {
@@ -302,18 +303,25 @@ function Background()
 
   return (
     <>
-    <style jsx>{`
-      .backgroundImage
-      {
-        position: fixed;
-        height: 100%;
-        width: 294vh;
-        will-change: transform;
-      }
-    `}</style>
-    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
-    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x-2 + 294}vh, 0, -2px)`}} />
-    <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+2 + 294}vh, 0, -3px)`}} />
+      <style jsx>{`
+        .backgroundImageContainer
+        {
+          height: 100%;
+          width: ${2*294}vh;
+          background: #ffb380;
+        }
+
+        .backgroundImage
+        {
+          height: 100%;
+          width: 294vh;
+          will-change: transform;
+        }
+      `}</style>
+      <div className="backgroundImageContainer">
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -2px)`}} />
+      </div>
     </>
   );
 }
