@@ -1,17 +1,17 @@
 export default class AudioSystem
-{  
+{
   private sounds = new Array<HTMLAudioElement>();
   private filename: string;
   private channels: number;
   private index = 0;
   
-  constructor (filename: string, channels = 4) 
+  constructor(filename: string, channels = 4) 
   {
     this.channels = channels;
     this.setFilename(filename);
   }
 
-  incrementIndex()
+  private incrementIndex()
   {
     this.index = (this.index + 1) % this.channels;
   }
