@@ -1,4 +1,5 @@
 import Physics from './Physics';
+import Pos from '../Pos/Pos';
 
 
 test('Physics.ts - constructor()', () => {
@@ -6,7 +7,47 @@ test('Physics.ts - constructor()', () => {
   expect(sut.getVelocity()).toBe(0);
 });
 
-describe('test collision', () => {
+describe('Movement', () => {
+  test('Physics.ts - applyGravity()', () => {
+    const gravity = 1;
+    let sut = new Physics(-10, gravity);
+    let collider = new Pos();
+
+    sut.applyGravity(collider);
+    expect(sut.getVelocity()).toBe(gravity);
+    expect(collider.y).toBe(gravity);
+    
+    sut.applyGravity(collider);
+    expect(sut.getVelocity()).toBe(gravity*2);
+    expect(collider.y).toBe(gravity*3);
+
+    collider.y = window.innerHeight;
+    sut.applyGravity(collider);
+    expect(sut.getVelocity()).toBe(gravity*2);
+    expect(collider.y).toBe(window.innerHeight);
+  });
+
+  test('Physics.ts - applyJump()', () => {
+    const jumpSpeed = -10;
+    let sut = new Physics(jumpSpeed, 1);
+    let collider = new Pos();
+
+    sut.applyJump(collider);
+    expect(sut.getVelocity()).toBe(jumpSpeed);
+    expect(collider.y).toBe(jumpSpeed);
+
+    sut.applyJump(collider);
+    expect(sut.getVelocity()).toBe(jumpSpeed);
+    expect(collider.y).toBe(jumpSpeed*2);
+    
+    collider.y = -50;
+    sut.applyJump(collider);
+    expect(sut.getVelocity()).toBe(jumpSpeed);
+    expect(collider.y).toBe(collider.y);
+  });
+});
+
+describe('Collision', () => {
   class DummyDomRect implements DOMRect
   {
     height: number;
