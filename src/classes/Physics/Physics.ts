@@ -1,0 +1,53 @@
+import Pos from "../Pos/Pos";
+
+
+export default class Physics
+{
+  private gravity: number;
+  private jumpSpeed: number;
+  private velocity: number;
+  
+  constructor (jumpSpeed: number, gravity: number)
+  {
+    this.jumpSpeed = jumpSpeed;
+    this.gravity = gravity;
+    this.velocity = 0;
+  }
+
+  applyGravity(collider: Pos)
+  {
+    if (collider.y < window.innerHeight)
+    {
+      this.velocity += this.gravity;
+      collider.y += this.velocity;
+    }
+  }
+
+  applyJump(collider: Pos)
+  {
+    if (collider.y > -50)
+    {
+      this.velocity = this.jumpSpeed;
+      collider.y += this.velocity;
+    }
+  }
+
+  getVelocity()
+  {
+    return this.velocity;
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+  static AxisAlignedBoundingBox(a: DOMRect, b: DOMRect)
+  {
+    if (a.x < b.x + b.width &&
+      a.x + a.width > b.x &&
+      a.y < b.y + b.height &&
+      a.y + a.height > b.y)
+    {
+      return true;
+    }
+
+    return false;
+  }
+}
