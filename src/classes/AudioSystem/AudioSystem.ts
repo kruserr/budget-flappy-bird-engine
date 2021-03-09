@@ -1,14 +1,22 @@
-export default class AudioSystem
+export interface IAudio
+{
+  play(): void;
+  pause(): void;
+  stop(): void;
+  setFilename(fileName: string): void;
+}
+
+export default class AudioSystem implements IAudio
 {
   private sounds = new Array<HTMLAudioElement>();
-  private filename: string;
+  private fileName: string;
   private channels: number;
   private index = 0;
   
-  constructor(filename: string, channels = 4) 
+  constructor(fileName: string, channels = 4) 
   {
     this.channels = channels;
-    this.setFilename(filename);
+    this.setFilename(fileName);
   }
 
   private incrementIndex()
@@ -16,12 +24,12 @@ export default class AudioSystem
     this.index = (this.index + 1) % this.channels;
   }
 
-  setFilename(filename: string) 
+  setFilename(fileName: string) 
   { 
-    this.filename = filename;
+    this.fileName = fileName;
     for (let i = 0; i < this.channels; i++)
     {
-      this.sounds.push(new Audio(this.filename));
+      this.sounds.push(new Audio(this.fileName));
     }
   }
 
