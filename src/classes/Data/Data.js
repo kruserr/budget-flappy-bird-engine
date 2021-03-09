@@ -1,5 +1,7 @@
 import React from "react";
 
+import Physics from '../Physics/Physics';
+
 
 const ctx = React.createContext();
 
@@ -10,18 +12,19 @@ export function Data(props)
   React.useEffect(() => {
     for (const i in context)
     {
-      if (context[i].tag != 'player') {
+      if (context[i].tag != 'player')
+      {
         continue;
       }
+
       for (const j in context)
       {
         if (context[i].collider === context[j].collider || context[j].tag != 'obstacle')
+        {
           continue;
+        }
 
-        if (context[i].collider.x < context[j].collider.x + context[j].collider.width &&
-          context[i].collider.x + context[i].collider.width > context[j].collider.x &&
-          context[i].collider.y < context[j].collider.y + context[j].collider.height &&
-          context[i].collider.y + context[i].collider.height > context[j].collider.y)
+        if (Physics.AxisAlignedBoundingBox(context[i].collider, context[j].collider))
         {
           let isColliding = new CustomEvent('isColliding', {
             detail: {

@@ -28,7 +28,6 @@ export default class Physics
     if (collider.getY() > -50)
     {
       this.velocity = this.jumpSpeed;
-
       collider.setY(this.velocity);
     }
   }
@@ -36,5 +35,19 @@ export default class Physics
   getVelocity()
   {
     return this.velocity;
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+  static AxisAlignedBoundingBox(a: DOMRect, b: DOMRect)
+  {
+    if (a.x < b.x + b.width &&
+      a.x + a.width > b.x &&
+      a.y < b.y + b.height &&
+      a.y + a.height > b.y)
+    {
+      return true;
+    }
+
+    return false;
   }
 }
