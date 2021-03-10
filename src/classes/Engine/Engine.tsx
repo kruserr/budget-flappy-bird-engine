@@ -45,7 +45,7 @@ export default class Engine
 
     ReactDOM.render(
       <React.StrictMode>
-        <div style={{zIndex: 0, position: 'fixed', width: '100%', height: '100%'}}>
+        <div style={{zIndex: -(-1 >>>0), position: 'fixed', width: '100%', height: '100%'}}>
           {this.background}
         </div>
         <Data>
