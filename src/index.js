@@ -56,6 +56,11 @@ function Hero(props)
         engine.stop();
       }
     });
+
+    context[props?.id] = {
+      'tag': 'player'
+    };
+    setContext({...context});
   }, []);
 
   React.useEffect(() => {
@@ -72,11 +77,6 @@ function Hero(props)
       }
 
       setCollider(new Pos({...collider}));
-      context[props?.id] = {
-        'collider': element?.current?.getBoundingClientRect(),
-        'tag': 'player'
-      };
-      setContext({...context});
     };
 
     engine.requestAnimationFrame(move);
@@ -133,6 +133,13 @@ function Pipe(props)
   );
 
   React.useEffect(() => {
+    context[props?.id] = {
+      'tag': 'obstacle'
+    };
+    setContext({...context});
+  }, []);
+
+  React.useEffect(() => {
     function move()
     {
       if (collider.x > -108.91)
@@ -145,11 +152,6 @@ function Pipe(props)
       }
 
       setCollider(new Pos({...collider}));
-      context[props?.id] = {
-        'collider': element?.current?.getBoundingClientRect(),
-        'tag': 'obstacle'
-      };
-      setContext({...context});
     };
 
     engine.requestAnimationFrame(move);
@@ -194,7 +196,7 @@ function PipeSet(props)
   }
 
   const offset = 1000;
-  const randomInt = getRandomInt(300, 700);
+  const randomInt = getRandomInt(400, 800);
 
   const styleRoot = {
 
@@ -211,8 +213,7 @@ function PipeSet(props)
 function PipeGroup()
 {
   let items = [];
-  // for (let i = 0; i < 6; i++)
-  for (let i = 0; i < 0; i++)
+  for (let i = 0; i < 6; i++)
   {
     items.push(<PipeSet key={i} id={i} data={{i: i}} />);
   }

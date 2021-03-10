@@ -10,33 +10,44 @@ export function Data(props)
   const [context, setContext] = React.useState({});
 
   React.useEffect(() => {
-    for (const i in context)
+    function fixedUpdateLoop()
     {
-      if (context[i].tag != 'player')
+      for (const i in context)
       {
-        continue;
-      }
-
-      for (const j in context)
-      {
-        if (context[i].collider === context[j].collider || context[j].tag != 'obstacle')
+        if (context[i].tag != 'player')
         {
           continue;
         }
 
-        if (Physics.AxisAlignedBoundingBox(context[i].collider, context[j].collider))
-        {
-          let isColliding = new CustomEvent('isColliding', {
-            detail: {
-              items: [i, j],
-            }
-          });
+        const objA = document.getElementById(i).getBoundingClientRect();
 
-          document.dispatchEvent(isColliding);
+        for (const j in context)
+        {
+          if (i === j || context[j].tag != 'obstacle')
+          {
+            continue;
+          }
+
+          const objB = document.getElementById(j).getBoundingClientRect();
+
+          if (Physics.AxisAlignedBoundingBox(objA, objB))
+          {
+            let isColliding = new CustomEvent('isColliding', {
+              detail: {
+                items: [i, j],
+              }
+            });
+
+            document.dispatchEvent(isColliding);
+          }
         }
       }
+
+      requestAnimationFrame(fixedUpdateLoop);
     }
-  }, [context]);
+
+    requestAnimationFrame(fixedUpdateLoop);
+  }, []);
 
   return (
     <ctx.Provider value={[context, setContext]}>
