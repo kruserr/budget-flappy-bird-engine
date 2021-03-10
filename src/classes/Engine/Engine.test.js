@@ -45,7 +45,16 @@ test('Engine - Inherit GameObject', () => {
   engine.addObject(<Enemy />);
   engine.addObject(<Enemy />);
 
+  engine.setBackground(<Enemy />);
+  engine.setHud(<Enemy />);
+
   act(() => {
     engine.start();
   });
+
+  engine.requestAnimationFrame(() => {});
+
+  engine.stop();
+
+  engine.requestAnimationFrame(() => {});
 });
