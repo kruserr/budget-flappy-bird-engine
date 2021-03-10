@@ -9,27 +9,41 @@ import Audio from './classes/AudioSystem/AudioSystem';
 
 
 const engine = new Engine();
-const audio = new Audio('/assets/audio/jump.wav');
+const jumpAudio = new Audio('/assets/audio/jump.wav');
 
 let jump = false;
+let keyDownLock = false;
 
 function clicked()
 {
   jump = true;
-  audio.play();
+  jumpAudio.play();
 }
 
-document.addEventListener("mouseup", () => clicked());
-
-document.addEventListener("touchend", () => clicked());
-
+document.addEventListener("mousedown", () => clicked());
+document.addEventListener("touchstart", () => clicked());
 document.addEventListener(
   "keydown",
   (event) => {
-    if (event.key !== ' ')
+    if (event.key !== ' ' || keyDownLock)
+    {
       return;
+    }
     
+    keyDownLock = true;
+
     clicked();
+  }
+);
+document.addEventListener(
+  "keyup",
+  (event) => {
+    if (event.key !== ' ')
+    {
+      return;
+    }
+    
+    keyDownLock = false;
   }
 );
 
@@ -288,7 +302,7 @@ function PipeGroup()
     engine.requestAnimationFrame(move);
   }, [offset]);
 
-  console.log(offset);
+  // console.log(offset);
 
   // items[0].props.pos.x -= 250;
 
