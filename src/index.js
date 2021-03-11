@@ -16,7 +16,7 @@ let jump = false;
 let collide = false;
 let keyDownLock = false;
 
-function collide()
+function collided()
 {
   if(collide == false)
     collideAudio.play();
