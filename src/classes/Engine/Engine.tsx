@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Data } from '../Data/Data';
+import Audio from '../AudioSystem/AudioSystem';
 
 
 export default class Engine
@@ -10,6 +11,12 @@ export default class Engine
   background: JSX.Element;
   hud: JSX.Element;
   shouldRender: boolean;
+  audio: Audio;
+  
+  addAudio(audio: string)
+  {
+    this.audio = new Audio(audio);
+  }
 
   addObject(object: JSX.Element)
   {
@@ -36,6 +43,7 @@ export default class Engine
 
   stop()
   {
+    this.audio.stop();
     this.shouldRender = false;
   }
   

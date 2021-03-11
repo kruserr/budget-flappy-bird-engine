@@ -5,18 +5,18 @@ import ctx from './classes/Data/Data';
 import Engine from './classes/Engine/Engine';
 import Pos from './classes/Pos/Pos';
 import Physics from './classes/Physics/Physics';
-import Audio from './classes/AudioSystem/AudioSystem';
 
 
 const engine = new Engine();
-const audio = new Audio('/assets/audio/jump.wav');
+
+engine.addAudio('/assets/audio/jump.wav');
 
 let jump = false;
 
 function clicked()
 {
   jump = true;
-  audio.play();
+  engine.audio.play();
 }
 
 document.addEventListener("mouseup", () => clicked());
