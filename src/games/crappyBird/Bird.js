@@ -1,13 +1,16 @@
 import React from 'react';
 
+import Engine from '../../classes/Engine/Engine';
 import ctx from '../../classes/Data/Data';
 import Pos from '../../classes/Pos/Pos';
 import Physics from '../../classes/Physics/Physics';
-import AudioSystem from '../../classes/AudioSystem/AudioSystem';
 
 
-const jumpAudio = new AudioSystem('/assets/audio/jump.wav');
-const collideAudio = new AudioSystem('/assets/audio/quack.wav');
+const jumpAudio = '/assets/audio/jump.wav';
+Engine.addAudio(jumpAudio);
+
+const collideAudio = '/assets/audio/quack.wav';
+Engine.addAudio(collideAudio);
 
 let jump = false;
 let collide = false;
@@ -17,7 +20,7 @@ function collided()
 {
   if(collide === false)
   {
-    collideAudio.play();
+    Engine.playAudio(collideAudio);
     collide = true;
   }
 }
@@ -25,7 +28,7 @@ function collided()
 function clicked()
 {
   jump = true;
-  jumpAudio.play();
+  Engine.playAudio(jumpAudio);
 }
 
 document.addEventListener("mousedown", () => clicked());
@@ -55,7 +58,7 @@ document.addEventListener(
   }
 );
 
-export default function Bird({engine})
+export default function Bird()
 {
   const element = React.useRef(null);
   const [context, setContext] = React.useContext(ctx);
@@ -85,9 +88,8 @@ export default function Bird({engine})
       if (event?.detail?.items?.includes(tempId))
       {
         collided();
-        engine.stop();
-        jumpAudio.stop();
-        collideAudio.stop();
+        Engine.stop();
+        Engine.stopAudio(jumpAudio);
       }
     });
 
@@ -113,7 +115,7 @@ export default function Bird({engine})
       setCollider(new Pos({...collider}));
     };
 
-    engine.requestAnimationFrame(move);
+    Engine.fixedUpdate(move);
   }, [collider]);
   
   let rotation = Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI;

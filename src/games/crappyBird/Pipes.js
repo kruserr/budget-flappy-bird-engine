@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Engine from '../../classes/Engine/Engine';
 import ctx from '../../classes/Data/Data';
 import Pos from '../../classes/Pos/Pos';
 
@@ -51,7 +52,7 @@ function getStartPos(index, offset)
   });
 }
 
-function PipeSet({engine, index, offset, spacing})
+function PipeSet({index, offset, spacing})
 {
   const [end, setEnd] = React.useState(false);
   const [pos, setPos] = React.useState(getStartPos(index, offset));
@@ -75,7 +76,7 @@ function PipeSet({engine, index, offset, spacing})
       setPos({...pos});
     };
 
-    engine.requestAnimationFrame(move);
+    Engine.fixedUpdate(move);
   }, [pos]);
 
   let posDown = {...pos};
@@ -99,7 +100,7 @@ function PipeSet({engine, index, offset, spacing})
   );
 }
 
-export default function Pipes({engine})
+export default function Pipes()
 {
   const offset = 600;
   const spacing = 1000;
@@ -110,7 +111,6 @@ export default function Pipes({engine})
     items.push(
       <PipeSet
         key={i}
-        engine={engine}
         index={i}
         data={{i: i}}
         offset={offset}

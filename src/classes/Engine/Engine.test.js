@@ -34,27 +34,25 @@ function Enemy()
 test('Engine - Inherit GameObject', () => {
   render(<div id="root"/>);
 
-  const engine = new Engine();
-  
-  engine.addObject(<Hero />);
+  Engine.addObject(<Hero />);
 
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
-  engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
+  Engine.addObject(<Enemy />);
 
-  engine.setBackground(<Enemy />);
-  engine.setHud(<Enemy />);
+  Engine.setBackground(<Enemy />);
+  Engine.setHud(<Enemy />);
 
   act(() => {
-    engine.start();
+    Engine.start();
   });
 
-  engine.requestAnimationFrame(() => {});
+  Engine.fixedUpdate(() => {});
 
-  engine.stop();
+  Engine.stop();
 
-  engine.requestAnimationFrame(() => {});
+  Engine.fixedUpdate(() => {});
 });

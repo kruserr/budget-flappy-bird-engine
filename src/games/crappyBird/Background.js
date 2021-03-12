@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Engine from '../../classes/Engine/Engine';
+
 
 function BackgroundImage({style, className})
 {
@@ -75,14 +77,14 @@ function BackgroundImage({style, className})
   );
 }
 
-export default function Background({engine})
+export default function Background()
 {
   const [x, setX] = React.useState(0);
   let offset = 0;
   const speed = 0.25;
 
   React.useEffect(() => {
-    engine.requestAnimationFrame(() => {
+    Engine.fixedUpdate(() => {
       let change = x - speed;
 
       if (x < -294)
