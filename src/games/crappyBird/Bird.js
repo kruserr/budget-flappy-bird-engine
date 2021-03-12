@@ -163,7 +163,7 @@ export default function Bird()
           transform: translate3d(-6px, -24px, 0);
         }
       `}</style>
-      <svg ref={element} id={id} style={styleRoot} height="50px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
+      <svg ref={element} id={id} style={styleRoot} height="40px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(-62.95 -83.663)">
           <g strokeWidth="1.5875">
           <g stroke="#28220b" strokeWidth="1.5875">

@@ -66,23 +66,23 @@ function getRandomInt(min, max)
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function getStartPos(index, offset)
+function getStartPos(index, offset, min, max)
 {
   return new Pos({
     x: (offset * index) + offset,
-    y: getRandomInt(300, 700),
+    y: getRandomInt(min, max),
   });
 }
 
-function PipeSet({index, offset, spacing})
+function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
 {
   const [end, setEnd] = React.useState(false);
-  const [pos, setPos] = React.useState(getStartPos(index, offset));
+  const [pos, setPos] = React.useState(getStartPos(index, offset, min, max));
 
   React.useEffect(() => {
     if (end)
     {
-      setPos(getStartPos(5, offset));
+      setPos(getStartPos(numberOfPipes - 1, offset, min, max));
     }
   }, [end]);
 
@@ -91,7 +91,7 @@ function PipeSet({index, offset, spacing})
     {
       if (pos.x > -108.91)
       {
-        pos.x += -6;
+        pos.x += -speed;
       }
       else
       {
@@ -129,18 +129,25 @@ function PipeSet({index, offset, spacing})
 export default function Pipes()
 {
   const offset = 600;
-  const spacing = 1000;
+  const spacing = 975;
+  const numberOfPipes = 6;
+  const min = 235;
+  const max = 720;
+  const speed = 4;
 
   let items = [];
-  for (let i = 0; i < 6; i++)
+  for (let i = 0; i < numberOfPipes; i++)
   {
     items.push(
       <PipeSet
         key={i}
         index={i}
-        data={{i: i}}
         offset={offset}
         spacing={spacing}
+        numberOfPipes={numberOfPipes}
+        min={min}
+        max={max}
+        speed={speed}
       />
     );
   }
