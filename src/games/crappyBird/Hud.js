@@ -6,7 +6,7 @@ import Engine from '../../classes/Engine/Engine';
 export default function Hud()
 {
   const elem = React.useRef();
-  const [start, setStart] = React.useState(true);
+  const [start, setStart] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const [gameOver, setGameOver] = React.useState(false);
   const [lastScoreId, setLastScoreId] = React.useState('');
@@ -59,7 +59,7 @@ export default function Hud()
           {start &&
           <span>
             <span>
-              <svg style={{'transform': 'rotate(90deg)', 'marginTop': '22vh'}}width="22.036" height="21.491" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">
+              <svg style={{'transform': 'rotate(90deg)', 'marginTop': '22vh'}} width="22.036" height="21.491" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(-81.253 -98.706)">
                   <path d="m84.593 103.95-0.28127 0.28128c-0.11909 0.11907-0.31168 0.11907-0.42952 0l-2.463-2.4618c-0.11909-0.11905-0.11909-0.31171 0-0.42949l2.463-2.4631c0.1191-0.11909 0.31168-0.11909 0.42952 0l0.28127 0.28127c0.12036 0.12037 0.11784 0.31675-0.0051 0.43458l-1.5267 1.4545h3.6413c0.16851 0 0.30408 0.13551 0.30408 0.30408v0.40545c0 0.16852-0.13557 0.30408-0.30408 0.30408h-3.6413l1.5267 1.4545c0.12417 0.11779 0.12669 0.3142 0.0051 0.43456z" fill="#fff" stroke="#000" strokeWidth=".15415"/>
                 </g>
