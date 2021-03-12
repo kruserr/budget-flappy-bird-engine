@@ -5,6 +5,7 @@ export default function Hud()
 {
   const elem = React.useRef();
   const [score, setScore] = React.useState(0);
+  const [gameOver, setGameOver] = React.useState(false);
   const [lastScoreId, setLastScoreId] = React.useState('');
 
   React.useEffect(() => {
@@ -19,6 +20,11 @@ export default function Hud()
           setScore(score => ++score);
           setLastScoreId(items[1]?.id);
         }
+      }
+
+      if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
+      {
+        setGameOver(true);
       }
     }
 
@@ -35,13 +41,16 @@ export default function Hud()
         style={{
           'color': '#FFF',
           'fontSize': '4vh',
-          'textShadow': '1px 1px #333',
+          'textShadow': '0vh 0.4vh #333',
           'fontWeight': '600',
           'textAlign': 'center',
           'marginTop': '5vh',
         }}
       >
-        {score}
+        <h2>{score}</h2>
+        {gameOver &&
+          <h1 style={{'marginTop': '33vh'}}>Game Over</h1>
+        }
       </div>
     </>
   );
