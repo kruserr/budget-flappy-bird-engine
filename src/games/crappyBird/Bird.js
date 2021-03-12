@@ -129,8 +129,6 @@ export default function Bird({engine})
     transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
   };
 
-  console.log(id);
-  
   return (
     <>
       <svg ref={element} id={id} style={styleRoot} height="50px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
