@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "cov": "react-scripts test --coverage --watchAll",
+    "cov": "react-scripts test --coverage --collectCoverageFrom=!src/games/** --collectCoverageFrom=!src/index.js --collectCoverageFrom=!src/react-app-env.d.ts --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
