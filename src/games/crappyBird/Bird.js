@@ -86,6 +86,8 @@ export default function Bird({engine})
       {
         collided();
         engine.stop();
+        jumpAudio.stop();
+        collideAudio.stop();
       }
     });
 
