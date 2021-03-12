@@ -10,9 +10,18 @@ import Audio from './classes/AudioSystem/AudioSystem';
 
 const engine = new Engine();
 const jumpAudio = new Audio('/assets/audio/jump.wav');
+const collideAudio = new Audio('/assets/audio/quack.wav');
 
 let jump = false;
+let collide = false;
 let keyDownLock = false;
+
+function collided()
+{
+  if(collide == false)
+    collideAudio.play();
+    collide = true;
+}
 
 function clicked()
 {
@@ -67,6 +76,7 @@ function Hero(props)
     document.addEventListener('isColliding', (event) => {
       if (event?.detail?.items?.includes(props?.id))
       {
+        collided();
         engine.stop();
       }
     });
