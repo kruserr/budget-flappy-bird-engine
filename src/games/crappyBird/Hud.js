@@ -3,6 +3,8 @@ import React from 'react';
 import Engine from '../../classes/Engine/Engine';
 
 
+let persistStart = false;
+
 export default function Hud()
 {
   const elem = React.useRef();
@@ -36,13 +38,37 @@ export default function Hud()
     return () => document.removeEventListener('isColliding', eventHandler);
   }, [lastScoreId]);
 
-  // React.useEffect(() => {
-  //   Engine.enableUpdate();
-  // }, [start]);
+  React.useEffect(() => {
+    if (start)
+    {
+      console.log(1);
+      Engine.unmount();
+
+      new Promise(res => setTimeout(res, 1000))
+        .then(() => {
+          persistStart = true;
+          Engine.start();
+          Engine.render();
+        });
+      
+      // Engine.start();
+      // Engine.render();
+      // Engine.stop();
+      // Engine.render();
+      // Engine.start();
+      // Engine.render();
+    }
+    else if (!persistStart)
+    {
+      console.log(2);
+      Engine.stop();
+      // Engine.render();
+    }
+  }, [start]);
 
   return (
     <>
-      <div style={{'width': '100vw', 'height': '100vh'}} onClick={() => setStart(false)}>
+      <div style={{'width': '100vw', 'height': '100vh'}} onClick={() => setStart(true)}>
         <div
           ref={elem}
           style={{
@@ -56,7 +82,7 @@ export default function Hud()
         >
           <h2>{score}</h2>
           <h1 style={{'marginTop': '32vh', 'height': '9.5vh'}}>{gameOver && 'Game Over'}</h1>
-          {start &&
+          {!start &&
           <span>
             <span>
               <svg style={{'transform': 'rotate(90deg)', 'marginTop': '22vh'}} width="22.036" height="21.491" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">

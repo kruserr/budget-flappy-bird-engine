@@ -14,3 +14,4 @@ Engine.setBackground(<Background />);
 Engine.setHud(<Hud />);
 
 Engine.start();
+Engine.render();
