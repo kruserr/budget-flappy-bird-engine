@@ -14,7 +14,7 @@ export function Data(props)
     {
       for (const i in context)
       {
-        if (context[i].tag != 'player')
+        if (context[i].tag !== 'player')
         {
           continue;
         }
@@ -23,7 +23,7 @@ export function Data(props)
 
         for (const j in context)
         {
-          if (i === j || context[j].tag != 'obstacle')
+          if (i === j || context[j].tag !== 'obstacle')
           {
             continue;
           }

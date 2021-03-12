@@ -15,11 +15,7 @@ function Pipe({id, pos, rotation})
     setContext({...context});
   }, []);
 
-  if (rotation != null)
-  {
-    rotation = rotation;
-  }
-  else
+  if (!rotation)
   {
     rotation = 0;
   }

@@ -14,7 +14,7 @@ let keyDownLock = false;
 
 function collided()
 {
-  if(collide == false)
+  if(collide === false)
     collideAudio.play();
     collide = true;
 }
