@@ -8,10 +8,8 @@ import Pipes from './games/crappyBird/Pipes';
 import Background from './games/crappyBird/Background';
 
 
-const engine = new Engine();
+Engine.addObject(<Bird />);
+Engine.addObject(<Pipes />);
+Engine.setBackground(<Background engine={Engine} />);
 
-engine.addObject(<Bird engine={engine} />);
-engine.addObject(<Pipes engine={engine} />);
-engine.setBackground(<Background engine={engine} />);
-
-engine.start();
+Engine.start();

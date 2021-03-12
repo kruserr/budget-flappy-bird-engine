@@ -1,6 +1,7 @@
 import React from "react";
 
 import Physics from '../Physics/Physics';
+import Engine from '../Engine/Engine';
 
 
 const ctx = React.createContext();
@@ -10,7 +11,7 @@ export function Data(props)
   const [context, setContext] = React.useState({});
 
   React.useEffect(() => {
-    function fixedUpdateLoop()
+    function collision()
     {
       for (const i in context)
       {
@@ -43,10 +44,10 @@ export function Data(props)
         }
       }
 
-      requestAnimationFrame(fixedUpdateLoop);
+      Engine.fixedUpdate(collision);
     }
 
-    requestAnimationFrame(fixedUpdateLoop);
+    Engine.fixedUpdate(collision);
   }, []);
 
   return (

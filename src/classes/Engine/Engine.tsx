@@ -2,14 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Data } from '../Data/Data';
+import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
 
 
-export default class Engine
+class Engine
 {
-  objects = new Array<JSX.Element>();
-  background: JSX.Element;
   hud: JSX.Element;
-  shouldRender: boolean;
+  background: JSX.Element;
+  objects = new Array<JSX.Element>();
+
+  audio = new Map<string, IAudio>();
+
+  isRunning = false;
+
+  private static instance = new Engine();
+
+  private constructor() { }
+
+  public static getInstance(): Engine
+  {
+    return Engine.instance;
+  }
 
   addObject(object: JSX.Element)
   {
@@ -26,22 +39,45 @@ export default class Engine
     this.hud = hud;
   }
 
-  requestAnimationFrame(lambda: () => void)
+  fixedUpdate(lambda: () => void)
   {
-    if (this.shouldRender)
+    if (this.isRunning)
     {
       requestAnimationFrame(lambda);
     }
   }
 
+  addAudio(fileName: string)
+  {
+    this.audio.set(fileName, new AudioSystem(fileName));
+  }
+
+  removeAudio(fileName: string): boolean
+  {
+    return this.audio.delete(fileName);
+  }
+
+  playAudio(fileName: string)
+  {
+    if (this.isRunning)
+    {
+      this.audio.get(fileName)?.play();
+    }
+  }
+
+  stopAudio(fileName: string)
+  {
+    this.audio.get(fileName)?.stop();
+  }
+
   stop()
   {
-    this.shouldRender = false;
+    this.isRunning = false;
   }
   
   start()
   {
-    this.shouldRender = true;
+    this.isRunning = true;
 
     ReactDOM.render(
       <React.StrictMode>
@@ -59,3 +95,5 @@ export default class Engine
     );
   }
 }
+
+export default Engine.getInstance();
