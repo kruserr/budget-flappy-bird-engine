@@ -3,10 +3,11 @@ import React from 'react';
 import ctx from '../../classes/Data/Data';
 import Pos from '../../classes/Pos/Pos';
 import Physics from '../../classes/Physics/Physics';
+import AudioSystem from '../../classes/AudioSystem/AudioSystem';
 
 
-const jumpAudio = new Audio('/assets/audio/jump.wav');
-const collideAudio = new Audio('/assets/audio/quack.wav');
+const jumpAudio = new AudioSystem('/assets/audio/jump.wav');
+const collideAudio = new AudioSystem('/assets/audio/quack.wav');
 
 let jump = false;
 let collide = false;
@@ -15,8 +16,10 @@ let keyDownLock = false;
 function collided()
 {
   if(collide === false)
+  {
     collideAudio.play();
     collide = true;
+  }
 }
 
 function clicked()
