@@ -80,7 +80,10 @@ function PipeSet({index, offset, spacing})
   const [pos, setPos] = React.useState(getStartPos(index, offset));
 
   React.useEffect(() => {
-    setPos(getStartPos(5, offset));
+    if (end)
+    {
+      setPos(getStartPos(5, offset));
+    }
   }, [end]);
 
   React.useEffect(() => {
@@ -95,7 +98,7 @@ function PipeSet({index, offset, spacing})
         setEnd(!end);
       }
 
-      setPos({...pos});
+      setPos(new Pos({...pos}));
     };
 
     Engine.fixedUpdate(move);
