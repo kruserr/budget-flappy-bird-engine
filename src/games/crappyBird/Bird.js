@@ -85,7 +85,9 @@ export default function Bird()
     setId(tempId);
 
     document.addEventListener('isColliding', (event) => {
-      if (event?.detail?.items?.includes(tempId))
+      let items = event?.detail?.items;
+
+      if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
       {
         collided();
         Engine.stop();

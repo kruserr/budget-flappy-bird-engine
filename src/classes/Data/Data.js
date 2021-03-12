@@ -24,7 +24,7 @@ export function Data(props)
 
         for (const j in context)
         {
-          if (i === j || context[j].tag !== 'obstacle')
+          if (i === j || !context[j].tag in ['obstacle', 'score'])
           {
             continue;
           }
@@ -35,7 +35,7 @@ export function Data(props)
           {
             let isColliding = new CustomEvent('isColliding', {
               detail: {
-                items: [i, j],
+                items: [{'id': i, 'tag': context[i].tag}, {'id': j, 'tag': context[j].tag}],
               }
             });
 

@@ -5,7 +5,7 @@ import ctx from '../../classes/Data/Data';
 import Pos from '../../classes/Pos/Pos';
 
 
-function Pipe({id, pos, rotation})
+function Pipe({id, pos, rotation, score})
 {
   const [context, setContext] = React.useContext(ctx);
 
@@ -13,6 +13,14 @@ function Pipe({id, pos, rotation})
     context[id] = {
       'tag': 'obstacle'
     };
+
+    if (score)
+    {
+      context[`${id}_score`] = {
+        'tag': 'score'
+      };
+    }
+
     setContext({...context});
   }, []);
 
@@ -28,12 +36,26 @@ function Pipe({id, pos, rotation})
   };
 
   return (
-    <svg id={id} style={styleRoot} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(-65 8.2278)" fill="#999" stroke="#000" strokeLinejoin="round">
-        <rect transform="scale(1,-1)" x="70.798" y="-505.16" width="58.404" height="478.4" rx="0" ry="0" imageRendering="auto" strokeWidth="1.5964" style={{mixBlendMode: 'normal'}}/>
-        <rect transform="scale(1,-1)" x="65.694" y="-26.078" width="68.612" height="33.612" ry="5.2732" strokeWidth="1.3882" style={{mixBlendMode: 'normal'}}/>
-      </g>
-    </svg>
+    <div style={styleRoot}>
+      <svg id={id} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(-65 8.2278)" fill="#999" stroke="#000" strokeLinejoin="round">
+          <rect transform="scale(1,-1)" x="70.798" y="-505.16" width="58.404" height="478.4" rx="0" ry="0" imageRendering="auto" strokeWidth="1.5964" style={{mixBlendMode: 'normal'}}/>
+          <rect transform="scale(1,-1)" x="65.694" y="-26.078" width="68.612" height="33.612" ry="5.2732" strokeWidth="1.3882" style={{mixBlendMode: 'normal'}}/>
+        </g>
+      </svg>
+      {score &&
+      <span
+        id={`${id}_score`}
+        style={{
+          position: 'fixed',
+          willChange: 'transform',
+          transform: 'translate3d(0, -208px, 0px)',
+          height: '220px',
+          width: '10px',
+        }}
+      />
+      }
+    </div>
   );
 }
 
@@ -90,6 +112,7 @@ function PipeSet({index, offset, spacing})
       <Pipe
         id={`${index}_up`}
         pos={pos}
+        score={true}
       />
       <Pipe
         id={`${index}_down`}

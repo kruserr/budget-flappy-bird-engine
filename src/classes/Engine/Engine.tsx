@@ -82,32 +82,36 @@ class Engine
     ReactDOM.render(
       <React.StrictMode>
         <style>{`
-          html, body
+          *
           {
-            padding: 0;
-            margin: 0;
+            box-sizing: border-box;
+          }
+
+          html
+          {
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+          }
+          
+          body
+          {
+            margin: 0px;
             max-height: 100vh;
             max-width: 100vw;
             overflow: hidden;
+
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
               Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-          }
 
-          a
-          {
-            color: inherit;
-            text-decoration: none;
-          }
-
-          *
-          {
-            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
         `}</style>
         <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%'}}>
