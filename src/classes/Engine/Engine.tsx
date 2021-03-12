@@ -49,7 +49,7 @@ export default class Engine
           {this.background}
         </div>
         <Data>
-          {this.objects.map((item, i) => <span key={i}>{item}</span>)}
+          {this.objects.map((item, i) => <span key={i} id={`slapId_${i}_0`}>{item}</span>)}
         </Data>
         <div style={{zIndex: -1 >>>0, position: 'fixed', width: '100%', height: '100%'}}>
           {this.hud}
