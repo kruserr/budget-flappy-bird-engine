@@ -42,7 +42,7 @@ class Engine
 
   fixedUpdate(lambda: () => void)
   {
-    requestAnimationFrame(lambda);
+    return requestAnimationFrame(lambda);
   }
 
   addAudio(fileName: string)
