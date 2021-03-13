@@ -64,7 +64,8 @@ export default function Bird()
   const element = React.useRef(null);
   const wingEl = React.useRef(null);
   const [context, setContext] = React.useContext(ctx);
-  const [id, setId] = React.useState('');
+  // const [id, setId] = React.useState('');
+  const id = 'slapId_0_1';
 
   const [collider, setCollider] = React.useState(
     new Pos({
@@ -78,26 +79,22 @@ export default function Bird()
   }, []);
 
   React.useEffect(() => {
-    let parentId = element.current.parentNode.id.split('_');
-    let idCounter = parseInt(parentId[2]);
-    parentId.pop();
-    parentId.push(++idCounter);
-    const tempId = parentId.join('_');
-
-    setId(tempId);
-
     document.addEventListener('isColliding', (event) => {
       let items = event?.detail?.items;
+
+      let fallId;
 
       if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
       {
         collided();
         Engine.stop();
         Engine.stopAudio(jumpAudio);
+
+        element.current.classList.add('fall');
       }
     });
 
-    context[tempId] = {
+    context[id] = {
       'tag': 'player'
     };
     setContext({...context});
@@ -154,7 +151,7 @@ export default function Bird()
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,
-    transform: `translate3d(${collider.x}px, ${collider.y}px, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${collider.x}px, ${collider.y}px, 0)`,
   };
 
   return (
@@ -164,22 +161,30 @@ export default function Bird()
         {
           transform: translate3d(-6px, -24px, 0);
         }
+
+        .fall
+        {
+          transform: translate3d(${collider.x}px, 1000px, 0px) !important;
+          transition: transform 900ms linear;
+        }
       `}</style>
-      <svg ref={element} id={id} style={styleRoot} height="40px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(-62.95 -83.663)">
-          <g strokeWidth="1.5875">
-          <g stroke="#28220b" strokeWidth="1.5875">
-            <ellipse transform="translate(-1.1875e-6)" cx="98.366" cy="116.63" rx="31.759" ry="17.625" fill="#fc0" fillRule="evenodd"/>
-            <ellipse transform="translate(-1.1875e-6)" cx="95.883" cy="134.04" rx="8.6278" ry="4.6856" fill="#f60"/>
-            <ellipse transform="translate(-1.1875e-6)" cx="117.06" cy="97.553" rx="16.571" ry="13.096" fill="#fc0"/>
-            <ellipse transform="translate(-1.1875e-6)" cx="131.36" cy="100.83" rx="4.8109" ry="3.2741" fill="#f60"/>
+      <span ref={element} id={id} style={styleRoot}>
+        <svg style={{transform: `rotate(${rotation}deg)`}} height="40px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(-62.95 -83.663)">
+            <g strokeWidth="1.5875">
+            <g stroke="#28220b" strokeWidth="1.5875">
+              <ellipse transform="translate(-1.1875e-6)" cx="98.366" cy="116.63" rx="31.759" ry="17.625" fill="#fc0" fillRule="evenodd"/>
+              <ellipse transform="translate(-1.1875e-6)" cx="95.883" cy="134.04" rx="8.6278" ry="4.6856" fill="#f60"/>
+              <ellipse transform="translate(-1.1875e-6)" cx="117.06" cy="97.553" rx="16.571" ry="13.096" fill="#fc0"/>
+              <ellipse transform="translate(-1.1875e-6)" cx="131.36" cy="100.83" rx="4.8109" ry="3.2741" fill="#f60"/>
+            </g>
+            <ellipse transform="translate(-1.1875e-6)" cx="119.67" cy="95.883" rx="3.1404" ry="3.1404" fill="#28220b" strokeWidth="1.5875"/>
+            <path transform="translate(-1.1875e-6)" d="m69.832 110.85a10.758 4.744 0 0 1-6.0829-4.1265 10.758 4.744 0 0 1 5.4902-4.285 10.758 4.744 0 0 1 11.154 0.16847" fill="#fc0" stroke="#28220b" strokeWidth="1.5875"/>
+            <path ref={wingEl} style={{'willChange': 'transform', 'transition': 'transform 100ms linear'}} transform="matrix(1.2706 0 0 .70673 -26.92 30.601)" d="m92.163 110.46c7.0526-0.57349 13.065-1.0384 18.959 3.5441 2.8957 2.2515-0.93968 8.5576-2.8468 11.41-3.8818 5.8064-7.4472 9.4699-14.606 11.69-3.5174 1.0909-5.0289-0.49088-7.0157-3.2841-4.0439-5.6852-3.3033-11.785-2.8827-19.267 0.20662-3.6764 4.9272-3.8118 8.3922-4.0935z" fill="#fc0" stroke="#28220b" strokeWidth="1.6752"/>
+            </g>
           </g>
-          <ellipse transform="translate(-1.1875e-6)" cx="119.67" cy="95.883" rx="3.1404" ry="3.1404" fill="#28220b" strokeWidth="1.5875"/>
-          <path transform="translate(-1.1875e-6)" d="m69.832 110.85a10.758 4.744 0 0 1-6.0829-4.1265 10.758 4.744 0 0 1 5.4902-4.285 10.758 4.744 0 0 1 11.154 0.16847" fill="#fc0" stroke="#28220b" strokeWidth="1.5875"/>
-          <path ref={wingEl} style={{'willChange': 'transform', 'transition': 'transform 100ms linear'}} transform="matrix(1.2706 0 0 .70673 -26.92 30.601)" d="m92.163 110.46c7.0526-0.57349 13.065-1.0384 18.959 3.5441 2.8957 2.2515-0.93968 8.5576-2.8468 11.41-3.8818 5.8064-7.4472 9.4699-14.606 11.69-3.5174 1.0909-5.0289-0.49088-7.0157-3.2841-4.0439-5.6852-3.3033-11.785-2.8827-19.267 0.20662-3.6764 4.9272-3.8118 8.3922-4.0935z" fill="#fc0" stroke="#28220b" strokeWidth="1.6752"/>
-          </g>
-        </g>
-      </svg>
+        </svg>
+      </span>
     </>
   );
 }
