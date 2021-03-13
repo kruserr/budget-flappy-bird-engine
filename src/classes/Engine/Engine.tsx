@@ -45,6 +45,11 @@ class Engine
     return requestAnimationFrame(lambda);
   }
 
+  cancelFixedUpdate(id: number)
+  {
+    cancelAnimationFrame(id);
+  }
+
   addAudio(fileName: string)
   {
     this.audio.set(fileName, new AudioSystem(fileName));
