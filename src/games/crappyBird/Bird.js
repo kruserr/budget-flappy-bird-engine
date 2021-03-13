@@ -149,6 +149,8 @@ export default function Bird()
     rotation = 40;
   }
 
+  rotation = rotation * Engine.getTime().getTimeScale();
+
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,

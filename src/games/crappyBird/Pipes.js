@@ -91,7 +91,7 @@ function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
     {
       if (pos.x > -108.91)
       {
-        pos.x += -speed;
+        pos.x += (-speed) * Engine.getTime().getTimeScale();
       }
       else
       {

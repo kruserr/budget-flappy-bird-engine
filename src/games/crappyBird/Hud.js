@@ -41,28 +41,11 @@ export default function Hud()
   React.useEffect(() => {
     if (start)
     {
-      console.log(1);
-      Engine.unmount();
-
-      new Promise(res => setTimeout(res, 1000))
-        .then(() => {
-          persistStart = true;
-          Engine.start();
-          Engine.render();
-        });
-      
-      // Engine.start();
-      // Engine.render();
-      // Engine.stop();
-      // Engine.render();
-      // Engine.start();
-      // Engine.render();
+      Engine.getTime().start();
     }
     else if (!persistStart)
     {
-      console.log(2);
-      Engine.stop();
-      // Engine.render();
+      Engine.getTime().stop();
     }
   }, [start]);
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Data } from '../Data/Data';
 import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
+import Time from '../Time/Time';
 
 
 class Engine
@@ -13,8 +14,7 @@ class Engine
   objects = new Array<JSX.Element>();
 
   audio = new Map<string, IAudio>();
-
-  isRunning = false;
+  time = new Time();
 
   private static instance = new Engine();
 
@@ -42,10 +42,7 @@ class Engine
 
   fixedUpdate(lambda: () => void)
   {
-    if (this.isRunning)
-    {
-      requestAnimationFrame(lambda);
-    }
+    requestAnimationFrame(lambda);
   }
 
   addAudio(fileName: string)
@@ -60,7 +57,7 @@ class Engine
 
   playAudio(fileName: string)
   {
-    if (this.isRunning)
+    if (this.time.getTimeScale() !== 0)
     {
       this.audio.get(fileName)?.play();
     }
@@ -71,75 +68,17 @@ class Engine
     this.audio.get(fileName)?.stop();
   }
 
+  getTime()
+  {
+    return this.time;
+  }
+
   stop()
   {
-    this.isRunning = false;
+    this.time.stop();
   }
   
   start()
-  {
-    this.isRunning = true;
-
-    // ReactDOM.render(
-    //   <React.StrictMode>
-    //     <style>{`
-    //       *
-    //       {
-    //         box-sizing: border-box;
-    //       }
-
-    //       html
-    //       {
-    //         -ms-touch-action: manipulation;
-    //         touch-action: manipulation;
-    //       }
-          
-    //       body
-    //       {
-    //         margin: 0px;
-    //         max-height: 100vh;
-    //         max-width: 100vw;
-    //         overflow: hidden;
-
-    //         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    //           Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-            
-    //         -webkit-touch-callout: none;
-    //         -webkit-user-select: none;
-    //         -khtml-user-select: none;
-    //         -moz-user-select: none;
-    //         -ms-user-select: none;
-    //         user-select: none;
-
-    //         -webkit-font-smoothing: antialiased;
-    //         -moz-osx-font-smoothing: grayscale;
-    //       }
-    //     `}</style>
-    //     <Data>
-    //       <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%'}}>
-    //         {this.background}
-    //       </div>
-    //       {this.objects.map((item, i) => <span key={i} id={`slapId_${i}_0`}>{item}</span>)}
-    //       <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%'}}>
-    //         {this.hud}
-    //       </div>
-    //     </Data>
-    //   </React.StrictMode>,
-    //   document.getElementById('root')
-    // );
-  }
-
-  unmount()
-  {
-    // ------------------------------ TODO ------------------------------
-    // Add second root element, and switch between the two root elements
-    // Since react takes n ms to unmount propperly and remount propperly
-    // when forcefully unmounting
-    // ------------------------------ TODO ------------------------------
-    ReactDOM.unmountComponentAtNode(this.root as Element);
-  }
-
-  render()
   {
     ReactDOM.render(
       <React.StrictMode>
@@ -176,7 +115,6 @@ class Engine
             -moz-osx-font-smoothing: grayscale;
           }
         `}</style>
-        {this.isRunning &&
         <Data>
           <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%'}}>
             {this.background}
@@ -186,7 +124,6 @@ class Engine
             {this.hud}
           </div>
         </Data>
-        }
       </React.StrictMode>,
       this.root
     );

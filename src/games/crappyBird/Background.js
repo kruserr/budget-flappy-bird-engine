@@ -85,7 +85,7 @@ export default function Background()
 
   React.useEffect(() => {
     Engine.fixedUpdate(() => {
-      let change = x - speed;
+      let change = (x - speed) * Engine.getTime().getTimeScale();
 
       if (x < -294)
       {

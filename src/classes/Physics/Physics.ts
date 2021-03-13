@@ -1,5 +1,7 @@
 import Pos from "../Pos/Pos";
 
+import Engine from '../Engine/Engine';
+
 
 export default class Physics
 {
@@ -19,7 +21,7 @@ export default class Physics
     if (collider.y < window.innerHeight)
     {
       this.velocity += this.gravity;
-      collider.y += this.velocity;
+      collider.y += (this.velocity) * Engine.getTime().getTimeScale();
     }
   }
 
@@ -28,7 +30,7 @@ export default class Physics
     if (collider.y > -50)
     {
       this.velocity = this.jumpSpeed;
-      collider.y += this.velocity;
+      collider.y += (this.velocity) * Engine.getTime().getTimeScale();
     }
   }
 
