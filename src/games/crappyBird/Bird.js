@@ -10,23 +10,26 @@ Engine.addAudio(collideAudio);
 
 export default function Bird()
 {
+  const id = 'slapId_0_1';
+  const jumpSpeed = 1.25;
+  const gravity = jumpSpeed / 10;
+
   const element = React.useRef(null);
   const wingEl = React.useRef(null);
   const [context, setContext] = React.useContext(Engine.getContext());
   const [jump, setJump] = React.useState(false);
   const [collide, setCollide] = React.useState(false);
   const [wingUnlocked, setWingUnlocked] = React.useState(true);
-  const id = 'slapId_0_1';
 
   const [collider, setCollider] = React.useState(
     Engine.getPos({
-      x: 100,
-      y: window.innerHeight / 2,
+      x: 20,
+      y: 48,
     })
   );
   
   const physics = React.useMemo(() => {
-    return Engine.getPhysics(-10, 1);
+    return Engine.getPhysics(-(jumpSpeed), gravity);
   }, []);
 
   React.useEffect(() => {
@@ -103,13 +106,14 @@ export default function Bird()
   let rotation;
   if (Engine.getTime().getTimeScale() != 0 || collide)
   {
-    rotation = (Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI);
+    rotation = (Math.atan2(physics.getVelocity(), jumpSpeed) * 180 / Math.PI);
   }
 
   const styleRoot = {
-    position: `fixed`,
-    willChange: `transform`,
-    transform: `translate3d(${collider.x}px, ${collider.y}px, 0)`,
+    display: 'flex',
+    position: 'fixed',
+    willChange: 'transform',
+    transform: `translate3d(${collider.x}vw, ${collider.y}vh, 0)`,
   };
 
   return (
@@ -122,12 +126,12 @@ export default function Bird()
 
         .fall
         {
-          transform: translate3d(${collider.x}px, 1000px, 0px) !important;
+          transform: translate3d(${collider.x}px, 150vh, 0px) !important;
           transition: transform 900ms linear;
         }
       `}</style>
       <span ref={element} id={id} style={styleRoot}>
-        <svg style={{transform: `rotate(${rotation}deg)`}} height="40px" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
+        <svg style={{transform: `rotate(${rotation}deg)`}} height="4.25vh" version="1.1" viewBox="0 0 74.017 55.852" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(-62.95 -83.663)">
             <g strokeWidth="1.5875">
             <g stroke="#28220b" strokeWidth="1.5875">

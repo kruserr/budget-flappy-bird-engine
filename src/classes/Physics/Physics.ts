@@ -18,7 +18,7 @@ export default class Physics
 
   applyGravity(collider: Pos)
   {
-    if (collider.y < window.innerHeight)
+    if (collider.y < 100)
     {
       this.velocity += this.gravity;
       collider.y += (this.velocity) * Engine.getTime().getTimeScale();
@@ -27,7 +27,7 @@ export default class Physics
 
   applyJump(collider: Pos)
   {
-    if (collider.y > -50)
+    if (collider.y > -12)
     {
       this.velocity = this.jumpSpeed;
       collider.y += (this.velocity) * Engine.getTime().getTimeScale();

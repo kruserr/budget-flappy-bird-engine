@@ -99,10 +99,12 @@ export default function Background()
   const [x, setX] = React.useState(0);
   let offset = 0;
   const speed = 0.25;
+  let fixedUpdateLoopId;
 
   React.useEffect(() => {
-    Engine.fixedUpdate(() => {
-      let change = (x - speed) * Engine.getTime().getTimeScale();
+    function fixedUpdateLoop()
+    {
+      let change = (x - (speed * Engine.getTime().getTimeScale()));
 
       if (x < -294)
       {
@@ -110,8 +112,14 @@ export default function Background()
         change = 0;
       }
 
-      setX(change)
-    });
+      setX(change);
+
+      fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+    }
+
+    fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+
+    return () => Engine.cancelFixedUpdate(fixedUpdateLoopId);
   }, [x]);
 
   return (

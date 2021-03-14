@@ -29,12 +29,12 @@ function Pipe({id, pos, rotation, score})
   const styleRoot = {
     position: `fixed`,
     willChange: `transform`,
-    transform: `translate3d(${pos?.x}px, ${pos?.y}px, 0) rotate(${rotation}deg)`,
+    transform: `translate3d(${pos?.x}vh, ${pos?.y}vh, 0) rotate(${rotation}deg)`,
   };
 
   return (
     <div style={styleRoot}>
-      <svg id={id} height="800px" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
+      <svg id={id} height="100vh" version="1.1" viewBox="0 0 70 514.19" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(-65 8.2278)" fill="#999" stroke="#000" strokeLinejoin="round">
           <rect transform="scale(1,-1)" x="70.798" y="-505.16" width="58.404" height="478.4" rx="0" ry="0" imageRendering="auto" strokeWidth="1.5964" style={{mixBlendMode: 'normal'}}/>
           <rect transform="scale(1,-1)" x="65.694" y="-26.078" width="68.612" height="33.612" ry="5.2732" strokeWidth="1.3882" style={{mixBlendMode: 'normal'}}/>
@@ -46,9 +46,9 @@ function Pipe({id, pos, rotation, score})
         style={{
           position: 'fixed',
           willChange: 'transform',
-          transform: 'translate3d(0, -208px, 0px)',
-          height: '220px',
-          width: '10px',
+          transform: 'translate3d(0, -20vh, 0px)',
+          height: '22vh',
+          width: '1vh',
         }}
       />
       }
@@ -66,7 +66,7 @@ function getRandomInt(min, max)
 function getStartPos(index, offset, min, max)
 {
   return Engine.getPos({
-    x: (offset * index) + offset,
+    x: ((offset * index) + offset),
     y: getRandomInt(min, max),
   });
 }
@@ -74,7 +74,7 @@ function getStartPos(index, offset, min, max)
 function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
 {
   const [end, setEnd] = React.useState(false);
-  const [pos, setPos] = React.useState(getStartPos(index, offset, min, max));
+  const [pos, setPos] = React.useState(getStartPos(index, offset + 3.5, min, max));
 
   React.useEffect(() => {
     if (end)
@@ -86,7 +86,7 @@ function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
   React.useEffect(() => {
     function move()
     {
-      if (pos.x > -108.91)
+      if (pos.x > -12.7)
       {
         pos.x += (-speed) * Engine.getTime().getTimeScale();
       }
@@ -125,12 +125,12 @@ function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
 
 export default function Pipes()
 {
-  const offset = 600;
-  const spacing = 975;
+  const offset = 50;
+  const spacing = 120;
   const numberOfPipes = 6;
-  const min = 235;
-  const max = 720;
-  const speed = 4;
+  const min = 30;
+  const max = 90;
+  const speed = 0.4;
 
   let items = [];
   for (let i = 0; i < numberOfPipes; i++)
