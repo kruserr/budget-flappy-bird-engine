@@ -46,9 +46,9 @@ function Pipe({id, pos, rotation, score})
         style={{
           position: 'fixed',
           willChange: 'transform',
-          transform: 'translate3d(0, -20vh, 0px)',
-          height: '22vh',
-          width: '1vh',
+          transform: 'translate3d(0, -30vh, 0px)',
+          height: '40vh',
+          width: '0.1vh',
         }}
       />
       }
