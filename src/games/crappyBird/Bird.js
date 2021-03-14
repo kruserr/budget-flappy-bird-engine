@@ -103,20 +103,12 @@ export default function Bird()
 
     Engine.fixedUpdate(move);
   }, [collider]);
-  
-  let rotation = Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI;
 
-  if (rotation < -40)
+  let rotation;
+  if (Engine.getTime().getTimeScale() != 0 || collide)
   {
-    rotation = -40;
+    rotation = (Math.atan2(physics.getVelocity(), 6) * 180 / Math.PI);
   }
-
-  if (rotation > 40)
-  {
-    rotation = 40;
-  }
-
-  rotation = rotation * Engine.getTime().getTimeScale();
 
   const styleRoot = {
     position: `fixed`,
