@@ -12,7 +12,6 @@ import Pos, { IPos } from '../Pos/Pos';
 
 class Engine
 {
-  root = document.getElementById('root');
   hud: JSX.Element;
   background: JSX.Element;
   objects = new Array<JSX.Element>();
@@ -162,7 +161,7 @@ class Engine
           </div>
         </Data>
       </React.StrictMode>,
-      this.root
+      document.getElementById('root')
     );
   }
 }

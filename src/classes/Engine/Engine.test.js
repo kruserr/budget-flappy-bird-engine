@@ -32,8 +32,6 @@ function Enemy()
 }
 
 test('Engine - Inherit GameObject', () => {
-  render(<div id="root"/>);
-
   Engine.addObject(<Hero />);
 
   Engine.addObject(<Enemy />);
@@ -47,6 +45,7 @@ test('Engine - Inherit GameObject', () => {
   Engine.setHud(<Enemy />);
 
   act(() => {
+    render(<div id="root"/>);
     Engine.start();
   });
 
@@ -67,6 +66,9 @@ test('Engine - Minimal init', () => {
     );
   }
   Engine.addObject(<Hero />);
-
-  Engine.start();
+  
+  act(() => {
+    render(<div id="root"/>);
+    Engine.start();
+  });
 });
