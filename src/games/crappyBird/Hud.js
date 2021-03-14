@@ -5,13 +5,32 @@ import Engine from '../../classes/Engine/Engine';
 
 let persistStart = false;
 
+
 export default function Hud()
 {
-  const elem = React.useRef();
   const [start, setStart] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const [gameOver, setGameOver] = React.useState(false);
   const [lastScoreId, setLastScoreId] = React.useState('');
+  const [restart, setRestart] = React.useState(false);
+
+  React.useEffect(() => {
+    function handlePlayerInput()
+    {
+      if (!start)
+      {
+        setStart(true);
+      }
+      else if (start && restart)
+      {
+        Engine.restart();
+      }
+    }
+
+    document.addEventListener('playerInput', handlePlayerInput);
+
+    return () => document.removeEventListener('playerInput', handlePlayerInput);
+  }, [start, restart]);
 
   React.useEffect(() => {
     function eventHandler(event)
@@ -30,6 +49,7 @@ export default function Hud()
       if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
       {
         setGameOver(true);
+        setRestart(true);
       }
     }
 
@@ -51,9 +71,8 @@ export default function Hud()
 
   return (
     <>
-      <div style={{'width': '100vw', 'height': '100vh'}} onClick={() => setStart(true)}>
+      <div style={{'width': '100vw', 'height': '100vh'}}>
         <div
-          ref={elem}
           style={{
             'color': '#FFF',
             'fontSize': '4vh',
@@ -65,7 +84,7 @@ export default function Hud()
         >
           <h2>{score}</h2>
           <h1 style={{'marginTop': '32vh', 'height': '9.5vh'}}>{gameOver && 'Game Over'}</h1>
-          {!start &&
+          {(!start || gameOver) &&
           <span>
             <span>
               <svg style={{'transform': 'rotate(90deg)', 'marginTop': '22vh'}} width="22.036" height="21.491" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +93,7 @@ export default function Hud()
                 </g>
               </svg>
             </span>
-            <h4 style={{'marginTop': '0px'}}>Touch to Start</h4>
+            <h4 style={{'marginTop': '0px'}}>{gameOver ? 'Touch to Restart' : 'Touch to Start'}</h4>
           </span>
           }
         </div>

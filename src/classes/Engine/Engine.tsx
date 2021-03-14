@@ -82,6 +82,11 @@ class Engine
   {
     this.time.stop();
   }
+
+  restart()
+  {
+    window.location.reload();
+  }
   
   start()
   {

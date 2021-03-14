@@ -30,6 +30,7 @@ function clicked()
 {
   jump = true;
   Engine.playAudio(jumpAudio);
+  document.dispatchEvent(new CustomEvent('playerInput'));
 }
 
 document.addEventListener("mousedown", () => clicked());
