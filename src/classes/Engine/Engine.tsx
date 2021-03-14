@@ -12,13 +12,15 @@ import Pos, { IPos } from '../Pos/Pos';
 
 class Engine
 {
-  hud: JSX.Element;
-  background: JSX.Element;
-  objects = new Array<JSX.Element>();
+  private hud: JSX.Element;
+  private background: JSX.Element;
+  private objects = new Array<JSX.Element>();
 
-  audio = new Map<string, IAudio>();
-  time = new Time();
-  event = new EventSystem();
+  private audio = new Map<string, IAudio>();
+  private time = new Time();
+  private event = new EventSystem();
+
+  private debugId = 'slapIdDebug';
 
   private static instance = new Engine();
 
@@ -104,6 +106,11 @@ class Engine
     return ctx;
   }
 
+  debugWrite(text: string)
+  {
+    document.getElementById(this.debugId).innerHTML = text;
+  }
+
   stop()
   {
     this.time.stop();
@@ -157,6 +164,10 @@ class Engine
           </div>
           {this.objects.map((item, i) => <span key={i} id={`slapId_${i}_0`}>{item}</span>)}
           <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%', top: '0'}}>
+            <div
+              id={this.debugId}
+              style={{color: 'white', fontSize: '14pt', 'textShadow': 'rgb(51 51 51) 0vh 0.1vh'}}
+            />
             {this.hud}
           </div>
         </Data>

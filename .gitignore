@@ -49,6 +49,7 @@ src/index.tsx
 package-lock.json
 yarn.lock
 .~lock*
+dist/*
 
 # !KEEP LAST!
 !*.gitkeep
