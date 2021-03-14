@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Data } from '../Data/Data';
 import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
 import Time from '../Time/Time';
+import '../Input/Input';
 
 
 class Engine

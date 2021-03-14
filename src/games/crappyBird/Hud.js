@@ -3,9 +3,6 @@ import React from 'react';
 import Engine from '../../classes/Engine/Engine';
 
 
-let persistStart = false;
-
-
 export default function Hud()
 {
   const [start, setStart] = React.useState(false);
@@ -63,7 +60,7 @@ export default function Hud()
     {
       Engine.getTime().start();
     }
-    else if (!persistStart)
+    else
     {
       Engine.getTime().stop();
     }

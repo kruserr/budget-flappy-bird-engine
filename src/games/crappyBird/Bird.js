@@ -12,60 +12,14 @@ Engine.addAudio(jumpAudio);
 const collideAudio = '/assets/audio/quack.wav';
 Engine.addAudio(collideAudio);
 
-let jump = false;
-let collide = false;
-let keyDownLock = false;
-let wingUnlocked = true;
-
-function collided()
-{
-  if(collide === false)
-  {
-    Engine.playAudio(collideAudio);
-    collide = true;
-  }
-}
-
-function clicked()
-{
-  jump = true;
-  Engine.playAudio(jumpAudio);
-  document.dispatchEvent(new CustomEvent('playerInput'));
-}
-
-document.addEventListener("mousedown", () => clicked());
-document.addEventListener("touchstart", () => clicked());
-document.addEventListener(
-  "keydown",
-  (event) => {
-    if (event.key !== ' ' || keyDownLock)
-    {
-      return;
-    }
-    
-    keyDownLock = true;
-
-    clicked();
-  }
-);
-document.addEventListener(
-  "keyup",
-  (event) => {
-    if (event.key !== ' ')
-    {
-      return;
-    }
-    
-    keyDownLock = false;
-  }
-);
-
 export default function Bird()
 {
   const element = React.useRef(null);
   const wingEl = React.useRef(null);
   const [context, setContext] = React.useContext(ctx);
-  // const [id, setId] = React.useState('');
+  const [jump, setJump] = React.useState(false);
+  const [collide, setCollide] = React.useState(false);
+  const [wingUnlocked, setWingUnlocked] = React.useState(true);
   const id = 'slapId_0_1';
 
   const [collider, setCollider] = React.useState(
@@ -83,11 +37,14 @@ export default function Bird()
     document.addEventListener('isColliding', (event) => {
       let items = event?.detail?.items;
 
-      let fallId;
-
       if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
       {
-        collided();
+        if(collide === false)
+        {
+          Engine.playAudio(collideAudio);
+          setCollide(true);
+        }
+        
         Engine.stop();
         Engine.stopAudio(jumpAudio);
 
@@ -102,16 +59,28 @@ export default function Bird()
   }, []);
 
   React.useEffect(() => {
+    function handlePlayerInput()
+    {
+      setJump(true);
+      Engine.playAudio(jumpAudio);
+    }
+
+    document.addEventListener('playerInput', handlePlayerInput);
+
+    return () => document.removeEventListener('playerInput', handlePlayerInput);
+  }, []);
+
+  React.useEffect(() => {
     function move()
     {
       if (jump)
       {
         physics.applyJump(collider);
-        jump = false;
+        setJump(false);
 
         if (wingUnlocked)
         {
-          wingUnlocked = false;
+          setWingUnlocked(false);
 
           wingEl.current.classList.add('wingDown');
           new Promise(res => setTimeout(res, 100))
@@ -119,7 +88,7 @@ export default function Bird()
               wingEl.current.classList.remove('wingDown');
               new Promise(res => setTimeout(res, 100))
                 .then(() => {
-                  wingUnlocked = true;
+                  setWingUnlocked(true);
                 });
             });
         }
