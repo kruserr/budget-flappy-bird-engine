@@ -110,20 +110,20 @@ export default function Background()
         .backgroundImageContainer
         {
           height: 100%;
-          width: ${2*294}vh;
+          width: ${2*238}vh;
           background: #ffb380;
         }
 
         .backgroundImage
         {
           height: 100%;
-          width: 294vh;
+          width: 238vh;
           will-change: transform;
         }
       `}</style>
       <div className="backgroundImageContainer">
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, -15vh, -2px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, -15vh, -3px)`}} />
       </div>
     </>
   );
