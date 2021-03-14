@@ -23,7 +23,7 @@ export default function Bird()
 
   const [collider, setCollider] = React.useState(
     Engine.getPos({
-      x: 20,
+      x: 10,
       y: 48,
     })
   );
@@ -113,7 +113,7 @@ export default function Bird()
     display: 'flex',
     position: 'fixed',
     willChange: 'transform',
-    transform: `translate3d(${collider.x}vw, ${collider.y}vh, 0)`,
+    transform: `translate3d(${collider.x}vh, ${collider.y}vh, 0)`,
   };
 
   return (
@@ -126,7 +126,7 @@ export default function Bird()
 
         .fall
         {
-          transform: translate3d(${collider.x}px, 150vh, 0px) !important;
+          transform: translate3d(${collider.x}vw, 150vh, 0px) !important;
           transition: transform 900ms linear;
         }
       `}</style>
