@@ -305,7 +305,7 @@ function Ground({id})
           height: 100%;
           width: ${2*294}vh;
           background: #f4d7d7;
-          transform: translate3d(0px, 70.64vh, -1px);
+          transform: translate3d(184.65vh, 70.64vh, -1px);
         }
 
         .groundImage
