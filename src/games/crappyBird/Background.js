@@ -88,9 +88,9 @@ export default function Background()
     {
       let change = (x - (speed * Engine.getTime().getTimeScale()));
 
-      if (x < -238)
+      if (x < -200)
       {
-        offset = offset - 238;
+        offset = offset - 200;
         change = 0;
       }
 
