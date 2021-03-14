@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Data } from '../Data/Data';
+import ctx, { Data } from '../Data/Data';
 import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
 import EventSystem from '../EventSystem/EventSystem';
 import Time from '../Time/Time';
 import Input from '../Input/Input';
+import Physics from '../Physics/Physics';
+import Pos, { IPos } from '../Pos/Pos';
 
 
 class Engine
@@ -84,6 +86,23 @@ class Engine
   getTime()
   {
     return this.time;
+  }
+
+  getPos(): void;
+  getPos(obj: IPos): void;
+  getPos(obj?: any)
+  {
+    return new Pos(obj);
+  }
+
+  getPhysics(jumpSpeed: number, gravity: number)
+  {
+    return new Physics(jumpSpeed, gravity);
+  }
+
+  getContext()
+  {
+    return ctx;
   }
 
   stop()

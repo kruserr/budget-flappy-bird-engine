@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Engine from '../../classes/Engine/Engine';
-import ctx from '../../classes/Data/Data';
 
 
 function BackgroundImage({style, className})
@@ -80,7 +78,7 @@ function BackgroundImage({style, className})
 
 function Ground({id})
 {
-  const [context, setContext] = React.useContext(ctx);
+  const [context, setContext] = React.useContext(Engine.getContext());
 
   React.useEffect(() => {
     context[id] = {

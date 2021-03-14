@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Engine from '../../classes/Engine/Engine';
 
 import Bird from './Bird';

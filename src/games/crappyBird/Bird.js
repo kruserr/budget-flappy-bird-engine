@@ -1,9 +1,5 @@
 import React from 'react';
-
 import Engine from '../../classes/Engine/Engine';
-import ctx from '../../classes/Data/Data';
-import Pos from '../../classes/Pos/Pos';
-import Physics from '../../classes/Physics/Physics';
 
 
 const jumpAudio = '/assets/audio/jump.wav';
@@ -16,21 +12,21 @@ export default function Bird()
 {
   const element = React.useRef(null);
   const wingEl = React.useRef(null);
-  const [context, setContext] = React.useContext(ctx);
+  const [context, setContext] = React.useContext(Engine.getContext());
   const [jump, setJump] = React.useState(false);
   const [collide, setCollide] = React.useState(false);
   const [wingUnlocked, setWingUnlocked] = React.useState(true);
   const id = 'slapId_0_1';
 
   const [collider, setCollider] = React.useState(
-    new Pos({
+    Engine.getPos({
       x: 100,
       y: window.innerHeight / 2,
     })
   );
   
   const physics = React.useMemo(() => {
-    return new Physics(-10, 1);
+    return Engine.getPhysics(-10, 1);
   }, []);
 
   React.useEffect(() => {
@@ -98,7 +94,7 @@ export default function Bird()
         physics.applyGravity(collider);
       }
 
-      setCollider(new Pos({...collider}));
+      setCollider(Engine.getPos({...collider}));
     };
 
     Engine.fixedUpdate(move);

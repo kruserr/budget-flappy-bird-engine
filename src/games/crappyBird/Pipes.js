@@ -1,13 +1,10 @@
 import React from 'react';
-
 import Engine from '../../classes/Engine/Engine';
-import ctx from '../../classes/Data/Data';
-import Pos from '../../classes/Pos/Pos';
 
 
 function Pipe({id, pos, rotation, score})
 {
-  const [context, setContext] = React.useContext(ctx);
+  const [context, setContext] = React.useContext(Engine.getContext());
 
   React.useEffect(() => {
     context[id] = {
@@ -68,7 +65,7 @@ function getRandomInt(min, max)
 
 function getStartPos(index, offset, min, max)
 {
-  return new Pos({
+  return Engine.getPos({
     x: (offset * index) + offset,
     y: getRandomInt(min, max),
   });
@@ -98,7 +95,7 @@ function PipeSet({index, offset, spacing, numberOfPipes, min, max, speed})
         setEnd(!end);
       }
 
-      setPos(new Pos({...pos}));
+      setPos(Engine.getPos({...pos}));
     };
 
     Engine.fixedUpdate(move);
