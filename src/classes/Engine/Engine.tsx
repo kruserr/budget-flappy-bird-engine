@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Data } from '../Data/Data';
+import ctx, { Data } from '../Data/Data';
 import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
+import EventSystem from '../EventSystem/EventSystem';
+import Time from '../Time/Time';
+import Input from '../Input/Input';
+import Physics from '../Physics/Physics';
+import Pos, { IPos } from '../Pos/Pos';
 
 
 class Engine
 {
-  hud: JSX.Element;
-  background: JSX.Element;
-  objects = new Array<JSX.Element>();
+  private hud: JSX.Element;
+  private background: JSX.Element;
+  private objects = new Array<JSX.Element>();
 
-  audio = new Map<string, IAudio>();
+  private audio = new Map<string, IAudio>();
+  private time = new Time();
+  private event = new EventSystem();
 
-  isRunning = false;
+  private debugId = 'slapIdDebug';
 
   private static instance = new Engine();
 
@@ -41,10 +48,12 @@ class Engine
 
   fixedUpdate(lambda: () => void)
   {
-    if (this.isRunning)
-    {
-      requestAnimationFrame(lambda);
-    }
+    return requestAnimationFrame(lambda);
+  }
+
+  cancelFixedUpdate(id: number)
+  {
+    cancelAnimationFrame(id);
   }
 
   addAudio(fileName: string)
@@ -59,7 +68,7 @@ class Engine
 
   playAudio(fileName: string)
   {
-    if (this.isRunning)
+    if (this.time.getTimeScale() !== 0)
     {
       this.audio.get(fileName)?.play();
     }
@@ -70,26 +79,98 @@ class Engine
     this.audio.get(fileName)?.stop();
   }
 
+  getEvent()
+  {
+    return this.event;
+  }
+
+  getTime()
+  {
+    return this.time;
+  }
+
+  getPos(): void;
+  getPos(obj: IPos): void;
+  getPos(obj?: any)
+  {
+    return new Pos(obj);
+  }
+
+  getPhysics(jumpSpeed: number, gravity: number)
+  {
+    return new Physics(jumpSpeed, gravity);
+  }
+
+  getContext()
+  {
+    return ctx;
+  }
+
+  debugWrite(text: string)
+  {
+    document.getElementById(this.debugId).innerHTML = text;
+  }
+
   stop()
   {
-    this.isRunning = false;
+    this.time.stop();
+  }
+
+  restart()
+  {
+    window.location.reload();
   }
   
   start()
   {
-    this.isRunning = true;
-
     ReactDOM.render(
       <React.StrictMode>
-        <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%'}}>
-          {this.background}
-        </div>
+        <style>{`
+          *
+          {
+            box-sizing: border-box;
+          }
+
+          html
+          {
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+          }
+          
+          body
+          {
+            margin: 0px;
+            max-height: 100vh;
+            max-width: 100vw;
+            overflow: hidden;
+
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+              Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        `}</style>
         <Data>
+          <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%', top: '0'}}>
+            {this.background}
+          </div>
           {this.objects.map((item, i) => <span key={i} id={`slapId_${i}_0`}>{item}</span>)}
+          <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%', top: '0'}}>
+            <div
+              id={this.debugId}
+              style={{color: 'white', fontSize: '14pt', 'textShadow': 'rgb(51 51 51) 0vh 0.1vh'}}
+            />
+            {this.hud}
+          </div>
         </Data>
-        <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%'}}>
-          {this.hud}
-        </div>
       </React.StrictMode>,
       document.getElementById('root')
     );
@@ -97,3 +178,4 @@ class Engine
 }
 
 export default Engine.getInstance();
+Input();

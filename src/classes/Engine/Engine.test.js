@@ -32,8 +32,6 @@ function Enemy()
 }
 
 test('Engine - Inherit GameObject', () => {
-  render(<div id="root"/>);
-
   Engine.addObject(<Hero />);
 
   Engine.addObject(<Enemy />);
@@ -47,6 +45,7 @@ test('Engine - Inherit GameObject', () => {
   Engine.setHud(<Enemy />);
 
   act(() => {
+    render(<div id="root"/>);
     Engine.start();
   });
 
@@ -55,4 +54,21 @@ test('Engine - Inherit GameObject', () => {
   Engine.stop();
 
   Engine.fixedUpdate(() => {});
+});
+
+test('Engine - Minimal init', () => {
+  function Hero()
+  {
+    return (
+      <>
+        <h1 style={{'color': 'green'}}>Hero</h1>
+      </>
+    );
+  }
+  Engine.addObject(<Hero />);
+  
+  act(() => {
+    render(<div id="root"/>);
+    Engine.start();
+  });
 });

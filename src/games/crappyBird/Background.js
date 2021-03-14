@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Engine from '../../classes/Engine/Engine';
 
 
@@ -72,7 +71,7 @@ function BackgroundImage({style, className})
           <ellipse transform="matrix(.99954 .03025 -.049695 .99876 0 0)" cx="38.949" cy="54.695" rx=".21209" ry=".1638" strokeWidth=".06269"/>
           </g>
         </g>
-        </svg>
+      </svg>
     </>
   );
 }
@@ -81,11 +80,13 @@ export default function Background()
 {
   const [x, setX] = React.useState(0);
   let offset = 0;
-  const speed = 0.25;
+  const speed = 0.1;
+  let fixedUpdateLoopId;
 
   React.useEffect(() => {
-    Engine.fixedUpdate(() => {
-      let change = x - speed;
+    function fixedUpdateLoop()
+    {
+      let change = (x - (speed * Engine.getTime().getTimeScale()));
 
       if (x < -294)
       {
@@ -93,8 +94,14 @@ export default function Background()
         change = 0;
       }
 
-      setX(change)
-    });
+      setX(change);
+
+      fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+    }
+
+    fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+
+    return () => Engine.cancelFixedUpdate(fixedUpdateLoopId);
   }, [x]);
 
   return (
@@ -105,6 +112,7 @@ export default function Background()
           height: 100%;
           width: ${2*294}vh;
           background: #ffb380;
+          filter: blur(0.15vh);
         }
 
         .backgroundImage
@@ -115,8 +123,8 @@ export default function Background()
         }
       `}</style>
       <div className="backgroundImageContainer">
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -2px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} />
       </div>
     </>
   );
