@@ -156,7 +156,7 @@ function GroundImage({style, className})
             <rect x="62.909" y="38.019" width="5.1449" height="8.3522" rx="1.2027" ry="3.8754" fill="#c8beb7"/>
           </g>
           <rect x="59.267" y="52.986" width="13.096" height="6.1472" fill="#ececec" fillRule="evenodd" stroke="#000" strokeLinejoin="round" strokeWidth=".165"/>
-          <text transform="scale(.93751 1.0667)" x="63.47168" y="54.082645" fill="#000000" fontFamily="sans-serif" fontSize="4.304px" strokeWidth=".1076"><tspan x="63.47168" y="54.082645" strokeWidth=".1076">Lotion</tspan></text>
+          <text transform="scale(.93751 1.0667)" x="63.47168" y="54.082645" fill="#000000" fontFamily="sans-serif" fontSize="4.304px" strokeWidth=".1076"><tspan x="63.47168" y="54.082645" strokeWidth=".1076"></tspan></text>
           </g>
           <g transform="matrix(0 -.48768 .49496 0 76.673 154.89)">
           <g transform="translate(-10.958 10.958)" fillRule="evenodd" stroke="#000" strokeLinejoin="round" strokeWidth=".347">
@@ -179,7 +179,7 @@ function GroundImage({style, className})
             </g>
             <path transform="scale(.26458)" d="m231.45 80.044c-0.0478-0.16149-0.40067-0.85394-0.78423-1.5388l-0.69739-1.2452 0.57245-1.2171c0.31485-0.6694 0.60125-1.3023 0.63646-1.4065 0.0352-0.10417 0.0705 0.0095 0.0785 0.25254 8e-3 0.24307 0.0936 1.5493 0.19029 2.9027 0.0967 1.3534 0.15671 2.4799 0.13332 2.5033-0.0234 0.02339-0.0816-0.0896-0.12936-0.2511z" fill="#ff8080" fillRule="evenodd"/>
           </g>
-          <text transform="scale(1.038 .96343)" x="126.74339" y="66.334862" fill="#ffd5d5" fontFamily="sans-serif" fontSize="7.3752px" strokeWidth=".18438"><tspan x="126.74339" y="66.334862" fill="#ffd5d5" strokeWidth=".18438">Soap</tspan></text>
+          <text transform="scale(1.038 .96343)" x="126.74339" y="66.334862" fill="#ffd5d5" fontFamily="sans-serif" fontSize="7.3752px" strokeWidth=".18438"><tspan x="126.74339" y="66.334862" fill="#ffd5d5" strokeWidth=".18438"></tspan></text>
           <g fill="#d35f5f" fillRule="evenodd">
             <path transform="matrix(.26458 0 0 .26458 0 33.928)" d="m527.76 149.43c-21.892-0.7904-41.259-7.5836-49.556-17.383-4.0397-4.7706-5.2578-10.758-3.1618-15.541l0.58324-1.3308 1.0836 1.2943c2.5528 3.049 7.4078 6.4601 12.985 9.123 8.7378 4.172 18.663 6.7066 30.869 7.883 4.2327 0.40796 16.728 0.40796 20.961 0 12.181-1.1741 22.266-3.7466 30.869-7.8745 6.6726-3.2017 11.845-7.1404 14.503-11.044 0.38128-0.56003 0.40149-0.54032 1.1652 1.1364 1.3342 2.9291 1.724 5.2347 1.3163 7.7865-0.60858 3.8095-2.5213 7.152-6.0214 10.522-9 8.6661-26.023 14.321-46.172 15.337-2.7519 0.13878-5.5717 0.23131-6.2662 0.20564-0.69448-0.0257-2.115-0.0775-3.1567-0.11507z"/>
             <path transform="matrix(.26458 0 0 .26458 0 33.928)" d="m473.38 114c-0.0359-1.0524-0.0497-1.9925-0.0307-2.089 0.0247-0.12558 0.15431 0.0404 0.45558 0.58343 0.23156 0.41741 0.48444 0.85937 0.56196 0.98214 0.13535 0.21438 0.11989 0.26706-0.39035 1.3301l-0.53129 1.1068z"/>
@@ -196,7 +196,7 @@ function GroundImage({style, className})
             <rect x="62.909" y="38.019" width="5.1449" height="8.3522" rx="1.2027" ry="3.8754" fill="#c8beb7"/>
           </g>
           <rect x="59.267" y="52.986" width="13.096" height="6.1472" fill="#ececec" fillRule="evenodd" stroke="#000" strokeLinejoin="round" strokeWidth=".165"/>
-          <text transform="scale(.93751 1.0667)" x="63.47168" y="54.082645" fill="#000000" fontFamily="sans-serif" fontSize="4.304px" strokeWidth=".1076"><tspan x="63.47168" y="54.082645" strokeWidth=".1076">Lotion</tspan></text>
+          <text transform="scale(.93751 1.0667)" x="63.47168" y="54.082645" fill="#000000" fontFamily="sans-serif" fontSize="4.304px" strokeWidth=".1076"><tspan x="63.47168" y="54.082645" strokeWidth=".1076"></tspan></text>
           </g>
           <g transform="matrix(.39514 0 0 .44113 122.96 12.634)">
           <g transform="translate(94.77 43.261)">
@@ -209,7 +209,7 @@ function GroundImage({style, className})
             </g>
             <path transform="scale(.26458)" d="m231.45 80.044c-0.0478-0.16149-0.40067-0.85394-0.78423-1.5388l-0.69739-1.2452 0.57245-1.2171c0.31485-0.6694 0.60125-1.3023 0.63646-1.4065 0.0352-0.10417 0.0705 0.0095 0.0785 0.25254 8e-3 0.24307 0.0936 1.5493 0.19029 2.9027 0.0967 1.3534 0.15671 2.4799 0.13332 2.5033-0.0234 0.02339-0.0816-0.0896-0.12936-0.2511z" fill="#ff8080" fillRule="evenodd"/>
           </g>
-          <text transform="scale(1.038 .96343)" x="126.74339" y="66.334862" fill="#ffd5d5" fontFamily="sans-serif" fontSize="7.3752px" strokeWidth=".18438"><tspan x="126.74339" y="66.334862" fill="#ffd5d5" strokeWidth=".18438">Soap</tspan></text>
+          <text transform="scale(1.038 .96343)" x="126.74339" y="66.334862" fill="#ffd5d5" fontFamily="sans-serif" fontSize="7.3752px" strokeWidth=".18438"><tspan x="126.74339" y="66.334862" fill="#ffd5d5" strokeWidth=".18438"></tspan></text>
           <g fill="#d35f5f" fillRule="evenodd">
             <path transform="matrix(.26458 0 0 .26458 0 33.928)" d="m527.76 149.43c-21.892-0.7904-41.259-7.5836-49.556-17.383-4.0397-4.7706-5.2578-10.758-3.1618-15.541l0.58324-1.3308 1.0836 1.2943c2.5528 3.049 7.4078 6.4601 12.985 9.123 8.7378 4.172 18.663 6.7066 30.869 7.883 4.2327 0.40796 16.728 0.40796 20.961 0 12.181-1.1741 22.266-3.7466 30.869-7.8745 6.6726-3.2017 11.845-7.1404 14.503-11.044 0.38128-0.56003 0.40149-0.54032 1.1652 1.1364 1.3342 2.9291 1.724 5.2347 1.3163 7.7865-0.60858 3.8095-2.5213 7.152-6.0214 10.522-9 8.6661-26.023 14.321-46.172 15.337-2.7519 0.13878-5.5717 0.23131-6.2662 0.20564-0.69448-0.0257-2.115-0.0775-3.1567-0.11507z"/>
             <path transform="matrix(.26458 0 0 .26458 0 33.928)" d="m473.38 114c-0.0359-1.0524-0.0497-1.9925-0.0307-2.089 0.0247-0.12558 0.15431 0.0404 0.45558 0.58343 0.23156 0.41741 0.48444 0.85937 0.56196 0.98214 0.13535 0.21438 0.11989 0.26706-0.39035 1.3301l-0.53129 1.1068z"/>
@@ -265,48 +265,55 @@ function Ground({id})
     setContext({...context});
   }, []);
 
-  React.useEffect(() => {
-    function fixedUpdateLoop()
-    {
-      let change = (x - (speed * Engine.getTime().getTimeScale()));
+  // React.useEffect(() => {
+  //   function fixedUpdateLoop()
+  //   {
+  //     let change = (x - (speed * Engine.getTime().getTimeScale()));
 
-      if (x < -294)
-      {
-        offset = offset - 294;
-        change = 0;
-      }
+  //     if (x < -200)
+  //     {
+  //       offset = offset - 200;
+  //       change = 0;
+  //     }
 
-      setX(change);
+  //     setX(change);
 
-      fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
-    }
+  //     fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+  //   }
 
-    fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
+  //   fixedUpdateLoopId = Engine.fixedUpdate(fixedUpdateLoop);
 
-    return () => Engine.cancelFixedUpdate(fixedUpdateLoopId);
-  }, [x]);
+  //   return () => Engine.cancelFixedUpdate(fixedUpdateLoopId);
+  // }, [x]);
 
   return(
     <>
       <style jsx>{`
+        // .groundImageContainer
+        // {
+        //   height: 100%;
+        //   width: ${2*200}vh;
+        //   background: #f4d7d7;
+        //   transform: translate3d(0vh, 79.66vh, -1px);
+        // }
+
+        // .groundImage
+        // {
+        //   height: 100%;
+        //   width: 200vh;
+        //   will-change: transform;
+        // }
+
         .groundImageContainer
         {
-          height: 100%;
-          width: ${2*294}vh;
-          background: #f4d7d7;
-          transform: translate3d(184.65vh, 70.64vh, -1px);
-        }
-
-        .groundImage
-        {
-          height: 100%;
-          width: 294vh;
-          will-change: transform;
+          height: 1vh;
+          width: 100vh;
+          transform: translate3d(0vh, 100vh, -1px);
         }
       `}</style>
       <div id={id} className="groundImageContainer">
-        <GroundImage className="groundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
-        <GroundImage className="groundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} />
+        {/* <GroundImage className="groundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
+        <GroundImage className="groundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} /> */}
       </div>
     </>
   );
@@ -318,7 +325,7 @@ export default function Pipes()
   const spacing = 120;
   const numberOfPipes = 6;
   const min = 30;
-  const max = 60;
+  const max = 90;
   const speed = 0.4;
 
   let items = [];

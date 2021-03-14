@@ -24,7 +24,7 @@ export default function Bird()
   const [collider, setCollider] = React.useState(
     Engine.getPos({
       x: 10,
-      y: 34,
+      y: 48,
     })
   );
   

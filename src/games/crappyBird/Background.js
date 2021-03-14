@@ -88,9 +88,9 @@ export default function Background()
     {
       let change = (x - (speed * Engine.getTime().getTimeScale()));
 
-      if (x < -200)
+      if (x < -294)
       {
-        offset = offset - 200;
+        offset = offset - 294;
         change = 0;
       }
 
@@ -110,21 +110,21 @@ export default function Background()
         .backgroundImageContainer
         {
           height: 100%;
-          width: ${2*200}vh;
+          width: ${2*294}vh;
           background: #ffb380;
-          filter: blur(1.5px);
+          filter: blur(0.15vh);
         }
 
         .backgroundImage
         {
           height: 100%;
-          width: 200vh;
+          width: 294vh;
           will-change: transform;
         }
       `}</style>
       <div className="backgroundImageContainer">
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, -10vh, -2px)`}} />
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, -10vh, -3px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} />
       </div>
     </>
   );
