@@ -121,7 +121,7 @@ export default function Bird()
       <style jsx>{`
         .wingDown
         {
-          transform: translate3d(-6px, -24px, 0);
+          transform: translate3d(-0.6vh, -2.4vh, 0);
         }
 
         .fall
