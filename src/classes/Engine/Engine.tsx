@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { Data } from '../Data/Data';
 import AudioSystem, {IAudio} from '../AudioSystem/AudioSystem';
+import EventSystem from '../EventSystem/EventSystem';
 import Time from '../Time/Time';
-import '../Input/Input';
+import Input from '../Input/Input';
 
 
 class Engine
@@ -16,6 +17,7 @@ class Engine
 
   audio = new Map<string, IAudio>();
   time = new Time();
+  event = new EventSystem();
 
   private static instance = new Engine();
 
@@ -72,6 +74,11 @@ class Engine
   stopAudio(fileName: string)
   {
     this.audio.get(fileName)?.stop();
+  }
+
+  getEvent()
+  {
+    return this.event;
   }
 
   getTime()
@@ -142,3 +149,4 @@ class Engine
 }
 
 export default Engine.getInstance();
+Input();

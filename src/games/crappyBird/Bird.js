@@ -34,7 +34,7 @@ export default function Bird()
   }, []);
 
   React.useEffect(() => {
-    document.addEventListener('isColliding', (event) => {
+    Engine.getEvent().listen('isColliding', (event) => {
       let items = event?.detail?.items;
 
       if (items[0]?.tag == 'player' && items[1]?.tag == 'obstacle')
@@ -65,9 +65,9 @@ export default function Bird()
       Engine.playAudio(jumpAudio);
     }
 
-    document.addEventListener('playerInput', handlePlayerInput);
+    Engine.getEvent().listen('playerInput', handlePlayerInput);
 
-    return () => document.removeEventListener('playerInput', handlePlayerInput);
+    return () => Engine.getEvent().remove('playerInput', handlePlayerInput);
   }, []);
 
   React.useEffect(() => {

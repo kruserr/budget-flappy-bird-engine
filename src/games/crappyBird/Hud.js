@@ -24,9 +24,9 @@ export default function Hud()
       }
     }
 
-    document.addEventListener('playerInput', handlePlayerInput);
+    Engine.getEvent().listen('playerInput', handlePlayerInput);
 
-    return () => document.removeEventListener('playerInput', handlePlayerInput);
+    return () => Engine.getEvent().remove('playerInput', handlePlayerInput);
   }, [start, restart]);
 
   React.useEffect(() => {
@@ -50,9 +50,9 @@ export default function Hud()
       }
     }
 
-    document.addEventListener('isColliding', eventHandler);
+    Engine.getEvent().listen('isColliding', eventHandler);
 
-    return () => document.removeEventListener('isColliding', eventHandler);
+    return () => Engine.getEvent().remove('isColliding', eventHandler);
   }, [lastScoreId]);
 
   React.useEffect(() => {

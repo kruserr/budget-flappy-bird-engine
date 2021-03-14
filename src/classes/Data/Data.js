@@ -39,7 +39,7 @@ export function Data(props)
               }
             });
 
-            document.dispatchEvent(isColliding);
+            Engine.getEvent().dispatch(isColliding);
           }
         }
       }
