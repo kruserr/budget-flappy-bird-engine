@@ -152,11 +152,11 @@ class Engine
           }
         `}</style>
         <Data>
-          <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%'}}>
+          <div style={{zIndex: -10000, position: 'fixed', width: '100%', height: '100%', top: '0'}}>
             {this.background}
           </div>
           {this.objects.map((item, i) => <span key={i} id={`slapId_${i}_0`}>{item}</span>)}
-          <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%'}}>
+          <div style={{zIndex: 10000, position: 'fixed', width: '100%', height: '100%', top: '0'}}>
             {this.hud}
           </div>
         </Data>

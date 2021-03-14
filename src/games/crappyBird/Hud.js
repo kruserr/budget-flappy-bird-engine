@@ -75,15 +75,15 @@ export default function Hud()
             'textShadow': '0vh 0.4vh #333',
             'fontWeight': '600',
             'textAlign': 'center',
-            'marginTop': '5vh',
+            'marginTop': '5.25vh',
           }}
         >
           <h2>{score}</h2>
-          <h1 style={{'marginTop': '32vh', 'height': '9.5vh'}}>{gameOver && 'Game Over'}</h1>
+          <h1 style={{'marginTop': '17vh', 'height': '9.5vh'}}>{gameOver && 'Game Over'}</h1>
           {(!start || gameOver) &&
           <span>
             <span>
-              <svg style={{'transform': 'rotate(90deg)', 'marginTop': '22vh'}} height="4.25vh" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">
+              <svg style={{'transform': 'rotate(90deg)', 'marginTop': '10vh'}} height="4.25vh" version="1.1" viewBox="0 0 5.8304 5.6861" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(-81.253 -98.706)">
                   <path d="m84.593 103.95-0.28127 0.28128c-0.11909 0.11907-0.31168 0.11907-0.42952 0l-2.463-2.4618c-0.11909-0.11905-0.11909-0.31171 0-0.42949l2.463-2.4631c0.1191-0.11909 0.31168-0.11909 0.42952 0l0.28127 0.28127c0.12036 0.12037 0.11784 0.31675-0.0051 0.43458l-1.5267 1.4545h3.6413c0.16851 0 0.30408 0.13551 0.30408 0.30408v0.40545c0 0.16852-0.13557 0.30408-0.30408 0.30408h-3.6413l1.5267 1.4545c0.12417 0.11779 0.12669 0.3142 0.0051 0.43456z" fill="#fff" stroke="#000" strokeWidth=".15415"/>
                 </g>

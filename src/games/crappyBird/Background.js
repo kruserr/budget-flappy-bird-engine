@@ -76,24 +76,6 @@ function BackgroundImage({style, className})
   );
 }
 
-function Ground({id})
-{
-  const [context, setContext] = React.useContext(Engine.getContext());
-
-  React.useEffect(() => {
-    context[id] = {
-      'tag': 'obstacle'
-    };
-    setContext({...context});
-  }, []);
-
-  return(
-    <>
-      <div id={id} style={{'width': '100vw', 'height': '1vh'}} />
-    </>
-  );
-}
-
 export default function Background()
 {
   const [x, setX] = React.useState(0);
@@ -140,9 +122,8 @@ export default function Background()
         }
       `}</style>
       <div className="backgroundImageContainer">
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
-        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -2px)`}} />
-        <Ground id={'slapId_background_0'} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -2px)`}} />
+        <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -3px)`}} />
       </div>
     </>
   );
