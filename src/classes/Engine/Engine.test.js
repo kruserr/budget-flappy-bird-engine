@@ -56,3 +56,17 @@ test('Engine - Inherit GameObject', () => {
 
   Engine.fixedUpdate(() => {});
 });
+
+test('Engine - Minimal init', () => {
+  function Hero()
+  {
+    return (
+      <>
+        <h1 style={{'color': 'green'}}>Hero</h1>
+      </>
+    );
+  }
+  Engine.addObject(<Hero />);
+
+  Engine.start();
+});
