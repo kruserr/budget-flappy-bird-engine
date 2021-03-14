@@ -80,7 +80,7 @@ export default function Background()
 {
   const [x, setX] = React.useState(0);
   let offset = 0;
-  const speed = 0.25;
+  const speed = 0.1;
   let fixedUpdateLoopId;
 
   React.useEffect(() => {
@@ -88,9 +88,9 @@ export default function Background()
     {
       let change = (x - (speed * Engine.getTime().getTimeScale()));
 
-      if (x < -294)
+      if (x < -238)
       {
-        offset = offset - 294;
+        offset = offset - 238;
         change = 0;
       }
 
