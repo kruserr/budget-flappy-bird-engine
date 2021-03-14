@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Engine from '../../classes/Engine/Engine';
+import ctx from '../../classes/Data/Data';
 
 
 function BackgroundImage({style, className})
@@ -72,7 +73,25 @@ function BackgroundImage({style, className})
           <ellipse transform="matrix(.99954 .03025 -.049695 .99876 0 0)" cx="38.949" cy="54.695" rx=".21209" ry=".1638" strokeWidth=".06269"/>
           </g>
         </g>
-        </svg>
+      </svg>
+    </>
+  );
+}
+
+function Ground({id})
+{
+  const [context, setContext] = React.useContext(ctx);
+
+  React.useEffect(() => {
+    context[id] = {
+      'tag': 'obstacle'
+    };
+    setContext({...context});
+  }, []);
+
+  return(
+    <>
+      <div id={id} style={{'width': '100vw', 'height': '1vh'}} />
     </>
   );
 }
@@ -117,6 +136,7 @@ export default function Background()
       <div className="backgroundImageContainer">
         <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x}vh, 0, -1px)`}} />
         <BackgroundImage className="backgroundImage" style={{transform: `translate3d(${offset + x+(speed*2)}vh, 0, -2px)`}} />
+        <Ground id={'slapId_background_0'} />
       </div>
     </>
   );
