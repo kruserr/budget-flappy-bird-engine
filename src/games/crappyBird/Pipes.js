@@ -288,17 +288,6 @@ function Ground({id})
 
   return(
     <>
-      {/* <style jsx>{`
-        .ground
-        {
-          height: 100%;
-          width: 294vh;
-          transform: translate3d(0px, 70.64vh, -1px);
-        }
-      `}</style>
-      <div id={id}>
-        <GroundImage className="ground" />
-      </div> */}
       <style jsx>{`
         .groundImageContainer
         {
