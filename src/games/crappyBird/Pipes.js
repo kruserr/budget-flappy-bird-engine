@@ -321,12 +321,12 @@ function Ground({id})
 
 export default function Pipes()
 {
-  const offset = 50;
-  const spacing = 120;
+  const offset = 45;
+  const spacing = 122;
   const numberOfPipes = 6;
-  const min = 30;
-  const max = 90;
-  const speed = 0.4;
+  const min = 29;
+  const max = 92;
+  const speed = 0.34;
 
   let items = [];
   for (let i = 0; i < numberOfPipes; i++)
