@@ -1,0 +1,127 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640px" height="221px" viewBox="-0.5 -0.5 640 221" content="&lt;mxfile host=&quot;a195135b-b3b3-458e-9686-3f0132612f79&quot; modified=&quot;2021-03-15T13:27:38.670Z&quot; agent=&quot;5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36&quot; etag=&quot;s0yTjiKVHdA4jj8Ank2E&quot; version=&quot;14.2.4&quot; type=&quot;embed&quot;&gt;&lt;diagram id=&quot;kgpKYQtTHZ0yAKxKKP6v&quot; name=&quot;Page-1&quot;&gt;7ZhdU6MwFIZ/TS/tUCgULmu17s7q6OjO9DrCEaKBsCG0ZX/9HkqAQtjV9Ws6U3vhhJdwSM6T9wQzshbx9kKQNLriAbCRaQTbkXU2Mk1vNsG/pVBUgjtRQihoUEl7wh39DUo0lJrTALJOR8k5kzTtij5PEvBlRyNC8E232wNn3bemJARNuPMJ09UVDWSkZmHOWv0b0DCq3zxxvOpOTOrOaiZZRAK+2ZOs85G1EJzLqhVvF8DK3NV5qZ5b/uVuMzABiXzJA6tV9mtu0Ojxqric/SiyBQmTE3NahVkTlqsZM85TNWJZ1GnAwadlM4/ZUpAYm6ebiEq4S4lf6huEj1okY4ZXE2zqw1MjXoOQsN2T1HAvgMcgRYFd6ru2yqVaOxNLpXLTkrAdpUX7FGwlEkU/bGK3CcKGytFwvqwkP11uhecXl0aaXK9+muTiZKKl63uS5vJf+bqkD8BoUqYsBUFxHCDwDlPyTaud4iKWBDWhcuhzxkia0ftdWAMVAX4uMrqGW8gqr+xUnicBBOqqWWi7Cyn4U7N03wvMtAvG1bm4A1gaK7wFy+AyrqvFHpfzdTm/4+JiHhwX3S/zPKD8yLhYB8fF1LjQwTpWzpHibjhnNExQuudS8hizAkkwL7fXUmPcf3o+j5kkQtbPcHxzrS0pe3bTgKCzTeuZFsCIRM7dD4CBvKlHbzgty0NT0dzeVjPzxp5jtL9pN2LGc+GDCrK/6fbimv24bg8pJiAEqQXaUW2m9wbQlgb6+v4RP5SyI7Pg9HkLzrxPtaD+5ZUyUo6YDFbIY3Fi3zGmYYzrcvW/7rP0WJ/rPltjfBMVGfWPzX32wbnP0cjEJKFpjmsXUOe7IvllwqIB8WoTTvVYn2vCmYb6FnGhZ47Lg87BedDVwPgRoHfK0xzGaEZ58uXA2jVTY2xYXvtzXudGW4/7UW4cPEDRv0d3KX855yFqQ+zLbuo40X2Dvz6as9f7/6CP46VctbOyj+M6fJCoV1mhquyxb6baBmh7Y9d9HWanH8t5L8x42Z5FV93bA33r/A8=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 70 50 L 130 50 L 130 65 L 120 80 L 70 80 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 130 50 L 630 50 L 630 200 L 70 200 L 70 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: 71px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                loop
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="100" y="69" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    loop
+                </text>
+            </switch>
+        </g>
+        <rect x="60" y="0" width="80" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 100 40 L 100 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="99.5" y="24.5">
+                Input
+            </text>
+        </g>
+        <rect x="160" y="0" width="80" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 200 40 L 200 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="199.5" y="24.5">
+                Event
+            </text>
+        </g>
+        <rect x="260" y="0" width="80" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 300 40 L 300 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="299.5" y="24.5">
+                Audio
+            </text>
+        </g>
+        <path d="M 103 99.96 L 191.88 100" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="100" cy="99.96" rx="3" ry="3" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 198.88 100 L 191.88 103.5 L 191.88 96.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="137" y="84" width="26" height="14" stroke-width="0"/>
+            <text x="149.5" y="94.48">
+                input
+            </text>
+        </g>
+        <rect x="360" y="0" width="79" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 399.5 40 L 399.5 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="399" y="24.5">
+                Objects
+            </text>
+        </g>
+        <path d="M 203 120.12 L 291.88 120.01" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="200" cy="120.12" rx="3" ry="3" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 298.88 120 L 291.89 123.51 L 291.88 116.51 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="224" y="105" width="52" height="14" stroke-width="0"/>
+            <text x="249.5" y="114.56">
+                play audio
+            </text>
+        </g>
+        <rect x="460" y="0" width="79" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 499.5 40 L 499.5 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="499" y="24.5">
+                Physics
+            </text>
+        </g>
+        <path d="M 203 140.12 L 391.88 140" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="200" cy="140.12" rx="3" ry="3" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 398.88 140 L 391.88 143.5 L 391.88 136.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="256" y="125" width="88" height="14" stroke-width="0"/>
+            <text x="299.5" y="134.56">
+                manipulate object
+            </text>
+        </g>
+        <rect x="560" y="0" width="79" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 599.5 40 L 599.5 220" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="599" y="24.5">
+                Render
+            </text>
+        </g>
+        <path d="M 203 160.04 L 491.88 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="200" cy="160.04" rx="3" ry="3" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 498.88 160 L 491.88 163.5 L 491.88 156.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="314" y="145" width="73" height="14" stroke-width="0"/>
+            <text x="349.5" y="154.52">
+                check collision
+            </text>
+        </g>
+        <path d="M 14 60 L 61.88 60" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="10" cy="60" rx="4" ry="4" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 68.88 60 L 61.88 63.5 L 61.88 56.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="29" y="45" width="23" height="14" stroke-width="0"/>
+            <text x="39.5" y="54.5">
+                start
+            </text>
+        </g>
+        <path d="M 403 179.88 L 591.88 180" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <ellipse cx="400" cy="179.88" rx="3" ry="3" fill="#000000" stroke="#000000" pointer-events="all"/>
+        <path d="M 598.88 180 L 591.88 183.5 L 591.88 176.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="467" y="164" width="66" height="14" stroke-width="0"/>
+            <text x="499.5" y="174.44">
+                render object
+            </text>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
