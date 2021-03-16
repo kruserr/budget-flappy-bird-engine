@@ -46,7 +46,7 @@ yarn-debug.log*
 yarn-error.log*
 .eslintcache
 src/index.tsx
-package-lock.json
+# package-lock.json
 yarn.lock
 .~lock*
 dist/*
