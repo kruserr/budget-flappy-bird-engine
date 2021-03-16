@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1615901167375" clover="3.2.0">
-  <project timestamp="1615901167375" name="All files">
+<coverage generated="1615903037567" clover="3.2.0">
+  <project timestamp="1615903037567" name="All files">
     <metrics statements="91" coveredstatements="91" conditionals="33" coveredconditionals="33" methods="46" coveredmethods="46" elements="170" coveredelements="170" complexity="0" loc="91" ncloc="91" packages="8" files="8" classes="8"/>
     <package name="AudioSystem">
       <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
@@ -23,22 +23,22 @@
       <file name="Data.js" path="/home/ragnar/projects/github/software_engineering/slap-the-bird-engine/src/classes/Data/Data.js">
         <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="11" count="14" type="stmt"/>
-        <line num="13" count="14" type="stmt"/>
-        <line num="16" count="6" type="stmt"/>
-        <line num="18" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="20" count="8" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="27" count="12" type="cond" truecount="4" falsecount="0"/>
-        <line num="29" count="4" type="stmt"/>
-        <line num="32" count="8" type="stmt"/>
-        <line num="34" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="4" type="stmt"/>
-        <line num="42" count="4" type="stmt"/>
-        <line num="47" count="6" type="stmt"/>
-        <line num="50" count="6" type="stmt"/>
-        <line num="53" count="14" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="18" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="6" type="cond" truecount="4" falsecount="0"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="34" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="50" count="5" type="stmt"/>
+        <line num="53" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Engine">
@@ -55,14 +55,14 @@
         <line num="36" count="9" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="51" count="14" type="stmt"/>
+        <line num="51" count="11" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="61" count="3" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="71" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="73" count="1" type="stmt"/>
         <line num="79" count="2" type="stmt"/>
-        <line num="84" count="23" type="stmt"/>
+        <line num="84" count="20" type="stmt"/>
         <line num="89" count="6" type="stmt"/>
         <line num="96" count="1" type="stmt"/>
         <line num="101" count="1" type="stmt"/>
@@ -80,8 +80,8 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="EventSystem.ts" path="/home/ragnar/projects/github/software_engineering/slap-the-bird-engine/src/classes/EventSystem/EventSystem.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="17" count="17" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="17" count="16" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
     </package>
@@ -117,9 +117,9 @@
         <line num="32" count="2" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
         <line num="39" count="7" type="stmt"/>
-        <line num="45" count="18" type="cond" truecount="6" falsecount="0"/>
-        <line num="50" count="10" type="stmt"/>
-        <line num="53" count="8" type="stmt"/>
+        <line num="45" count="14" type="cond" truecount="6" falsecount="0"/>
+        <line num="50" count="8" type="stmt"/>
+        <line num="53" count="6" type="stmt"/>
       </file>
     </package>
     <package name="Pos">
