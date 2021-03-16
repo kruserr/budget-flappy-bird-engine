@@ -8,11 +8,6 @@ https://slap-the-bird.github.io/
 
 <br>
 
-# Test Coverage
-<a href="/coverage/lcov-report/index.html">Coverage Report</a>
-
-<br>
-
 # Get the engine
 ```
 git clone https://github.com/Slap-the-Bird/slap-the-bird-engine.git
