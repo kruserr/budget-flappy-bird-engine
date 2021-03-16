@@ -49,6 +49,13 @@ Engine.addObject(<Hero />);
 Engine.start();
 ```
 
+<br>
+
+# Test Coverage
+<a href="/coverage/index.html">Coverage Report</a>
+
+<br>
+
 # Use Case Diagram
 <img src="doc/use_case.drawio.svg" />
 <br/>
