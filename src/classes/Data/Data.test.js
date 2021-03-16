@@ -78,14 +78,47 @@ function TestGroup()
   );
 }
 
-test('Data - render', () => {
-  const { debug } = render(<TestGroup />);
-  debug();
+// https://stackoverflow.com/a/66271345
+describe('test render', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  
+    let count = 0;
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => setTimeout(() => cb(100*(++count)), 100));
+  });
+  
+  afterEach(() => {
+    window.requestAnimationFrame.mockRestore();
+    jest.clearAllTimers();
+  });
 
-  Engine.addObject(<TestGroup />);
+  test('Data - render', () => {
+    const { debug } = render(<TestGroup />);
+    debug();
 
-  act(() => {
-    render(<div id="root"/>);
-    Engine.start();
+    Engine.addObject(<TestGroup />);
+
+    act(() => {
+      render(<div id="root"/>);
+      Engine.start();
+    });
+
+    document.getElementById('Player').getBoundingClientRect = jest.fn(() => ({
+      x: 0,
+      y: 0,
+      width: 1,
+      height: 1
+    }));
+
+    document.getElementById('Obstacle').getBoundingClientRect = jest.fn(() => ({
+      x: 0,
+      y: 0,
+      width: 1,
+      height: 1
+    }));
+
+    act(() => {
+      jest.advanceTimersByTime(200);
+    });
   });
 });
