@@ -3,6 +3,9 @@
 
 <br>
 
+# Demo
+https://slap-the-bird.github.io/
+
 # Get the engine
 ```
 git clone https://github.com/Slap-the-Bird/slap-the-bird-engine.git
