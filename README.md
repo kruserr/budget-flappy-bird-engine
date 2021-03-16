@@ -3,6 +3,11 @@
 
 <br>
 
+# Demo
+https://slap-the-bird.github.io/
+
+<br>
+
 # Get the engine
 ```
 git clone https://github.com/Slap-the-Bird/slap-the-bird-engine.git
@@ -45,6 +50,50 @@ Engine.addObject(<Hero />);
 
 Engine.start();
 ```
+
+<br>
+
+
+# Test Coverage Report
+```
+ PASS  src/classes/Input/Input.test.ts
+ PASS  src/classes/Engine/Engine.test.js
+ PASS  src/classes/Physics/Physics.test.ts
+ PASS  src/classes/Data/Data.test.js
+ PASS  src/classes/Time/Time.test.ts
+ PASS  src/classes/Pos/Pos.test.ts
+ PASS  src/classes/AudioSystem/AudioSystem.test.js
+ PASS  src/classes/EventSystem/EventSystem.test.ts
+-----------------|---------|----------|---------|---------|-------------------
+File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------|---------|----------|---------|---------|-------------------
+All files        |     100 |      100 |     100 |     100 |                   
+ AudioSystem     |     100 |      100 |     100 |     100 |                   
+  AudioSystem.ts |     100 |      100 |     100 |     100 |                   
+ Data            |     100 |      100 |     100 |     100 |                   
+  Data.js        |     100 |      100 |     100 |     100 |                   
+ Engine          |     100 |      100 |     100 |     100 |                   
+  Engine.tsx     |     100 |      100 |     100 |     100 |                   
+ EventSystem     |     100 |      100 |     100 |     100 |                   
+  EventSystem.ts |     100 |      100 |     100 |     100 |                   
+ Input           |     100 |      100 |     100 |     100 |                   
+  Input.js       |     100 |      100 |     100 |     100 |                   
+ Physics         |     100 |      100 |     100 |     100 |                   
+  Physics.ts     |     100 |      100 |     100 |     100 |                   
+ Pos             |     100 |      100 |     100 |     100 |                   
+  Pos.ts         |     100 |      100 |     100 |     100 |                   
+ Time            |     100 |      100 |     100 |     100 |                   
+  Time.ts        |     100 |      100 |     100 |     100 |                   
+-----------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 8 passed, 8 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        5.252 s
+Ran all test suites.
+```
+
+<br>
 
 # Use Case Diagram
 <img src="doc/use_case.drawio.svg" />

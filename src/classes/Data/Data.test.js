@@ -93,9 +93,6 @@ describe('test render', () => {
   });
 
   test('Data - render', () => {
-    const { debug } = render(<TestGroup />);
-    debug();
-
     Engine.addObject(<TestGroup />);
 
     act(() => {
