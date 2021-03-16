@@ -72,3 +72,53 @@ test('Engine - Minimal init', () => {
     Engine.start();
   });
 });
+
+test('Engine - etc', () => {
+  window.HTMLMediaElement.prototype.load = () => { };
+  window.HTMLMediaElement.prototype.play = () => { };
+  window.HTMLMediaElement.prototype.pause = () => { };
+  window.HTMLMediaElement.prototype.addTextTrack = () => { };
+
+  Object.defineProperty(window, 'location', {
+    writable: true,
+    value: { reload: jest.fn() }
+  });
+
+  act(() => {
+    render(<div id="root"/>);
+    Engine.start();
+  });
+
+  Engine.getTime().setTimeScale(1);
+
+  Engine.cancelFixedUpdate();
+
+  Engine.addAudio('1');
+  Engine.removeAudio('1');
+  
+  Engine.addAudio('2');
+  Engine.playAudio('2');
+  Engine.stopAudio('2');
+
+  Engine.getTime().setTimeScale(0);
+
+  Engine.addAudio('3');
+  Engine.playAudio('3');
+  Engine.stopAudio('3');
+
+  const pos = Engine.getPos();
+  expect(pos).not.toBeNull();
+
+  const physics = Engine.getPhysics();
+  expect(physics).not.toBeNull();
+
+  const ctx = Engine.getContext();
+  expect(ctx).not.toBeNull();
+
+  const debugText = 'debugText1';
+  Engine.debugWrite('debugText1');
+
+  expect(document.getElementById(Engine.getDebugId()).innerHTML).toBe(debugText);
+
+  Engine.restart();
+});

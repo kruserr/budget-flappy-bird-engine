@@ -111,6 +111,11 @@ class Engine
     document.getElementById(this.debugId).innerHTML = text;
   }
 
+  getDebugId()
+  {
+    return this.debugId;
+  }
+
   stop()
   {
     this.time.stop();

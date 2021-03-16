@@ -1,28 +1,109 @@
-# Engine
+# Slap the Bird Engine
+### The game engine for web developers
 
-## Use Case Diagram
-<img class="" src="doc/use_case.drawio.svg" />
+<br>
+
+# Get the engine
+```
+git clone https://github.com/Slap-the-Bird/slap-the-bird-engine.git
+cd slap-the-bird-engine
+npm install
+npm run start
+```
+
+# Develop your own game
+- Go to the file `./src/index.js`
+    - Uncomment `myGame` and comment `crappyBird`
+        ```
+        // import './games/crappyBird/index';
+        import './games/myGame/index';
+        ```
+- Go to the file `./src/games/myGame/index.js`
+    - Start creating React Components
+- Explore the Engine API with code completion
+    ```
+    Engine.
+    ```
+
+## Example
+
+`./src/games/myGame/index.js`
+```
+import Engine from '../../classes/Engine/Engine';
+
+
+function Hero()
+{
+  return (
+    <>
+      <h1 style={{color: 'green'}}>Hero</h1>
+    </>
+  );
+}
+
+Engine.addObject(<Hero />);
+
+Engine.start();
+```
+
+# Use Case Diagram
+<img src="doc/use_case.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Game Loop Sequence Diagram
-<img class="" src="doc/game_loop_sequence_diagram.drawio.svg" />
+# Activity Diagram
+<img src="doc/activity.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Render Loop Sequence Diagram
-<img class="" src="doc/render_loop_sequence_diagram.drawio.svg" />
+# Communication Diagram
+<img src="doc/communication.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Activity Diagram
-<img class="" src="doc/activity_diagram.drawio.svg" />
+# Deployment Diagram
+<img src="doc/deployment.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Game Loop Sequence Diagram
+<img src="doc/game_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Engine Architecture Diagram
+<img src="doc/engine_architecture.png" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Render Loop Sequence Diagram
+<img src="doc/render_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# World Loop Sequence Diagram
+<img src="doc/world_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Class Diagram
+<img src="doc/class.drawio.svg" />
 <br/>
 <br/>
 <br/>
