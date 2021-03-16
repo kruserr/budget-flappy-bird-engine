@@ -95,13 +95,6 @@ Engine.start();
 <br/>
 <br/>
 
-# World Loop Sequence Diagram
-<img src="doc/world_loop.drawio.svg" />
-<br/>
-<br/>
-<br/>
-<br/>
-
 # Class Diagram
 <img src="doc/class.drawio.svg" />
 <br/>
