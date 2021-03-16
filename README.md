@@ -1,28 +1,63 @@
 # Engine
 
-## Use Case Diagram
-<img class="" src="doc/use_case.drawio.svg" />
+# Use Case Diagram
+<img src="doc/use_case.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Game Loop Sequence Diagram
-<img class="" src="doc/game_loop_sequence_diagram.drawio.svg" />
+# Activity Diagram
+<img src="doc/activity.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Render Loop Sequence Diagram
-<img class="" src="doc/render_loop_sequence_diagram.drawio.svg" />
+# Communication Diagram
+<img src="doc/communication.drawio.svg" />
 <br/>
 <br/>
 <br/>
 <br/>
 
-## Activity Diagram
-<img class="" src="doc/activity_diagram.drawio.svg" />
+# Deployment Diagram
+<img src="doc/deployment.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Game Loop Sequence Diagram
+<img src="doc/game_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Engine Architecture Diagram
+<img src="doc/engine_architecture.png" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Render Loop Sequence Diagram
+<img src="doc/render_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# World Loop Sequence Diagram
+<img src="doc/world_loop.drawio.svg" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Class Diagram
+<img src="doc/class.drawio.svg" />
 <br/>
 <br/>
 <br/>
