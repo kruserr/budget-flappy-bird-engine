@@ -1,4 +1,50 @@
-# Engine
+# Slap the Bird Engine
+### The game engine for web developers
+
+<br>
+
+# Get the engine
+```
+git clone https://github.com/Slap-the-Bird/slap-the-bird-engine.git
+cd slap-the-bird-engine
+npm install
+npm run start
+```
+
+# Develop your own game
+- Go to the file `./src/index.js`
+    - Uncomment `myGame` and comment `crappyBird`
+        ```
+        // import './games/crappyBird/index';
+        import './games/myGame/index';
+        ```
+- Go to the file `./src/games/myGame/index.js`
+    - Start creating React Components
+- Explore the Engine API with code completion
+    ```
+    Engine.
+    ```
+
+## Example
+
+`./src/games/myGame/index.js`
+```
+import Engine from '../../classes/Engine/Engine';
+
+
+function Hero()
+{
+  return (
+    <>
+      <h1 style={{color: 'green'}}>Hero</h1>
+    </>
+  );
+}
+
+Engine.addObject(<Hero />);
+
+Engine.start();
+```
 
 # Use Case Diagram
 <img src="doc/use_case.drawio.svg" />
