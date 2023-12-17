@@ -1,7 +1,9 @@
-# Slap the Bird Engine
+# Budget Flappy Bird Engine
 ### The game engine for web developers
 
 <br>
+
+![](doc/demo-image.jpeg)
 
 # Demo
 https://slap-the-bird.github.io/
